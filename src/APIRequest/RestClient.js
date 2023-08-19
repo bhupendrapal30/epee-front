@@ -8,7 +8,7 @@ import { RemoveUserDetails } from "../redux/slices/UserSlice";
 import store from "../redux/store/store";
 
 //Axios default setting
-axios.defaults.baseURL = "http://localhost:3030/api/";
+axios.defaults.baseURL = "http://13.53.193.181:3030/api/";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/json";
