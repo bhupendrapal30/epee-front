@@ -3,8 +3,11 @@ import ToastMessage from "../helpers/ToastMessage";
 import { ResetPolicyDetails } from "../redux/slices/PolicySlice";
 import {
   SetTotalPolicy,
+  SetCategoryDropDown,
   SetPolicyLists,
   SetPolicyDetails,
+  SetStandardCatDropDown
+ 
 } from "../redux/slices/PolicySlice";
 import store from "../redux/store/store";
 import RestClient from "./RestClient";
@@ -40,12 +43,30 @@ class PolicyRequest {
     }
   }
 
+  static async CategoryDropDown() {
+    const { data } = await RestClient.getRequest(`user/categorylist`);
+
+    if (data) {
+      //console.log(data.data)
+      store.dispatch(SetCategoryDropDown(data.data));
+    }
+  }
+
+  static async StandardCatDropDown() {
+    const { data } = await RestClient.getRequest(`user/standredlist`);
+
+    if (data) {
+      store.dispatch(SetStandardCatDropDown(data.data));
+    }
+  }
+
+
   
 
   static async PolicyDetails(id, postBody) {
     let PostBody1={"data":{"id":id}};
     const { data } = await RestClient.postRequest(
-      `/user/getrolebyid`,
+      `/user/getPolicyId`,
       PostBody1
     );
 
@@ -59,13 +80,13 @@ class PolicyRequest {
        postBody.id=id;
     let PostBody1={"data":postBody}
     const { data } = await RestClient.postRequest(
-      `user/updaterole`,
+      `user/fileupdate`,
       PostBody1,
     );
 
     if (data) {
       store.dispatch(ResetPolicyDetails());
-      ToastMessage.successMessage("Role Updated Successfully");
+      ToastMessage.successMessage("Policy updated Successfully");
       return true;
     }
   }

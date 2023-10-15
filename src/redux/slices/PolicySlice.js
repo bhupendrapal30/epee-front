@@ -5,9 +5,14 @@ const PolicySlice = createSlice({
   name: "Policy",
   initialState: {
     PolicyLists: [],
+    CategoryDropDown:[],
+    StandardCatDropDown:[],
     TotalPolicy: 0,
     PolicyDetails: {
+      title:"",
       filename:"",
+      category_id:"",
+      standard_id:"",
       description: "",
       status: "",
     },
@@ -15,6 +20,12 @@ const PolicySlice = createSlice({
   reducers: {
     SetPolicyLists(state, action) {
       state.PolicyLists = action.payload;
+    },
+    SetCategoryDropDown(state, action) {
+      state.CategoryDropDown = action.payload;
+    },
+    SetStandardCatDropDown(state, action) {
+      state.StandardCatDropDown = action.payload;
     },
     SetTotalPolicy(state, action) {
       state.TotalPolicy = action.payload;
@@ -32,6 +43,8 @@ const PolicySlice = createSlice({
 
 export const {
   SetPolicyLists,
+  SetCategoryDropDown,
+  SetStandardCatDropDown,
   SetTotalPolicy,
   SetPolicyDetails,
   ResetPolicyDetails,

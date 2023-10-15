@@ -149,7 +149,7 @@ const PermissionCreateUpdatePage = () => {
                           />
 
                          <FormInput
-                          name="moduleid"
+                          name="category_id"
                           label={t("Module Name ")}
                           placeholder={t("Please select the module ")}
                           containerClass={"mb-3"}

@@ -17,7 +17,7 @@ const FileUploader = (props) => {
       files.map((file) =>
         Object.assign(file, {
           preview:
-            file["type"].split("/")[0] === "image"
+            file["type"].split("/")[0] === "pdf"
               ? URL.createObjectURL(file)
               : null,
           formattedSize: formatBytes(file.size),
@@ -127,8 +127,6 @@ const FileUploader = (props) => {
   );
 };
 
-FileUploader.defaultProps = {
-  showPreview: true,
-};
+
 
 export default FileUploader;

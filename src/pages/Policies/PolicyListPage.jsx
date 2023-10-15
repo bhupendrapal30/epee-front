@@ -6,6 +6,8 @@ import ReactPaginate from "react-paginate";
 import { GrDocumentCsv } from "react-icons/gr";
 import { SiMicrosoftexcel } from "react-icons/si";
 import classNames from "classnames";
+import Axios from 'axios';
+
 
 // Internal  Lib Import
 import PageTitle from "../../components/Ui/PageTitle";
@@ -22,16 +24,19 @@ const PolicyListPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [searchKey, setSearchKey] = useState(0);
+  const [pdfURL, setpdfURL] = useState(null);
 
   useEffect(() => {
     PolicyRequest.PolicyList(pageNumber, perPage, searchKey);
   }, [pageNumber, perPage, searchKey]);
 
   const { PolicyLists, TotalPolicy } = useSelector((state) => state.Policy);
-  console.log(PolicyLists);
+  
   const { UserDetails } = useSelector(
     (state) => state.User,
   );
+
+  
 
   let perMissArr = 0;
   const navigate = useNavigate();
@@ -48,6 +53,27 @@ const PolicyListPage = () => {
    if(perMissArr == 0){
       navigate("/dashborad");
    }
+
+   const downloadPDF =(pdf)=> {
+    
+    const pdfLink = pdf;
+    const anchorElement = document.createElement('a');
+    const fileName = `policy-file.pdf`;
+    anchorElement.href = pdfLink;
+    anchorElement.download = fileName;
+    anchorElement.click();
+  }
+
+  const createPolicypdf = async (id) => {
+        console.log(id);
+       const API_URL ='http://51.20.18.0:3030/api/user/';
+       const catUrl = `${API_URL}downloadpdf`;
+       const response = await Axios.post(catUrl,{"data":{"id":id}});
+       setpdfURL(response.data.data.url);
+      
+  }
+
+
 
   const PerPageOnChange = (e) => {
     if (e.target.value === "All") {
@@ -153,7 +179,8 @@ const PolicyListPage = () => {
                     >
                       <tr>
                         <th>Policy Name</th>
-                        <th> Description</th>
+                        <th>Description</th>
+                        <th>file</th>
                         <th>Created On</th>
                         <th>Action</th>
                       </tr>
@@ -162,13 +189,37 @@ const PolicyListPage = () => {
                       {PolicyLists?.map((record, index) => {
                         return (
                           <tr key={index}>
-                            <td>{record?.filename}</td>
+                            <td>{record?.title}</td>
                             <td>
                               {(record?.description &&
                                 HtmlParser(
                                   record?.description.slice(0, 100),
                                 )) ||
                                 "NA"}
+                            </td>
+
+                            <td>
+                            {record?.filename ?
+                              <Link
+                                className="action-icon text-danger"
+                                onClick={() => downloadPDF(record.filename)}
+                              >Download Policy</Link>:
+                               <>
+                               {record?.pdflink?
+                            <Link to={record?.pdflink} 
+                                className="action-icon text-primary"
+                               
+                              > Download</Link>
+                              :
+                              <Link
+                                className="action-icon text-danger"
+                                onClick={() => createPolicypdf(record.id)}
+                              >Create Policy File</Link>
+                               }
+                              </>
+                            }
+                            
+                           
                             </td>
                             <td>{DateFormatter(record?.createddate)}</td>
                             <td>
@@ -183,7 +234,7 @@ const PolicyListPage = () => {
                             </td>
                             <td>
                               <Link
-                                to={`/department/department-create-update?id=${record?.id}`}
+                                to={`/policies/policy-create-update?id=${record?.id}`}
                                 className="action-icon text-warning"
                               >
                                 <i className="mdi mdi-square-edit-outline"></i>

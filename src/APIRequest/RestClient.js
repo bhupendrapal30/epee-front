@@ -8,7 +8,7 @@ import { RemoveUserDetails } from "../redux/slices/UserSlice";
 import store from "../redux/store/store";
 
 //Axios default setting
-axios.defaults.baseURL = "http://13.53.193.181:3030/api/";
+axios.defaults.baseURL = "http://51.20.18.0:3030/api/";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/json";
@@ -23,7 +23,7 @@ function axiosHeaders2() {
   axios.defaults.headers.common["Authorization"] =
     "Bearer " + SessionHelper.GetToken();
   axios.defaults.headers.post["Content-Type"] =
-  "multipart/form-data";
+  "application/x-www-form-urlencoded.";
 }
 
 const ResponseReturn = (response) => {

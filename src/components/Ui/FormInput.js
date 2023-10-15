@@ -30,11 +30,36 @@ const FormInput = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [defaultValueSelect, setDefaultValueSelect] = useState(defaultValue);
-
+ 
   const FileHandleChange = async (e, setFieldValue) => {
     setFieldValue(name, await ResizeFile(e.target?.files?.[0]));
     onChange(await ResizeFile(e.target?.files?.[0]));
   };
+
+  const handleFileRead = async (event,setFieldValue) => {
+    const file = event.target?.files?.[0]
+    //const base64 = await convertBase64(file);
+    if (file) {
+      const base64 = await convertBase64(file);
+      localStorage.setItem('filename2', base64);
+    }
+    
+       
+  }
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file)
+      fileReader.onload = () => {
+
+        resolve(fileReader.result);
+      }
+      fileReader.onerror = (error) => {
+        reject(error);
+      }
+    })
+  }
 
   useEffect(() => {
     setDefaultValueSelect(defaultValue);
@@ -44,7 +69,7 @@ const FormInput = ({
     return (
       <Form.Group className={containerClass} controlId={name}>
         {label ? (
-          <Form.Label className={labelClassName}>{label}</Form.Label>
+          <Form.Label className={labelClassName} encType="multipart/form-data">{label}</Form.Label>
         ) : null}
         <Field>
           {({ field, form: { touched, errors, setFieldValue, values } }) => (
@@ -328,15 +353,16 @@ const FormInput = ({
                 {label ? (
                   <Form.Label className={labelClassName}>{label}</Form.Label>
                 ) : null}
-                <p className="text-muted font-14">
-                  Recommended thumbnail size 800x400 (px).
-                </p>
+                
                 <Form.Control
                   type={type}
+                  inputProps={{ accept: '.pdf, .pptx, .pptm, .ppt' }}
                   placeholder={placeholder}
                   className={className}
+                  accept="application/pdf"
                   isInvalid={touched[name] && errors[name] ? true : false}
-                  onChange={(e) => FileHandleChange(e, setFieldValue)}
+                  onChange={e =>handleFileRead(e)}
+           
                 />
               </Form.Group>
 
