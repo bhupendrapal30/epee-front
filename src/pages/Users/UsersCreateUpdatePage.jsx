@@ -14,18 +14,20 @@ import UserRequest from "../../APIRequest/UserRequest";
 import { defaultAvatarImg } from "../../helpers/Default";
 import ModuleRequest from "../../APIRequest/ModuleRequest";
 
+
 // import DepartmentRequest from "../../APIRequest/DepartmentRequest";
 
 const UsersCreateUpdatePage = () => {
   let [ObjectID, SetObjectID] = useState(0);
   const { t } = useTranslation();
   const { UserData } = useSelector((state) => state.User);
+  const { UserDetails } = useSelector((state) => state.User);
   // const { DepartmentDropDown } = useSelector((state) => state.Department);
   const { RoleDropDown } = useSelector((state) => state.Module);
 
   // let [PreviewImg, SetPreviewImg] = useState(defaultAvatarImg);
   
- console.log(UserData);
+
   const navigate = useNavigate();
  
 
@@ -71,7 +73,7 @@ const UsersCreateUpdatePage = () => {
    */
   const CreateUpdateUser = (values) => {
     console.log(UserRequest);
-    console.log(UserData?.usertype);
+    
     // if (!values.EmployeeAvatar) values.EmployeeAvatar = defaultAvatarImg;
     if (!ObjectID) {
       UserRequest.UserCreate({
@@ -82,6 +84,7 @@ const UsersCreateUpdatePage = () => {
         password: values.password,
         usertype: values.usertype,
         status: values.status,
+        createdby:UserDetails.id
        
       }).then((result) => {
         if (result) {
@@ -97,6 +100,7 @@ const UsersCreateUpdatePage = () => {
         password: values.password,
         usertype: values.usertype,
         status: values.status,
+        createdby:UserDetails.id
 
       }).then((result) => {
         if (result) {

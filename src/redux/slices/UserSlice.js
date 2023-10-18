@@ -15,6 +15,7 @@ const UserSlice = createSlice({
       password: "",
       usertype: "",
       status: "",
+      createdby:"",
     },
     UserDetails: SessionHelper.GetUserDetails() || undefined,
   },
