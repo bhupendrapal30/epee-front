@@ -41,7 +41,7 @@ const FormInput = ({
     //const base64 = await convertBase64(file);
     if (file) {
       const base64 = await convertBase64(file);
-      localStorage.setItem('filename2', base64);
+      localStorage.setItem('filename', base64);
     }
     
        

@@ -106,7 +106,7 @@ const PolicyListPage = () => {
 
   return (
     <>
-      <div className="main-panel" style={{width:"80%",marginTop: "46px",minHeight:"681px;"}}>
+      <div className="main-panel" style={{width:"80%",marginTop: "46px"}}>
         <div className="content-wrapper">
           <div className="page-header">
             <h3 className="page-title">

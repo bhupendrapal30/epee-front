@@ -71,19 +71,19 @@ const PolicyCreateUpdatePage = () => {
    * Handle the form submission
    */
   const CreateUpdatePolicy = (values) => {
-    
-        console.log(values);
     if (!ObjectID) {
-        if(localStorage.getItem('filename2')){
-           var filename2 = localStorage.removeItem('filename2');
+        if(localStorage.getItem('filename')){
+          var filename1  = localStorage.getItem('filename');
+          var filename  =filename1; 
+          localStorage.removeItem('filename')
         }else{
-           var filename2='';
+           var filename='';
         }
         
       PolicyRequest.PolicyCreate({
        
         title: values.title,
-        filename:filename2,
+        filename:filename,
         category_id:values.category_id,
         standard_id:values.standard_id,
         description: values.description,
@@ -96,15 +96,17 @@ const PolicyCreateUpdatePage = () => {
       });
     } else {
        
-       if(localStorage.getItem('filename2')){
-         var filename = localStorage.removeItem('filename2')
+       if(localStorage.getItem('filename')){
+         var filename1  = localStorage.getItem('filename');
+         var filename  =filename1; 
+         localStorage.removeItem('filename')
        }else{
         var filename =values.filename;
        }
         
       PolicyRequest.PolicyUpdate(ObjectID, {
         title: values.title,
-        filename: values.filename,
+        filename: filename,
         category_id:values.category_id,
         standard_id:values.standard_id,
         description: values.description,
