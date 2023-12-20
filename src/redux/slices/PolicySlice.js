@@ -10,11 +10,13 @@ const PolicySlice = createSlice({
     TotalPolicy: 0,
     PolicyDetails: {
       title:"",
+      policyType:"",
       filename:"",
       category_id:"",
       standard_id:"",
       description: "",
       status: "",
+      file_version: "",
     },
   },
   reducers: {

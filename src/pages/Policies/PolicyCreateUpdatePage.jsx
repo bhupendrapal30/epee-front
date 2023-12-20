@@ -6,9 +6,11 @@ import * as yup from "yup";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ErrorMessage, Field } from "formik";
+import Axios from 'axios';
 
 //Internal Lib Import
 import PageTitle from "../../components/Ui/PageTitle";
+import { Link } from "react-router-dom";
 import { FormInput } from "../../components/Ui";
 import { VerticalForm } from "../../components/Ui";
 import { defaultAvatarImg } from "../../helpers/Default";
@@ -17,27 +19,61 @@ import PolicyRequest from "../../APIRequest/PolicyRequest";
 const PolicyCreateUpdatePage = () => {
   let [ObjectID, SetObjectID] = useState(0);
   const { t } = useTranslation();
-  const { PolicyDetails,CategoryDropDown,StandardCatDropDown } = useSelector((state) => state.Policy);
+  var { PolicyDetails,CategoryDropDown,StandardCatDropDown } = useSelector((state) => state.Policy);
  // const { CategoryDropDown } = useSelector((state) => state.Policy);
 
   let [PreviewImg, SetPreviewImg] = useState(defaultAvatarImg);
   let [showFile, SetshowFile] = useState(false);
   let [showDes, SetshowDes] = useState(true);
 
- 
+  let params = new URLSearchParams(window.location.search);
+  let id = params.get("id");
+  
+  if (id == null) {
+    PolicyDetails= {
+      title:"",
+      policyType:"",
+      filename:"",
+      category_id:"",
+      standard_id:"",
+      description: "",
+      status: "",
+      file_version: "",
+      
+    };
+  }
   
   const navigate = useNavigate();
+  
 
   useEffect(() => {
+    
     PolicyRequest.CategoryDropDown();
     PolicyRequest.StandardCatDropDown();
     let params = new URLSearchParams(window.location.search);
     let id = params.get("id");
+    
     if (id !== null) {
       PolicyRequest.PolicyDetails(id);
       SetObjectID(id);
+      getPolicyData(id);
+      //handleChangeValue(PolicyDetails.policyType);
+
+      
+       console.log(showFile);
     }
   }, []);
+
+  const getPolicyData = async (id) => {
+        
+       const API_URL ='http://localhost:3030/api/user/';
+       const catUrl = `${API_URL}getPolicyId`;
+       const response = await Axios.post(catUrl,{"data":{"id":id}});
+       console.log(response.data.data.policyType)
+       handleChangeValue(response.data.data.policyType);
+      
+      
+  }
   
   const handleChange = (e) => {
    
@@ -49,6 +85,20 @@ const PolicyCreateUpdatePage = () => {
        SetshowDes(true);
     }
  }
+
+
+ const handleChangeValue = (val) => {
+   
+    if(val ==2){
+       SetshowFile(true);
+       SetshowDes(false);
+    }else{
+       SetshowFile(false);
+       SetshowDes(true);
+    }
+ }
+
+ 
 
   /*
    * form validation schema
@@ -83,11 +133,13 @@ const PolicyCreateUpdatePage = () => {
       PolicyRequest.PolicyCreate({
        
         title: values.title,
+        policyType: values.policyType,
         filename:filename,
         category_id:values.category_id,
         standard_id:values.standard_id,
         description: values.description,
         status: values.status,
+        file_version: values.file_version,
       }).then((result) => {
         console.log(result);
         if (result) {
@@ -106,11 +158,13 @@ const PolicyCreateUpdatePage = () => {
         
       PolicyRequest.PolicyUpdate(ObjectID, {
         title: values.title,
+        policyType: values.policyType,
         filename: filename,
         category_id:values.category_id,
         standard_id:values.standard_id,
         description: values.description,
         status: values.status,
+        file_version: values.file_version,
       }).then((result) => {
         if (result) {
           navigate("/policies/policy-list");
@@ -118,7 +172,22 @@ const PolicyCreateUpdatePage = () => {
       });
     }
   };
+  
+ const downloadPolicy =(pdf)=> {
+    
+    const pdfLink = pdf;
+    const anchorElement = document.createElement('a');
 
+    const fileName = `policy-file.pdf`;
+    anchorElement.href = pdfLink;
+    anchorElement.download = fileName;
+
+    anchorElement.click();
+    
+    
+  };
+  
+  
   return (
     <>
       <div className="main-panel" style={{width:"80%",marginTop: "46px",minHeight:"681px;"}}>
@@ -161,13 +230,26 @@ const PolicyCreateUpdatePage = () => {
                     <Row>
                       <Col>
          <div className="form-group">
-          <Field as="select" containerClass={"mb-3"} 
-           className="form-control"
-          name="color" onClick={handleChange}>
-             <option value="1">Add Policy Description</option>
-             <option value="2">Upload Policy file</option>
-             
-           </Field>
+
+                         <FormInput
+                          name="policyType"
+                          label={t("Policy Type")}
+                          placeholder={t("Select Policy")}
+                          containerClass={"mb-3"}
+                          type="react-single-select"
+                          options={[
+                            { value: "1", label: "Add Policy Description" },
+                            { value: "2", label: "Upload Policy file" },
+                            
+                          ]}
+                          defaultValue={[
+                            { value: "1", label: "Add Policy Description" },
+                            { value: "2", label: "Upload Policy file" },
+                          ].find((i) => i.value == PolicyDetails?.policyType)}
+                        />
+         
+           
+         
           </div>
                         
                           
@@ -207,7 +289,8 @@ const PolicyCreateUpdatePage = () => {
                           )}
                          
                         />
-                        { showDes ?
+                        
+                        { showDes  ?
                         <FormInput
                           name="description"
                           label={t("Policy Details")}
@@ -224,11 +307,12 @@ const PolicyCreateUpdatePage = () => {
                           containerClass={"mb-3"}
                           
                         /> } 
-
-
                         
 
-                        
+                        {PolicyDetails?.filename.length > 0 ? 
+                          <div className="mb-3"><Link onClick={() => downloadPolicy(PolicyDetails?.filename)} >Pdf file  <i className="mdi mdi-file-pdf"></i></Link></div>
+                          :""
+                        }
                         <FormInput
                           name="status"
                           label={t("Status")}
@@ -246,7 +330,16 @@ const PolicyCreateUpdatePage = () => {
                           ].find((i) => i.value == PolicyDetails?.status)}
                         />
                       </Col>
+                      <FormInput
+                          name="file_version"
+                          label={t("Version")}
+                          type="text"
+                          placeholder={t("ex : 1")}
+                          containerClass={"mb-3"}
+                          
+                        />
                     </Row>
+
 
                     <Row className="mt-2">
                       <Col>

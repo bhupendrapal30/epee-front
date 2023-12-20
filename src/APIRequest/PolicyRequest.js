@@ -32,13 +32,12 @@ class PolicyRequest {
     const { data } = await RestClient.getRequest(
       `user/defaultfilelist`
     );
-
-    if (data) {
+   if (data) {
       store.dispatch(ResetPolicyDetails());
-      const total = data.data.data.length;
+      const total = data.data.length;
      
 
-      store.dispatch(SetPolicyLists(data.data.data));
+      store.dispatch(SetPolicyLists(data.data));
       store.dispatch(SetTotalPolicy(total || 0));
     }
   }

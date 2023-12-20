@@ -55,21 +55,24 @@ const PolicyListPage = () => {
    }
 
    const downloadPDF =(pdf)=> {
-    
+    alert('download')
     const pdfLink = pdf;
     const anchorElement = document.createElement('a');
     const fileName = `policy-file.pdf`;
     anchorElement.href = pdfLink;
     anchorElement.download = fileName;
     anchorElement.click();
+    //navigate("/policies/policy-list");
+    
   }
 
   const createPolicypdf = async (id) => {
         console.log(id);
-       const API_URL ='http://51.20.18.0:3030/api/user/';
+       const API_URL ='http://localhost:3030/api/user/';
        const catUrl = `${API_URL}downloadpdf`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
-       setpdfURL(response.data.data.url);
+       downloadPDF(response.data.data.url);
+      
       
   }
 
@@ -179,9 +182,12 @@ const PolicyListPage = () => {
                     >
                       <tr>
                         <th>Policy Name</th>
+                        <th>Category Name</th>
+                        <th>Standard</th>
                         <th>Description</th>
                         <th>file</th>
                         <th>Created On</th>
+                        <th>Version</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -190,6 +196,8 @@ const PolicyListPage = () => {
                         return (
                           <tr key={index}>
                             <td>{record?.title}</td>
+                            <td>{record?.categoryname}</td>
+                            <td>{record?.standardname}</td>
                             <td>
                               {(record?.description &&
                                 HtmlParser(
@@ -201,9 +209,9 @@ const PolicyListPage = () => {
                             <td>
                             {record?.filename ?
                               <Link
-                                className="action-icon text-danger"
+                                className="action-icon text-primary"
                                 onClick={() => downloadPDF(record.filename)}
-                              >Download Policy</Link>:
+                              >Download</Link>:
                                <>
                                {record?.pdflink?
                             <Link to={record?.pdflink} 
@@ -212,9 +220,9 @@ const PolicyListPage = () => {
                               > Download</Link>
                               :
                               <Link
-                                className="action-icon text-danger"
+                                className="action-icon text-primary"
                                 onClick={() => createPolicypdf(record.id)}
-                              >Create Policy File</Link>
+                              >Download</Link>
                                }
                               </>
                             }
@@ -222,6 +230,9 @@ const PolicyListPage = () => {
                            
                             </td>
                             <td>{DateFormatter(record?.createddate)}</td>
+                            <td>
+                              {record?.file_version}
+                            </td>
                             <td>
                               <span
                                 className={classNames("badge", {
