@@ -66,7 +66,7 @@ const PolicyCreateUpdatePage = () => {
 
   const getPolicyData = async (id) => {
         
-       const API_URL ='http://localhost:3030/api/user/';
+       const API_URL ='http://51.20.18.0:3030/api/user/';
        const catUrl = `${API_URL}getPolicyId`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
        console.log(response.data.data.policyType)
