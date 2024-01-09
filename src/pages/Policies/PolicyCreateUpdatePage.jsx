@@ -25,6 +25,7 @@ const PolicyCreateUpdatePage = () => {
   let [PreviewImg, SetPreviewImg] = useState(defaultAvatarImg);
   let [showFile, SetshowFile] = useState(false);
   let [showDes, SetshowDes] = useState(true);
+  let [policyTypeVal, SetpolicyTypeVal] = useState(0);
 
   let params = new URLSearchParams(window.location.search);
   let id = params.get("id");
@@ -66,7 +67,7 @@ const PolicyCreateUpdatePage = () => {
 
   const getPolicyData = async (id) => {
         
-       const API_URL ='http://51.20.18.0:3030/api/user/';
+       const API_URL =process.env.REACT_APP_API_URL+"/api/user/";
        const catUrl = `${API_URL}getPolicyId`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
        console.log(response.data.data.policyType)
@@ -76,13 +77,15 @@ const PolicyCreateUpdatePage = () => {
   }
   
   const handleChange = (e) => {
-   
-    if(e.currentTarget.value ==2){
+    
+    if(e.target.value ==2){
        SetshowFile(true);
        SetshowDes(false);
+       SetpolicyTypeVal(e.target.value);
     }else{
        SetshowFile(false);
        SetshowDes(true);
+       SetpolicyTypeVal(e.target.value);
     }
  }
 
@@ -92,9 +95,11 @@ const PolicyCreateUpdatePage = () => {
     if(val ==2){
        SetshowFile(true);
        SetshowDes(false);
+       SetpolicyTypeVal(val);
     }else{
        SetshowFile(false);
        SetshowDes(true);
+       SetpolicyTypeVal(val);
     }
  }
 
@@ -129,11 +134,13 @@ const PolicyCreateUpdatePage = () => {
         }else{
            var filename='';
         }
+
+      
         
       PolicyRequest.PolicyCreate({
        
         title: values.title,
-        policyType: values.policyType,
+        policyType: policyTypeVal,
         filename:filename,
         category_id:values.category_id,
         standard_id:values.standard_id,
@@ -158,7 +165,7 @@ const PolicyCreateUpdatePage = () => {
         
       PolicyRequest.PolicyUpdate(ObjectID, {
         title: values.title,
-        policyType: values.policyType,
+        policyType: policyTypeVal,
         filename: filename,
         category_id:values.category_id,
         standard_id:values.standard_id,
@@ -186,7 +193,7 @@ const PolicyCreateUpdatePage = () => {
     
     
   };
-  
+ 
   
   return (
     <>
@@ -230,8 +237,14 @@ const PolicyCreateUpdatePage = () => {
                     <Row>
                       <Col>
          <div className="form-group">
+                 <select containerClass={"mb-3"} value={policyTypeVal}  className=" mb-3 form-control react-select"
+                classNamePrefix="react-select" onChange={handleChange}>
+                      <option value="1">Add Policy Description</option>
+                      <option value="2">Upload Policy file</option>
+                     
+                  </select>
 
-                         <FormInput
+                         {/*<FormInput
                           name="policyType"
                           label={t("Policy Type")}
                           placeholder={t("Select Policy")}
@@ -246,7 +259,7 @@ const PolicyCreateUpdatePage = () => {
                             { value: "1", label: "Add Policy Description" },
                             { value: "2", label: "Upload Policy file" },
                           ].find((i) => i.value == PolicyDetails?.policyType)}
-                        />
+                        />*/}
          
            
          

@@ -67,6 +67,10 @@ const PolicyListPage = React.lazy(() =>
   import("../pages/Policies/PolicyListPage"),
 );
 
+const PolicyVersionListPage = React.lazy(() =>
+  import("../pages/Policies/PolicyVersionListPage"),
+);
+
 const PermissionCreateUpdatePage = React.lazy(() =>
   import("../pages/Permission/PermissionCreateUpdatePage"),
 );
@@ -309,6 +313,12 @@ const AllRoutes = () => {
             path="/policies/policy-list"
             element={<LoadComponent component={PolicyListPage} />}
           />
+          <Route
+            path="/policies/policy-version-list"
+            element={<LoadComponent component={PolicyVersionListPage} />}
+          />
+
+          
           <Route
             path="/policies/policy-create-update"
             element={<LoadComponent component={PolicyCreateUpdatePage} />}

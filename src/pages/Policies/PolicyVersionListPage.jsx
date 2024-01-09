@@ -20,18 +20,22 @@ import HtmlParser from "../../utils/HtmlParser";
 import { useNavigate } from "react-router-dom";
 
 
-const PolicyListPage = () => {
+const PolicyVersionListPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [searchKey, setSearchKey] = useState(0);
   const [pdfURL, setpdfURL] = useState(null);
 
+  let params = new URLSearchParams(window.location.search);
+  let id = params.get("id");
+
   useEffect(() => {
-    PolicyRequest.PolicyList(pageNumber, perPage, searchKey);
+    PolicyRequest.PolicyVersionList(id,pageNumber, perPage, searchKey);
   }, [pageNumber, perPage, searchKey]);
 
-  const { PolicyLists, TotalPolicy } = useSelector((state) => state.Policy);
+  const { PolicyVersionLists, TotalPolicy } = useSelector((state) => state.Policy);
   
+  console.log(PolicyVersionLists);
   const { UserDetails } = useSelector(
     (state) => state.User,
   );
@@ -55,7 +59,7 @@ const PolicyListPage = () => {
    }
 
    const downloadPDF =(pdf)=> {
-    alert('download')
+    
     const pdfLink = pdf;
     const anchorElement = document.createElement('a');
     const fileName = `policy-file.pdf`;
@@ -100,12 +104,13 @@ const PolicyListPage = () => {
   };
 
   const DeletePolicy = (id) => {
-    AleartMessage.Delete(id, PolicyRequest.PolicyDelete).then((result) => {
-      if (result) {
-        PolicyRequest.PolicyList(pageNumber, perPage, searchKey);
-      }
-    });
+    // AleartMessage.Delete(id, PolicyVersionList.PolicyDelete).then((result) => {
+    //   if (result) {
+    //     PolicyRequest.PolicyVersionList(pageNumber, perPage, searchKey);
+    //   }
+    // });
   };
+  console.log(PolicyVersionLists)
 
   return (
     <>
@@ -115,7 +120,7 @@ const PolicyListPage = () => {
             <h3 className="page-title">
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
-              </span> Policy Listing
+              </span> Policy Version Listing
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -125,7 +130,7 @@ const PolicyListPage = () => {
                     breadCrumbItems={[
                       { label: "Policy", path: "/policies/policy-list" },
                       {
-                        label: "Policy List",
+                        label: "Policy Version List",
                         path: "/policies/policy-list",
                         active: true,
                       },
@@ -140,12 +145,7 @@ const PolicyListPage = () => {
             <Card.Body>
               <Row className="mb-2">
                 <Col sm={5}>
-                  <Link
-                    to="/policies/policy-create-update"
-                    className="btn btn-danger mb-2"
-                  >
-                    <i className="mdi mdi-plus-circle me-2"></i> Add Policy
-                  </Link>
+                  
                 </Col>
 
                 <Col sm={7}>
@@ -187,12 +187,11 @@ const PolicyListPage = () => {
                         <th>Description</th>
                         <th>file</th>
                         <th>Created On</th>
-                        <th>Version</th>
-                        <th>Action</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
-                      {PolicyLists?.map((record, index) => {
+                      {PolicyVersionLists?.map((record, index) => {
                         return (
                           <tr key={index}>
                             <td>{record?.title}</td>
@@ -231,38 +230,11 @@ const PolicyListPage = () => {
                             </td>
                             <td>{DateFormatter(record?.createddate)}</td>
                             <td>
-                            <Link
-                                to={`/policies/policy-version-list?id=${record?.id}`}
-                                className="action-icon text-warning"
-                              >
-                                {record?.file_version}
-                              </Link>
-                              
+                              {record?.file_version}
                             </td>
-                            <td>
-                              <span
-                                className={classNames("badge", {
-                                  "bg-success": record?.status,
-                                  "bg-danger": !record?.status,
-                                })}
-                              >
-                                {record?.status ? "Enabled" : "Disbaled"}
-                              </span>
-                            </td>
-                            <td>
-                              <Link
-                                to={`/policies/policy-create-update?id=${record?.id}`}
-                                className="action-icon text-warning"
-                              >
-                                <i className="mdi mdi-square-edit-outline"></i>
-                              </Link>
-                              <Link
-                                className="action-icon text-danger"
-                                onClick={() => DeletePolicy(record?.id)}
-                              >
-                                <i className="mdi mdi-delete"></i>
-                              </Link>
-                            </td>
+                            
+                            
+
                           </tr>
                         );
                       })}
@@ -335,4 +307,4 @@ const PolicyListPage = () => {
   );
 };
 
-export default PolicyListPage;
+export default PolicyVersionListPage;

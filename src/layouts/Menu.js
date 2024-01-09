@@ -309,6 +309,7 @@ const AppMenu = ({
                       <ul className="nav flex-column sub-menu">
                         <li className="nav-item"> <Link to ="/policies/policy-create-update" className="nav-link" >New Policy</Link></li>
                         <li className="nav-item"> <Link className="nav-link" to="/policies/policy-list">Policy Listing</Link></li>
+                        
                       </ul>
                     </div>
                   </li>

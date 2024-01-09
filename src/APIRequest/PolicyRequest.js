@@ -5,6 +5,7 @@ import {
   SetTotalPolicy,
   SetCategoryDropDown,
   SetPolicyLists,
+  SetPolicyVersionLists,
   SetPolicyDetails,
   SetStandardCatDropDown
  
@@ -38,6 +39,22 @@ class PolicyRequest {
      
 
       store.dispatch(SetPolicyLists(data.data));
+      store.dispatch(SetTotalPolicy(total || 0));
+    }
+  }
+
+  static async PolicyVersionList(id,pageNumber, perPage, searchKey) {
+    let data1={"data":{"id":id}};
+    const { data } = await RestClient.postRequest(
+      'user/defaultfileversionlist',data1
+    );
+    console.log(data.data)
+   if (data) {
+      store.dispatch(ResetPolicyDetails());
+      const total = data.data.length;
+     
+       console.log(total)
+      store.dispatch(SetPolicyVersionLists(data.data));
       store.dispatch(SetTotalPolicy(total || 0));
     }
   }

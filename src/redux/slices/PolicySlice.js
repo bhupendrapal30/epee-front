@@ -5,6 +5,7 @@ const PolicySlice = createSlice({
   name: "Policy",
   initialState: {
     PolicyLists: [],
+    PolicyVersionLists: [],
     CategoryDropDown:[],
     StandardCatDropDown:[],
     TotalPolicy: 0,
@@ -22,6 +23,9 @@ const PolicySlice = createSlice({
   reducers: {
     SetPolicyLists(state, action) {
       state.PolicyLists = action.payload;
+    },
+    SetPolicyVersionLists(state, action) {
+      state.PolicyVersionLists = action.payload;
     },
     SetCategoryDropDown(state, action) {
       state.CategoryDropDown = action.payload;
@@ -45,6 +49,7 @@ const PolicySlice = createSlice({
 
 export const {
   SetPolicyLists,
+  SetPolicyVersionLists,
   SetCategoryDropDown,
   SetStandardCatDropDown,
   SetTotalPolicy,
