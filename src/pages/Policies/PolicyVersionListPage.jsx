@@ -70,12 +70,16 @@ const PolicyVersionListPage = () => {
     
   }
 
-  const createPolicypdf = async (id) => {
+  const createPolicypdf = async (filename,id) => {
+       if(filename.length> 0){
+        downloadPDF(filename,id);
+       }else{
         
        const API_URL ="http://51.20.18.0:3030/api/user/";
        const catUrl = `${API_URL}downloadpdf`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
-       downloadPDF(response.data.data.url);
+       downloadPDF(response.data.data.url,id);
+     }
       
       
   }
