@@ -58,11 +58,11 @@ const PolicyVersionListPage = () => {
       navigate("/dashborad");
    }
 
-   const downloadPDF =(pdf)=> {
+   const downloadPDF =(pdf,id)=> {
     
     const pdfLink = pdf;
     const anchorElement = document.createElement('a');
-    const fileName = `policy-file.pdf`;
+    const fileName = 'policy-file'+id+'.pdf';
     anchorElement.href = pdfLink;
     anchorElement.download = fileName;
     anchorElement.click();
@@ -72,7 +72,7 @@ const PolicyVersionListPage = () => {
 
   const createPolicypdf = async (id) => {
         console.log(id);
-       const API_URL ="http://51.20.18.0:3030/api/user/";
+       const API_URL =process.env.REACT_APP_API_URL+"/api/user/";
        const catUrl = `${API_URL}downloadpdf`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
        downloadPDF(response.data.data.url);
@@ -209,7 +209,7 @@ const PolicyVersionListPage = () => {
                             {record?.filename ?
                               <Link
                                 className="action-icon text-primary"
-                                onClick={() => downloadPDF(record.filename)}
+                                onClick={() => createPolicypdf(record.filename,record.id)}
                               >Download</Link>:
                                <>
                                {record?.pdflink?
@@ -220,7 +220,7 @@ const PolicyVersionListPage = () => {
                               :
                               <Link
                                 className="action-icon text-primary"
-                                onClick={() => createPolicypdf(record.id)}
+                                onClick={() => createPolicypdf(record.filename,record.id)}
                               >Download</Link>
                                }
                               </>
