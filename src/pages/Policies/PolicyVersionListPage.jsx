@@ -72,7 +72,7 @@ const PolicyVersionListPage = () => {
 
   const createPolicypdf = async (id) => {
         console.log(id);
-       const API_URL =process.env.REACT_APP_API_URL+"/api/user/";
+       const API_URL ="http://51.20.18.0:3030/api/user/";
        const catUrl = `${API_URL}downloadpdf`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
        downloadPDF(response.data.data.url);
