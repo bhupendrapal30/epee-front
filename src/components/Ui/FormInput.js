@@ -1,5 +1,5 @@
 //External Lib Import
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { Form, InputGroup } from "react-bootstrap";
 import classNames from "classnames";
 import { ErrorMessage, Field } from "formik";
@@ -14,6 +14,8 @@ import ReactCodeInput from "react-code-input";
 import FileUploader from "./FileUploader";
 import ResizeFile from "../../utils/ResizeFile";
 import HyperDatepicker from "../../components/Ui/Datepicker";
+
+import JoditEditor from 'jodit-react';
 
 const FormInput = ({
   label,
@@ -30,6 +32,12 @@ const FormInput = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [defaultValueSelect, setDefaultValueSelect] = useState(defaultValue);
+
+
+  const editor = useRef(null);
+  const [Contenteditor, setContenteditor] = useState('');
+  const configeditor = '';
+
  
   const FileHandleChange = async (e, setFieldValue) => {
     setFieldValue(name, await ResizeFile(e.target?.files?.[0]));
@@ -194,7 +202,8 @@ const FormInput = ({
         </Field>
       </Form.Group>
     );
-  } else if (type === "checkbox" || type === "radio") {
+  } else if (type === "checkbox") {
+
     return (
       <Form.Group className={containerClass} controlId={name}>
         <Field name={name}>
@@ -205,6 +214,32 @@ const FormInput = ({
                 label={label}
                 className={className}
                 isInvalid={errors && errors[name] ? true : false}
+                {...field}
+                checked={values?.[name]}
+              />
+
+              <ErrorMessage name={name}>
+                {(msg) => (
+                  <Form.Control.Feedback type="invalid">
+                    {msg}
+                  </Form.Control.Feedback>
+                )}
+              </ErrorMessage>
+            </>
+          )}
+        </Field>
+      </Form.Group>
+    );
+  }  else if (type === "radio") {
+    
+    return (
+      <Form.Group className={containerClass} controlId={name}>
+        <Field name={name}>
+          {({ field, form: { touched, errors, values } }) => (
+            <>
+              <Form.Check
+                type={type}
+                label={label}
                 {...field}
                 checked={values?.[name]}
               />
@@ -279,6 +314,7 @@ const FormInput = ({
     );
   } else if (type === "simple-rich-edior") {
     return (
+    
       <Form.Group className={containerClass} controlId={name}>
         {label ? (
           <Form.Label className={labelClassName}>{label}</Form.Label>
@@ -286,10 +322,16 @@ const FormInput = ({
         <Field>
           {({ field, form: { touched, errors, setFieldValue, values } }) => (
             <>
-              <ReactQuill
-                value={values?.[name]}
-                onChange={(text) => setFieldValue(name, text)}
-              />
+              
+
+               <JoditEditor
+      ref={editor}
+      value={values?.[name]}
+      config={configeditor}
+      tabIndex={1} // tabIndex of textarea
+      onBlur={newContent => setContenteditor(newContent)} // preferred to use only this option to update the content for performance reasons
+      onChange={(text) => setFieldValue(name, text)}
+    />
 
               <ErrorMessage name={name}>
                 {(msg) => (

@@ -211,7 +211,7 @@ const AppMenu = ({
   return (
     <>
         <nav className="sidebar sidebar-offcanvas" ref={menuRef}  id="sidebar">
-        <ul className="nav">
+        <ul className="nav" style={{height:"950px",overflowY:"scroll"}}>
           <li className="nav-item nav-profile">
             <a href="#" className="nav-link">
               <div className="nav-profile-image">
@@ -232,18 +232,171 @@ const AppMenu = ({
                 <i class="mdi mdi-home menu-icon"></i>
               </Link>
             </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">SOA</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+          <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+              <span className="menu-title">Artifacts</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-plus" />
+            </a>
+            <div className="collapse" id="ui-basic1">
+              <ul className="nav flex-column sub-menu">
+               
+                <li className="nav-item"> <Link to ="/users/users-create-update" className="nav-link" >
+      Manual</Link></li>
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >Policy</Link></li>
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >Procedure</Link></li>
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >Work Instruction</Link></li>
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >SOP</Link></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">People</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+           <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Trainings</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Asset Mgmt</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Access Mgmt</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Change Mgmt</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Capacity Mgmt</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Config Mgmt</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Incident Mgmt</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Risk Mgmt</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Vendor</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Vulnerability</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Records</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">WorkFlow Config</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Cloud Integrations</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+
+            <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+              <span className="menu-title">Internal Audit</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-plus" />
+            </a>
+            <div className="collapse" id="ui-basic2">
+              <ul className="nav flex-column sub-menu">
+               
+               
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >Audit Repots</Link></li>
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >CAPA</Link></li>
+                
+              </ul>
+            </div>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
+              <span className="menu-title">External Audit</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-plus" />
+            </a>
+            <div className="collapse" id="ui-basic3">
+              <ul className="nav flex-column sub-menu">
+               
+               
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >Audit Repots</Link></li>
+                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >CAPA</Link></li>
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Management Review</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Downloads</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </Link>
+            </li>
          {UserDetails.per?.map((record, index) => { 
           if(record.modulesname == 'user') {
            return (
             
             
-             <li className="nav-item">
-            <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <li className="nav-item">
+            <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
               <span className="menu-title">Users</span>
               <i className="menu-arrow" />
               <i className="mdi mdi-account-plus" />
             </a>
-            <div className="collapse" id="ui-basic">
+            <div className="collapse" id="ui-basic4">
               <ul className="nav flex-column sub-menu">
                {record.addedit==1 ? (
                 <li className="nav-item"> <Link to ="/users/users-create-update" className="nav-link" >New User</Link></li>):''}
@@ -251,6 +404,8 @@ const AppMenu = ({
               </ul>
             </div>
           </li>
+          
+
            
             );
           }

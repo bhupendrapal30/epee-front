@@ -161,7 +161,7 @@ const Topbar = ({
 
       <nav className="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a className="navbar-brand brand-logo" ><img src="../assets/images/logo.svg" alt="logo" /></a>
+          <a className="navbar-brand brand-logo" ><img src="../assets/images/logo.jpg" alt="logo" style={{width: "100%",height:"53px"}} /></a>
           <a className="navbar-brand brand-logo-mini" ><img src="../assets/images/logo-mini.svg" alt="logo" /></a>
         </div>
         <div className="navbar-menu-wrapper d-flex align-items-stretch">

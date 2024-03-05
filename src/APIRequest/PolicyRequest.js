@@ -7,7 +7,14 @@ import {
   SetPolicyLists,
   SetPolicyVersionLists,
   SetPolicyDetails,
-  SetStandardCatDropDown
+  SetStandardCatDropDown,
+  SetassignerDropdrown,
+  SetreccurenceDropdrown,
+  SetframeworkDropDown,
+  SetownerDropdrown,
+  SetdepartmentDropdrown,
+  SetclauseDropdrown,
+  SetsubclauseDropdrown,
  
 } from "../redux/slices/PolicySlice";
 import store from "../redux/store/store";
@@ -17,7 +24,7 @@ class PolicyRequest {
   static async PolicyCreate(postBody) {
      let PostBody1={"data":postBody}
     const { data } = await RestClient.postRequest(
-      "user/fileupload",
+      "user/createpolicy",
        PostBody1,
     );
 
@@ -48,7 +55,7 @@ class PolicyRequest {
     const { data } = await RestClient.postRequest(
       'user/defaultfileversionlist',data1
     );
-    console.log(data.data)
+   
    if (data) {
       store.dispatch(ResetPolicyDetails());
       const total = data.data.length;
@@ -72,9 +79,93 @@ class PolicyRequest {
     const { data } = await RestClient.getRequest(`user/standredlist`);
 
     if (data) {
+      console.log(data.data);
       store.dispatch(SetStandardCatDropDown(data.data));
     }
   }
+
+  static async frameworkDropDown() {
+    const { data } = await RestClient.getRequest(`user/frameworklist`);
+
+    if (data) {
+      console.log(data.data);
+      store.dispatch(SetframeworkDropDown(data.data));
+    }
+  }
+
+  static async assignerDropdrown() {
+    const { data } = await RestClient.getRequest(`user/assigner`);
+
+    if (data) {
+      console.log(data.data)
+      store.dispatch(SetassignerDropdrown(data.data));
+    }
+  }
+
+
+  static async ownerDropdrown() {
+    const { data } = await RestClient.getRequest(`user/assigner`);
+
+    if (data) {
+      console.log(data.data)
+      store.dispatch(SetownerDropdrown(data.data));
+    }
+  }
+
+  static async departmentDropdrown() {
+    const { data } = await RestClient.getRequest(`user/department`);
+
+    if (data) {
+      //console.log(data.data)
+      store.dispatch(SetdepartmentDropdrown(data.data));
+    }
+  }
+
+  static async clauseDropdrown() {
+    const { data } = await RestClient.getRequest(`user/clauselist`);
+
+    if (data) {
+      console.log(data.data)
+      store.dispatch(SetclauseDropdrown(data.data));
+    }
+  }
+
+  static async subclauseDropdrown() {
+    const { data } = await RestClient.getRequest(`user/subclauselist`);
+
+    if (data) {
+      //console.log(data.data)
+      store.dispatch(SetsubclauseDropdrown(data.data));
+    }
+  }
+  static async controlsDropdrown() {
+    const { data } = await RestClient.getRequest(`user/controlist`);
+
+    if (data) {
+      //console.log(data.data)
+      store.dispatch(SetreccurenceDropdrown(data.data));
+    }
+  }
+
+  static async subControlsDropdrown() {
+    const { data } = await RestClient.getRequest(`user/subcontrolist`);
+
+    if (data) {
+      //console.log(data.data)
+      store.dispatch(SetreccurenceDropdrown(data.data));
+    }
+  }
+  static async reccurenceDropdrown() {
+    const { data } = await RestClient.getRequest(`user/reccurence`);
+
+    if (data) {
+      //console.log(data.data)
+      store.dispatch(SetreccurenceDropdrown(data.data));
+    }
+  }
+
+
+  
 
 
   
@@ -82,7 +173,7 @@ class PolicyRequest {
   static async PolicyDetails(id, postBody) {
     let PostBody1={"data":{"id":id}};
     const { data } = await RestClient.postRequest(
-      `/user/getPolicyId`,
+      `/user/getPolicyById`,
       PostBody1
     );
 
@@ -93,10 +184,10 @@ class PolicyRequest {
   }
 
   static async PolicyUpdate(id, postBody) {
-       postBody.id=id;
+       postBody.policyid=id;
     let PostBody1={"data":postBody}
     const { data } = await RestClient.postRequest(
-      `user/fileupdate`,
+      `user/policyupdate`,
       PostBody1,
     );
 

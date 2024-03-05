@@ -63,6 +63,17 @@ const RolesListPage = React.lazy(() =>
 const PolicyCreateUpdatePage = React.lazy(() =>
   import("../pages/Policies/PolicyCreateUpdatePage"),
 );
+
+const PolicyCreateUpdatePageNew = React.lazy(() =>
+  import("../pages/Policies/PolicyCreateUpdatePageNew"),
+);
+
+const PolicyCreateUpdatePageTab = React.lazy(() =>
+  import("../pages/Policies/PolicyCreateUpdatePageTab"),
+);
+
+
+
 const PolicyListPage = React.lazy(() =>
   import("../pages/Policies/PolicyListPage"),
 );
@@ -322,6 +333,16 @@ const AllRoutes = () => {
           <Route
             path="/policies/policy-create-update"
             element={<LoadComponent component={PolicyCreateUpdatePage} />}
+          />
+
+        <Route
+            path="/policies/policy-create-update-new"
+            element={<LoadComponent component={PolicyCreateUpdatePageNew} />}
+          />
+
+<Route
+            path="/policies/policy-create-update-tab"
+            element={<LoadComponent component={PolicyCreateUpdatePageTab} />}
           />
                     <Route
             path="/permission/permission-list"
