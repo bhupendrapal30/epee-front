@@ -15,6 +15,7 @@ axios.defaults.headers.post["Content-Type"] =
   "application/json";
 
 
+
 function axiosHeaders() {
   axios.defaults.headers.common["Authorization"] =
     "Bearer " + SessionHelper.GetToken();
@@ -24,7 +25,7 @@ function axiosHeaders2() {
   axios.defaults.headers.common["Authorization"] =
     "Bearer " + SessionHelper.GetToken();
   axios.defaults.headers.post["Content-Type"] =
-  "application/x-www-form-urlencoded.";
+  "multipart/form-data";
 }
 
 const ResponseReturn = (response) => {

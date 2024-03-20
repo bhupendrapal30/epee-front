@@ -6,6 +6,7 @@ const PolicySlice = createSlice({
   initialState: {
     PolicyLists: [],
     PolicyVersionLists: [],
+    PolicyApproverList:[],
     CategoryDropDown:[],
     StandardCatDropDown:[],
     assignerDropdrown:[],
@@ -28,7 +29,7 @@ const PolicySlice = createSlice({
       frameworkid:"",
       controlid:"",
       subcontrolid:"",
-      clauseid:"",
+      clause_id:"",
       subclauseid:"",
       createdby: "",
       
@@ -41,6 +42,10 @@ const PolicySlice = createSlice({
     SetPolicyVersionLists(state, action) {
       state.PolicyVersionLists = action.payload;
     },
+     SetPolicyApproverList(state, action) {
+      state.PolicyApproverList = action.payload;
+    },
+
     SetCategoryDropDown(state, action) {
       state.CategoryDropDown = action.payload;
     },
@@ -90,6 +95,7 @@ const PolicySlice = createSlice({
 export const {
   SetPolicyLists,
   SetPolicyVersionLists,
+  SetPolicyApproverList,
   SetCategoryDropDown,
   SetStandardCatDropDown,
   SetassignerDropdrown,

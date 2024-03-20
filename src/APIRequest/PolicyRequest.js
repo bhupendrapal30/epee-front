@@ -6,6 +6,7 @@ import {
   SetCategoryDropDown,
   SetPolicyLists,
   SetPolicyVersionLists,
+  SetPolicyApproverList,
   SetPolicyDetails,
   SetStandardCatDropDown,
   SetassignerDropdrown,
@@ -38,7 +39,7 @@ class PolicyRequest {
   static async PolicyList(pageNumber, perPage, searchKey) {
     let PostBody1={};
     const { data } = await RestClient.getRequest(
-      `user/defaultfilelist`
+      `user/policylist`
     );
    if (data) {
       store.dispatch(ResetPolicyDetails());
@@ -49,6 +50,22 @@ class PolicyRequest {
       store.dispatch(SetTotalPolicy(total || 0));
     }
   }
+
+
+  // static async PolicyListNew(pageNumber, perPage, searchKey) {
+  //   let PostBody1={};
+  //   const { data } = await RestClient.getRequest(
+  //     `user/policylist`
+  //   );
+  //  if (data) {
+  //     store.dispatch(ResetPolicyDetails());
+  //     const total = data.data.length;
+     
+
+  //     store.dispatch(SetPolicyLists(data.data));
+  //     store.dispatch(SetTotalPolicy(total || 0));
+  //   }
+  // }
 
   static async PolicyVersionList(id,pageNumber, perPage, searchKey) {
     let data1={"data":{"id":id}};
@@ -62,6 +79,23 @@ class PolicyRequest {
      
        console.log(total)
       store.dispatch(SetPolicyVersionLists(data.data));
+      store.dispatch(SetTotalPolicy(total || 0));
+    }
+  }
+
+
+  static async PolicyApproverList(id,pageNumber, perPage, searchKey) {
+    let data1={"data":{"policyid":id}};
+    const { data } = await RestClient.postRequest(
+      'user/approverlist',data1
+    );
+   
+   if (data) {
+      store.dispatch(ResetPolicyDetails());
+      const total = data.data.length;
+     
+       console.log(total)
+      store.dispatch(SetPolicyApproverList(data.data.data));
       store.dispatch(SetTotalPolicy(total || 0));
     }
   }
@@ -125,7 +159,7 @@ class PolicyRequest {
     const { data } = await RestClient.getRequest(`user/clauselist`);
 
     if (data) {
-      console.log(data.data)
+      
       store.dispatch(SetclauseDropdrown(data.data));
     }
   }
@@ -171,14 +205,16 @@ class PolicyRequest {
   
 
   static async PolicyDetails(id, postBody) {
-    let PostBody1={"data":{"id":id}};
+    let PostBody1={"data":{"policyid":id}};
     const { data } = await RestClient.postRequest(
-      `/user/getPolicyById`,
+      `/user/policydetails`,
       PostBody1
     );
 
     if (data) {
-      store.dispatch(SetPolicyDetails(data.data));
+      let cData = {...data.data[0],...data.approver_mapping[0],...data.cluse_mapping[0],...data.control_mapping[0]}
+      console.log(data)
+      store.dispatch(SetPolicyDetails(cData));
       return true;
     }
   }
@@ -197,6 +233,23 @@ class PolicyRequest {
       return true;
     }
   }
+
+
+  static async PolicyFileUpdate(id, postBody) {
+       postBody.policyid=id;
+    let PostBody1={"data":postBody}
+    const { data } = await RestClient.postRequest(
+      `user/policyfileupdate`,
+      PostBody1,
+    );
+
+    if (data) {
+      store.dispatch(ResetPolicyDetails());
+      ToastMessage.successMessage("Policy updated Successfully");
+      return true;
+    }
+  }
+
 
   static async PolicyDelete(id) {
 

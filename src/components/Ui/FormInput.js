@@ -17,6 +17,10 @@ import HyperDatepicker from "../../components/Ui/Datepicker";
 
 import JoditEditor from 'jodit-react';
 
+
+
+
+
 const FormInput = ({
   label,
   type,
@@ -29,6 +33,7 @@ const FormInput = ({
   onChange,
   defaultValue,
   options,
+  sendDataToParent
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [defaultValueSelect, setDefaultValueSelect] = useState(defaultValue);
@@ -38,11 +43,30 @@ const FormInput = ({
   const [Contenteditor, setContenteditor] = useState('');
   const configeditor = '';
 
+  const [data, setData] = useState("");
+
+  
+
+
  
   const FileHandleChange = async (e, setFieldValue) => {
     setFieldValue(name, await ResizeFile(e.target?.files?.[0]));
     onChange(await ResizeFile(e.target?.files?.[0]));
   };
+
+
+ const  handleFileUpload = (event,setFieldValue) => {
+  let reader = new FileReader();
+  let file = event.target.files[0];
+  setFieldValue(name, reader.result);
+
+reader.readAsDataURL(file);
+
+console.log(reader.readAsDataURL(file));
+}
+
+
+  
 
   const handleFileRead = async (event,setFieldValue) => {
     const file = event.target?.files?.[0]
@@ -54,6 +78,18 @@ const FormInput = ({
     
        
   }
+
+const handleChange = (name, val, setFieldValue) => {
+  
+  var value = val;
+  setFieldValue(name, val)
+  localStorage.setItem(name,val)
+  
+  if(value > 0){
+    let obj ={"name":name,"value":value};
+    sendDataToParent(obj)
+  }
+}
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -74,11 +110,17 @@ const FormInput = ({
   }, [defaultValue]);
 
   const ReactSelect = () => {
-    return (
+
+  if (type === "react-single-select") {
+
+   return (
+       
       <Form.Group className={containerClass} controlId={name}>
         {label ? (
-          <Form.Label className={labelClassName} encType="multipart/form-data">{label}</Form.Label>
+          <Form.Label className={labelClassName} >{label}</Form.Label>
         ) : null}
+    
+
         <Field>
           {({ field, form: { touched, errors, setFieldValue, values } }) => (
             <>
@@ -105,7 +147,10 @@ const FormInput = ({
         </Field>
       </Form.Group>
     );
-  };
+  }
+  
+
+};
 
   const ReactSelect2 = () => {
     return (
@@ -120,6 +165,7 @@ const FormInput = ({
                 className="react-select"
                 classNamePrefix="react-select"
                 options={options}
+                defaultValue={defaultValueSelect}
                 onChange={(option) =>
                   setFieldValue(
                     name,
@@ -146,6 +192,45 @@ const FormInput = ({
     );
   };
 
+ const ReactSelect1 = () => {
+ if (type === "react-single-select1") {
+  
+   return (
+  <Form.Group className={containerClass} controlId={name}>
+        {label ? (
+          <Form.Label className={labelClassName} >{label}</Form.Label>
+        ) : null}
+        <Field>
+          {({ field, form: { touched, errors, setFieldValue, values } }) => (
+            <>
+              <Select
+                className="react-select"
+                classNamePrefix="react-select"
+                options={options}
+                onChange={option => handleChange(name,option.value, setFieldValue)}
+                defaultValue={defaultValueSelect}
+              />
+
+              <ErrorMessage name={name}>
+                {(msg) => (
+                  <Form.Control.Feedback
+                    type="invalid"
+                    style={{ display: "block" }}
+                  >
+                    {msg}
+                  </Form.Control.Feedback>
+                )}
+              </ErrorMessage>
+            </>
+          )}
+        </Field>
+      </Form.Group>
+      )
+    }
+  };
+
+
+    
   if (type === "password") {
     return (
       <Form.Group className={containerClass} controlId={name}>
@@ -350,7 +435,12 @@ const FormInput = ({
     );
   } else if (type === "react-single-select") {
     return <ReactSelect />;
-  } else if (type === "react-multiple-select") {
+  }else if (type === "react-single-select1") {
+     return <ReactSelect1 />;
+  }
+  
+  
+  else if (type === "react-multiple-select") {
     return <ReactSelect2 />;
   } else if (type === "dropzone") {
     return (
@@ -403,7 +493,16 @@ const FormInput = ({
                   className={className}
                   accept="application/pdf"
                   isInvalid={touched[name] && errors[name] ? true : false}
-                  onChange={e =>handleFileRead(e)}
+                  onChange={(e) => {
+                  const fileReader = new FileReader();
+                  fileReader.onload = () => {
+                    if (fileReader.readyState === 2) {
+                      setFieldValue(name, fileReader.result);
+                      
+                    }
+                  };
+                  fileReader.readAsDataURL(e.target.files[0]);
+                }}
            
                 />
               </Form.Group>
@@ -490,7 +589,11 @@ const FormInput = ({
     );
   } else {
     return (
+    
+      
+      
       <Form.Group className={containerClass} controlId={name}>
+      
         {label ? (
           <Form.Label className={labelClassName}>{label}</Form.Label>
         ) : null}

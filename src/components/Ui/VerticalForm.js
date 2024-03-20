@@ -8,6 +8,8 @@ const VerticalForm = ({
   children,
   onSubmit,
 }) => {
+ 
+
   return (
     <Formik
       enableReinitialize
@@ -17,7 +19,7 @@ const VerticalForm = ({
         onSubmit(values);
       }}
     >
-      {(props) => <Form>{children}</Form>}
+      {(props) => <Form enctype= "multipart/form-data" >{children}</Form>}
     </Formik>
   );
 };
