@@ -85,6 +85,18 @@ const PolicyVersionListPage = React.lazy(() =>
 const PolicyApproverListPage = React.lazy(() =>
   import("../pages/Policies/ApproverList"),
 );
+
+const PolicyApprovedListPage = React.lazy(() =>
+  import("../pages/Policies/PolicyApprovedListPage"),
+);
+
+const PolicyPendingListPage = React.lazy(() =>
+  import("../pages/Policies/PolicyPendingListPage"),
+);
+
+const PolicyRejectListPage = React.lazy(() =>
+  import("../pages/Policies/PolicyRejectListPage"),
+);
 const PermissionCreateUpdatePage = React.lazy(() =>
   import("../pages/Permission/PermissionCreateUpdatePage"),
 );
@@ -335,6 +347,21 @@ const AllRoutes = () => {
           <Route
             path="/policies/policy-approver-list"
             element={<LoadComponent component={PolicyApproverListPage} />}
+          />
+
+          <Route
+            path="/policies/approved-policy"
+            element={<LoadComponent component={PolicyApprovedListPage} />}
+          />
+
+          <Route
+            path="/policies/pending-policy"
+            element={<LoadComponent component={PolicyPendingListPage} />}
+          />
+
+          <Route
+            path="/policies/rejected-policy"
+            element={<LoadComponent component={PolicyRejectListPage} />}
           />
 
           

@@ -1,7 +1,8 @@
 // External Lib Import
 import React, { useEffect, useState } from "react";
 import { Row, Col, Card, Table, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link ,Redirect,Navigate } from "react-router-dom";
+
 import ReactPaginate from "react-paginate";
 import { GrDocumentCsv } from "react-icons/gr";
 import { SiMicrosoftexcel } from "react-icons/si";
@@ -17,44 +18,57 @@ import AleartMessage from "../../helpers/AleartMessage";
 import ExportDataJSON from "../../utils/ExportFromJSON";
 import DateFormatter from "../../utils/DateFormatter";
 import HtmlParser from "../../utils/HtmlParser";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useHistory  } from "react-router-dom";
 
 
-const PolicyListPage = () => {
+const PolicyApprovedListPage = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [searchKey, setSearchKey] = useState(0);
   const [pdfURL, setpdfURL] = useState(null);
 
-  useEffect(() => {
-    PolicyRequest.PolicyList(pageNumber, perPage, searchKey);
-  }, [pageNumber, perPage, searchKey]);
-
-  const { PolicyLists, TotalPolicy } = useSelector((state) => state.Policy);
-  
+  let params = new URLSearchParams(window.location.search);
+  let id = params.get("id");
   const { UserDetails } = useSelector(
     (state) => state.User,
   );
 
+  useEffect(() => {
+    
+    PolicyRequest.PolicyApprovedList(id,UserDetails.id,pageNumber, perPage, searchKey);
+  }, [pageNumber, perPage, searchKey]);
+
+  const { PolicyApprovedList, TotalPolicy } = useSelector((state) => state.Policy);
+  
+  
+   console.log(PolicyApprovedList)
   
 
   let perMissArr = 0;
   const navigate = useNavigate();
+
+
   
   
    if (UserDetails.per.length > 0) {
     let perDataM= UserDetails.per;
       for (let index in perDataM) {
+        console.log(perDataM[index].modulesname)
          if(perDataM[index].modulesname=='files'){
             perMissArr =1
          }
       }
    }
-   if(perMissArr == 0){
-      navigate("/dashborad");
-   }
+   //alert(perMissArr)
+   // if(perMissArr == 0){
+   //    navigate("/dashborad");
+   // }
+
+
+
 
    const downloadPDF =(pdf,id)=> {
+    
     const pdfLink = pdf;
     const anchorElement = document.createElement('a');
     const fileName = 'policy-file'+id+'.pdf';
@@ -66,22 +80,39 @@ const PolicyListPage = () => {
   }
 
   const createPolicypdf = async (filename,id) => {
-       if(filename != null && filename.length> 0){
+       if(filename.length> 0){
         downloadPDF(filename,id);
        }else{
         
-       const API_URL ="http://localhost:3030/api/user/";
-       const catUrl = `${API_URL}downloadpolicy`;
+       const API_URL ="http://51.20.18.0:3030/api/user/";
+       const catUrl = `${API_URL}downloadpdf`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
-       console.log(response)
        downloadPDF(response.data.data.url,id);
      }
       
       
   }
 
-
+  const approvedPolicy = async (id) => {
+     
+       let url =window.location.href;
+       let UserId = UserDetails.id;
+       if(id > 0){
+       const API_URL ="http://localhost:3030/api/user/";
+       const catUrl = `${API_URL}approvepolicy`;
+       const response = await Axios.post(catUrl,{"data":{"approverid":UserId,"policyid":id,"approverstatus":1}});
+       //let url = '/policy-approver-list?id='+id
+       window.location.reload();
+        
+        return 1;
+     }
+       
+  }
   
+
+
+
+
 
 
 
@@ -102,21 +133,18 @@ const PolicyListPage = () => {
     setPageNumber(e.selected + 1);
   };
 
-
-
-
   const GoToPage = (e) => {
     setPageNumber(e.target.value);
   };
 
   const DeletePolicy = (id) => {
-    AleartMessage.Delete(id, PolicyRequest.PolicyDelete).then((result) => {
-      if (result) {
-        PolicyRequest.PolicyList(pageNumber, perPage, searchKey);
-      }
-    });
+    // AleartMessage.Delete(id, PolicyVersionList.PolicyDelete).then((result) => {
+    //   if (result) {
+    //     PolicyRequest.PolicyVersionList(pageNumber, perPage, searchKey);
+    //   }
+    // });
   };
-
+   console.log(PolicyApprovedList);
   return (
     <>
       <div className="main-panel" style={{width:"80%",marginTop: "46px"}}>
@@ -125,7 +153,7 @@ const PolicyListPage = () => {
             <h3 className="page-title">
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
-              </span> Policy Listing
+              </span> Approved Policy List
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -135,7 +163,7 @@ const PolicyListPage = () => {
                     breadCrumbItems={[
                       { label: "Policy", path: "/policies/policy-list" },
                       {
-                        label: "Policy List",
+                        label: "Policy Version List",
                         path: "/policies/policy-list",
                         active: true,
                       },
@@ -150,12 +178,7 @@ const PolicyListPage = () => {
             <Card.Body>
               <Row className="mb-2">
                 <Col sm={5}>
-                  <Link
-                    to="/policies/policy-create-update"
-                    className="btn btn-danger mb-2"
-                  >
-                    <i className="mdi mdi-plus-circle me-2"></i> Add Policy
-                  </Link>
+                  
                 </Col>
 
                 <Col sm={7}>
@@ -191,104 +214,31 @@ const PolicyListPage = () => {
                       style={{ backgroundColor: "#eef2f7" }}
                     >
                       <tr>
-                        <th>Policy Name</th>
-                        <th>Framework Name</th>
-                        <th>Department</th>
-                        <th>Reccurence</th>
-                        <th>Primary assignee</th>
-                        <th>Description</th>
-                        <th>file</th>
-                        <th>Approvers</th>
-                        <th>Created On</th>
-                        <th>Version</th>
+                        <th>Policy Name </th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Created On</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
-                      {PolicyLists?.map((record, index) => {
+                      {PolicyApprovedList?.map((record, index) => {
                         return (
                           <tr key={index}>
                             <td>{record?.policyname}</td>
-                            <td>{record?.frameworkname}</td>
-                            <td>{record?.Departmentname}</td>
-                            <td>{record?.reccurencename}</td>
-                            <td>{record?.primaryassignefname}</td>
-                            <td>
-                              {(record?.description &&
-                                HtmlParser(
-                                  record?.description.slice(0, 100),
-                                )) ||
-                                "NA"}
-                            </td>
-
-                            <td>
-                            {record?.description ?
-                              <Link
-                                className="action-icon text-primary"
-                                onClick={() => createPolicypdf(record.filename,record.id)}
-                              >Download</Link>:
-                               <>
-                               {record?.pdflink?
-                            <Link to={record?.pdflink} 
-                                className="action-icon text-primary"
-                               
-                              > Download</Link>
-                              :
-                              <Link
-                                className="action-icon text-primary"
-                                onClick={() => createPolicypdf(record.filename,record.id)}
-                              >Download</Link>
-                               }
-                              </>
-                            }
                             
-                           
-                            </td>
                             <td>
-                            <Link
-                                to={`/policies/policy-approver-list?id=${record?.id}`}
-                                className="action-icon text-primary"
-                              >
-                                Approver 
-                              </Link>
+                          
+                         
+
+                             <span class="badge badge-success">Approved</span>
+                                                      
+
                             </td>
                             <td>{DateFormatter(record?.createddate)}</td>
-                            <td>
-                            <Link
-                                to={`/policies/policy-version-list?id=${record?.id}`}
-                                className="action-icon text-warning"
-                              >
-                                {record?.file_version}
-                              </Link>
+                           
+                            
+                            
 
-                              
-                              
-                            </td>
-                            <td>
-                              <span
-                                className={classNames("badge", {
-                                  "bg-success": record?.status,
-                                  "bg-danger": !record?.status,
-                                })}
-                              >
-                                {record?.status ? "Enabled" : "Disbaled"}
-                              </span>
-                            </td>
-                            <td>
-                              <Link
-                                to={`/policies/policy-create-update-tab?id=${record?.id}`}
-                                className="action-icon text-warning"
-                              >
-                                <i className="mdi mdi-square-edit-outline"></i>
-                              </Link>
-                              <Link
-                                className="action-icon text-danger"
-                                onClick={() => DeletePolicy(record?.id)}
-                              >
-                                <i className="mdi mdi-delete"></i>
-                              </Link>
-                            </td>
                           </tr>
                         );
                       })}
@@ -361,4 +311,4 @@ const PolicyListPage = () => {
   );
 };
 
-export default PolicyListPage;
+export default PolicyApprovedListPage;

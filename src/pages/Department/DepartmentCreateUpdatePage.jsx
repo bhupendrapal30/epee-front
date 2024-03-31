@@ -16,6 +16,9 @@ const DepartmentCreateUpdatePage = () => {
   let [ObjectID, SetObjectID] = useState(0);
   const { t } = useTranslation();
   const { DepartmentDetails } = useSelector((state) => state.Department);
+  const { UserDetails } = useSelector(
+    (state) => state.User,
+  );
 
   const navigate = useNavigate();
 
@@ -32,7 +35,7 @@ const DepartmentCreateUpdatePage = () => {
    * form validation schema
    */
   const validationSchema = yup.object().shape({
-    DepartmentName: yup.string().required("Please Enter Department Name"),
+    departmentname: yup.string().required("Please Enter Department Name"),
     DepartmentShortName: yup
       .string()
       .required("Please Enter Department Short Name"),
@@ -48,10 +51,11 @@ const DepartmentCreateUpdatePage = () => {
   const CreateUpdateDepartment = (values) => {
     if (!ObjectID) {
       DepartmentRequest.DepartmentCreate({
-        DepartmentName: values.DepartmentName,
+        departmentname: values.departmentname,
         DepartmentShortName: values.DepartmentShortName,
         DepartmentDetails: values.DepartmentDetails,
-        DepartmentStatus: values.DepartmentStatus,
+        status: values.status,
+        createdby:UserDetails.id
       }).then((result) => {
         console.log(result);
         if (result) {
@@ -60,10 +64,11 @@ const DepartmentCreateUpdatePage = () => {
       });
     } else {
       DepartmentRequest.DepartmentUpdate(ObjectID, {
-        DepartmentName: values.DepartmentName,
+        departmentname: values.departmentname,
         DepartmentShortName: values.DepartmentShortName,
         DepartmentDetails: values.DepartmentDetails,
-        DepartmentStatus: values.DepartmentStatus,
+        status: values.status,
+        updatedby:UserDetails.id
       }).then((result) => {
         if (result) {
           navigate("/department/department-list");
@@ -74,7 +79,21 @@ const DepartmentCreateUpdatePage = () => {
 
   return (
     <>
-      <PageTitle
+
+      
+     <div className="main-panel" style={{width:"80%",marginTop: "46px",minHeight:"681px;"}}>
+        <div className="content-wrapper">
+          <div className="page-header">
+            <h3 className="page-title">
+              <span className="page-title-icon bg-gradient-primary text-white me-2">
+                <i className="mdi mdi-account-plus" />
+              </span> Department  Add/Edit 
+            </h3>
+            <nav aria-label="breadcrumb">
+              <ul className="breadcrumb">
+                <li className="breadcrumb-item active" aria-current="page">
+                  <span />
+                  <PageTitle
         breadCrumbItems={[
           { label: "Department", path: "/department/department-list" },
           {
@@ -83,8 +102,13 @@ const DepartmentCreateUpdatePage = () => {
             active: true,
           },
         ]}
-        title={!ObjectID ? "Create Department" : "Update Department"}
+       
       />
+                </li>
+              </ul>
+            </nav>
+          </div>
+      
 
       <Row>
         <Col>
@@ -100,7 +124,7 @@ const DepartmentCreateUpdatePage = () => {
                     <Row>
                       <Col>
                         <FormInput
-                          name="DepartmentName"
+                          name="departmentname"
                           label={t("Department Name")}
                           placeholder={t("Enter Department Name")}
                           containerClass={"mb-3"}
@@ -121,7 +145,7 @@ const DepartmentCreateUpdatePage = () => {
                         />
 
                         <FormInput
-                          name="DepartmentStatus"
+                          name="status"
                           label={t("Department Status")}
                           placeholder={t("Enter Department Status")}
                           containerClass={"mb-3"}
@@ -132,7 +156,7 @@ const DepartmentCreateUpdatePage = () => {
 
                     <Row className="mt-2">
                       <Col>
-                        <Button type="submit" variant="success">
+                        <Button type="submit" className="btn btn-gradient-primary me-2"  variant="success">
                           {!ObjectID ? "Add Department" : "Update Department"}
                         </Button>
                       </Col>
@@ -144,8 +168,9 @@ const DepartmentCreateUpdatePage = () => {
           </Card>
         </Col>
       </Row>
+    </div>
+      </div>
     </>
   );
 };
-
 export default DepartmentCreateUpdatePage;

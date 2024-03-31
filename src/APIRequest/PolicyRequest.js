@@ -16,6 +16,9 @@ import {
   SetdepartmentDropdrown,
   SetclauseDropdrown,
   SetsubclauseDropdrown,
+  SetPolicyPendingList,
+  SetPolicyRejectList,
+  SetPolicyApprovedList,
  
 } from "../redux/slices/PolicySlice";
 import store from "../redux/store/store";
@@ -30,9 +33,10 @@ class PolicyRequest {
     );
 
     if (data) {
+      console.log(data.data)
       store.dispatch(ResetPolicyDetails());
       ToastMessage.successMessage("Policy Created Successfully");
-      return true;
+      return data.data.policyid;
     }
   }
 
@@ -96,6 +100,56 @@ class PolicyRequest {
      
        console.log(total)
       store.dispatch(SetPolicyApproverList(data.data.data));
+      store.dispatch(SetTotalPolicy(total || 0));
+    }
+  }
+
+  static async PolicyPendingList(id,userId,pageNumber, perPage, searchKey) {
+    let data1={"data":{"userid":userId}};
+    const { data } = await RestClient.postRequest(
+      'user/pendingpolicylist',data1
+    );
+   
+   if (data) {
+      store.dispatch(ResetPolicyDetails());
+      const total = data.data.length;
+     
+       console.log(total)
+      store.dispatch(SetPolicyPendingList(data.data));
+      store.dispatch(SetTotalPolicy(total || 0));
+    }
+  }
+
+  static async PolicyRejectList(id,userId,pageNumber, perPage, searchKey) {
+    let data1={"data":{"userid":userId}};
+    const { data } = await RestClient.postRequest(
+      'user/rejectpolicylist',data1
+    );
+   
+   if (data) {
+    console.log(data)
+      store.dispatch(ResetPolicyDetails());
+      const total = data.data.length;
+     
+       console.log(total)
+      store.dispatch(SetPolicyRejectList(data.data));
+      store.dispatch(SetTotalPolicy(total || 0));
+    }
+  }
+
+  static async PolicyApprovedList(id,userId,pageNumber, perPage, searchKey) {
+    let data1={"data":{"userid":userId}};
+    const { data } = await RestClient.postRequest(
+      'user/approvedpolicylist',data1
+    );
+   
+   if (data) {
+    console.log(data.data)
+      store.dispatch(ResetPolicyDetails());
+      const total = data.data.length;
+     
+       
+      store.dispatch(SetPolicyApprovedList(data.data));
       store.dispatch(SetTotalPolicy(total || 0));
     }
   }

@@ -156,8 +156,8 @@ const PolicyCreateUpdatePageNew = () => {
         status: 1
       }).then((result) => {
         console.log(result);
-        if (result) {
-          //navigate("/policies/policy-create-update-tab");
+        if (result > 0 ) {
+          navigate("/policies/policy-create-update-tab?id="+result);
         }
       });
     } else {

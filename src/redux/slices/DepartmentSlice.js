@@ -8,10 +8,10 @@ const DepartmentSlice = createSlice({
     DepartmentDropDown: [],
     TotalDepartment: 0,
     DepartmentDetails: {
-      DepartmentName: "",
+      departmentname: "",
       DepartmentShortName: "",
       DepartmentDetails: "",
-      DepartmentStatus: true,
+      status: true,
     },
   },
   reducers: {
@@ -29,7 +29,7 @@ const DepartmentSlice = createSlice({
     },
     ResetDepartmentDetails(state, action) {
       Object.keys(state.DepartmentDetails).map((i) => {
-        return i === "DepartmentStatus"
+        return i === "status"
           ? (state.DepartmentDetails[i] = true)
           : (state.DepartmentDetails[i] = "");
       });

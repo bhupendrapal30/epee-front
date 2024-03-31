@@ -58,7 +58,19 @@ const DepartmentListPage = () => {
 
   return (
     <>
-      <PageTitle
+      <div className="main-panel" style={{width:"80%",marginTop: "46px"}}>
+        <div className="content-wrapper">
+          <div className="page-header">
+            <h3 className="page-title">
+              <span className="page-title-icon bg-gradient-primary text-white me-2">
+                <i className="mdi mdi-account-plus" />
+              </span> Department Listing
+            </h3>
+            <nav aria-label="breadcrumb">
+              <ul className="breadcrumb">
+                <li className="breadcrumb-item active" aria-current="page">
+                  <span />
+                  <PageTitle
         breadCrumbItems={[
           { label: "Department", path: "/department/department-list" },
           {
@@ -67,8 +79,12 @@ const DepartmentListPage = () => {
             active: true,
           },
         ]}
-        title={"Department List " + TotalDepartment}
+       
       />
+                </li>
+              </ul>
+            </nav>
+          </div>
       <Row>
         <Col xs={12}>
           <Card>
@@ -85,26 +101,7 @@ const DepartmentListPage = () => {
 
                 <Col sm={7}>
                   <div className="text-sm-end">
-                    <Button variant="success" className="mb-2 me-1">
-                      <i className="mdi mdi-cog-outline"></i>
-                    </Button>
-
-                    <Button
-                      variant="light"
-                      className="mb-2 me-1"
-                      onClick={() => ExportDataJSON(DepartmentLists, "Department", "xls")}
-                    >
-                      <SiMicrosoftexcel /> Export
-                    </Button>
-
-                    <Button
-                      variant="light"
-                      className="mb-2"
-                      onClick={() => ExportDataJSON(DepartmentLists, "Department", "csv")}
-                    >
-                      <GrDocumentCsv /> Export
-                    </Button>
-                  </div>
+                                      </div>
                 </Col>
               </Row>
               <Row>
@@ -141,7 +138,7 @@ const DepartmentListPage = () => {
                       {DepartmentLists?.map((record, index) => {
                         return (
                           <tr key={index}>
-                            <td>{record?.DepartmentName}</td>
+                            <td>{record?.departmentname}</td>
                             <td>
                               {(record?.DepartmentDetails &&
                                 HtmlParser(
@@ -153,26 +150,21 @@ const DepartmentListPage = () => {
                             <td>
                               <span
                                 className={classNames("badge", {
-                                  "bg-success": record?.DepartmentStatus,
-                                  "bg-danger": !record?.DepartmentStatus,
+                                  "bg-success": record?.status,
+                                  "bg-danger": !record?.status,
                                 })}
                               >
-                                {record?.DepartmentStatus ? "Active" : "Deactivated"}
+                                {record?.status ? "Active" : "Deactivated"}
                               </span>
                             </td>
                             <td>
                               <Link
-                                to={`/department/department-create-update?id=${record?._id}`}
+                                to={`/department/department-create-update?id=${record?.id}`}
                                 className="action-icon text-warning"
                               >
                                 <i className="mdi mdi-square-edit-outline"></i>
                               </Link>
-                              <Link
-                                className="action-icon text-danger"
-                                onClick={() => DeleteDepartment(record?._id)}
-                              >
-                                <i className="mdi mdi-delete"></i>
-                              </Link>
+                              
                             </td>
                           </tr>
                         );
@@ -240,6 +232,8 @@ const DepartmentListPage = () => {
           </Card>
         </Col>
       </Row>
+      </div>
+      </div>
     </>
   );
 };

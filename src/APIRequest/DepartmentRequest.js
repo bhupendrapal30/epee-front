@@ -13,7 +13,7 @@ import RestClient from "./RestClient";
 class DepartmentRequest {
   static async DepartmentCreate(postBody) {
     const { data } = await RestClient.postRequest(
-      "/Department/DepartmentCreate",
+      "/user/adddepartment",
       postBody,
     );
 
@@ -26,13 +26,14 @@ class DepartmentRequest {
 
   static async DepartmentList(pageNumber, perPage, searchKey) {
     const { data } = await RestClient.getRequest(
-      `/Department/DepartmentList/${pageNumber}/${perPage}/${searchKey}`,
+      `/user/departmentslist`,
     );
 
     if (data) {
+      console.log(data.data)
       store.dispatch(ResetDepartmentDetails());
-      const total = data?.[0]?.Total[0]?.count;
-      store.dispatch(SetDepartmentLists(data?.[0]?.Data));
+      const total = data.data?.count;
+      store.dispatch(SetDepartmentLists(data.data));
       store.dispatch(SetTotalDepartment(total || 0));
     }
   }
@@ -46,20 +47,24 @@ class DepartmentRequest {
   }
 
   static async DepartmentDetails(id, postBody) {
-    const { data } = await RestClient.getRequest(
-      `/Department/DepartmentDetails/${id}`,
+    let PostBody1={"data":{"id":id}};
+    const { data } = await RestClient.postRequest(
+      `/user/getdepartmentid`,
+      PostBody1
     );
 
     if (data) {
-      store.dispatch(SetDepartmentDetails(data?.[0]));
+      store.dispatch(SetDepartmentDetails(data?.data));
       return true;
     }
   }
 
   static async DepartmentUpdate(id, postBody) {
-    const { data } = await RestClient.updateRequest(
-      `/Department/DepartmentUpdate/${id}`,
-      postBody,
+    postBody.id=id;
+    let PostBody1={"data":postBody};
+    const { data } = await RestClient.postRequest(
+      `/user/updatedepartment`,
+      PostBody1,
     );
 
     if (data) {

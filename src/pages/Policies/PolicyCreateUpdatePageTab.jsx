@@ -17,6 +17,7 @@ import Axios from 'axios';
 
 
 
+
 //Internal Lib Import
 import PageTitle from "../../components/Ui/PageTitle";
 import { Link } from "react-router-dom";
@@ -32,6 +33,8 @@ const PolicyCreateUpdatePageTab = (props) => {
 let [ObjectID, SetObjectID] = useState(0);
  
 const [dataFromChild, setDataFromChild] = useState("");
+const [checkededitor, setcheckededitor] = useState(true);
+const [checkeupload, setcheckeupload] = useState(false);
 
   
 
@@ -101,6 +104,22 @@ const [dataFromChild, setDataFromChild] = useState("");
        if(PolicyDetails.frameworkid!==null){
          handleChange(PolicyDetails.frameworkid)
        }
+       if(PolicyDetails.policyType!=""){
+         handleChangeValueEdit(PolicyDetails.policyType)
+           if(PolicyDetails.policyType=='E')
+           {
+            setcheckededitor(true);
+            setcheckeupload(false)
+           }else{
+            setcheckededitor(false);
+            setcheckeupload(true)
+           }
+            
+       }else{
+        setcheckededitor(true);
+        setcheckeupload(false)
+       }
+       
 
  
       }
@@ -255,6 +274,7 @@ const handleChangeControl =(val)=>{
 const handleChangeControl1 =(e, setFieldValue)=>{
    var value = e.target.value;
     setFieldValue('controlid', value)
+    getSubControlData(value);
 }
  
 const handleChangeSubControl =(e, setFieldValue)=>{
@@ -270,6 +290,19 @@ const handleChangeframework = (e, setFieldValue) => {
     getClauseData(value);
     getControlData(value);
   }
+}
+
+
+const handleChangeValueEdit = (val) => {
+  //setFieldValue('policyType', val)
+    if(val =="U"){
+       SetshowFile(true);
+       SetshowDes(false);
+       
+    }else{
+       SetshowFile(false);
+       SetshowDes(true);
+    }
 }
 
 
@@ -303,10 +336,10 @@ const handleChangeValue = (e,setFieldValue) => {
 
             approverid: yup.array()
                 .of(yup.string())
-                .required("A color is required"),
+                .required("approver is required"),
              ownerid: yup.array()
                 .of(yup.string())
-                .required("A color is required"),
+                .required(" approver is required"),
     
     
     
@@ -844,10 +877,10 @@ const handleChangeValue = (e,setFieldValue) => {
             <>
            <div className="row" style={{ marginBottom: "15px" }}>
             <div className='col col-lg-2'>
-             <input type="radio" value="E" name="editor" defaultChecked onChange={e=>handleChangeValue(e,setFieldValue)}/> Editor
+             <input type="radio" value="E" name="policyType" defaultChecked={checkededitor} onChange={e=>handleChangeValue(e,setFieldValue)}/> Editor
             </div>
            <div className='col col-lg-2'>
-              <input type="radio" value="U" name="editor" onChange={e=>handleChangeValue(e,setFieldValue)} /> Upload Policy
+              <input type="radio" value="U" name="policyType" defaultChecked={checkeupload} onChange={e=>handleChangeValue(e,setFieldValue)} /> Upload Policy
            </div>
           </div>
            </>

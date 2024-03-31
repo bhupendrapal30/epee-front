@@ -207,7 +207,6 @@ const AppMenu = ({
   useEffect(() => {
     activeMenu();
   }, [activeMenu]);
-  
 
   return (
     <>
@@ -228,18 +227,18 @@ const AppMenu = ({
             </a>
           </li>
             <li class="nav-item">
-              <Link to="/dashboard" className="nav-link" >
-                <span className="menu-title">Dashboard</span>
-                <i className="mdi mdi-home menu-icon"></i>
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/dashboard" className="nav-link" >
-                <span className="menu-title">SOA</span>
-                <i className="mdi mdi-home menu-icon"></i>
+            <li class="nav-item">
+              <Link to="/dashboard" class="nav-link" >
+                <span class="menu-title">SOA</span>
+                <i class="mdi mdi-home menu-icon"></i>
               </Link>
             </li>
-          {/* <li className="nav-item">
+          <li className="nav-item">
             <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
               <span className="menu-title">Artifacts</span>
               <i className="menu-arrow" />
@@ -385,9 +384,7 @@ const AppMenu = ({
                 <span class="menu-title">Downloads</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </Link>
-            </li> */}
-
-            
+            </li>
          {UserDetails.per?.map((record, index) => { 
           if(record.modulesname == 'user') {
            return (
@@ -452,11 +449,6 @@ const AppMenu = ({
                 </li>
                 );
               }
-
-              
-                
-                
-                 
               
               if(record.modulesname == 'files') {
                return (
@@ -470,7 +462,7 @@ const AppMenu = ({
                     </a>
                     <div className="collapse" id="ui-basic3">
                       <ul className="nav flex-column sub-menu">
-                        <li className="nav-item"> <Link to ="/policies/policy-create-update-new" className="nav-link" >New Policy</Link></li>
+                        <li className="nav-item"> <Link to ="/policies/policy-create-update" className="nav-link" >New Policy</Link></li>
                         <li className="nav-item"> <Link className="nav-link" to="/policies/policy-list">Policy Listing</Link></li>
                         
                       </ul>
@@ -481,72 +473,7 @@ const AppMenu = ({
 
              })}
 
-             <li className="nav-item">
-                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
-                    <span className="menu-title">Departments</span>
-                    <i className="menu-arrow" />
-                    <i className="mdi mdi-account-key" />
-                  </a>
-                  <div className="collapse" id="ui-basic7">
-                    <ul className="nav flex-column sub-menu">
-                      <li className="nav-item"> <Link to ="/department/department-create-update" className="nav-link" >New Department</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/department/department-list">Department Listing</Link></li>
-                    </ul>
-                  </div>
-                </li>
-                
-
-             <li class="nav-item">
-            <a
-              className="nav-link"
-              data-bs-toggle="collapse"
-              href="#ui-basic2"
-              aria-expanded="false"
-              aria-controls="ui-basic2"
-            >
-              <span className="menu-title">TrainingMgmt</span>
-              <i className="menu-arrow" />
-              <i className="mdi mdi-account-plus" />
-            </a>
-            <div className="collapse" id="ui-basic2">
-              <ul className="nav flex-column sub-menu">
-                <li className="nav-item">
-                  {" "}
-                  <Link to="/training/quiz" className="nav-link">
-                    Add Quiz
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  {" "}
-                  <Link to="/training/questions" className="nav-link">
-                    Add Questions
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  {" "}
-                  <Link to="/training/trainingmgmt" className="nav-link">
-                    Trainings
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  {" "}
-                  <Link to="/Survey" className="nav-link">
-                    Survey
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  {" "}
-                  <Link to="/SurveyQuestion" className="nav-link">
-                    Survey Question
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            {/* <Link to="/training/trainingmgmt" class="nav-link">
-              <span class="menu-title">Trainings Mgmt</span>
-              <i class="mdi mdi-home menu-icon"></i>
-            </Link> */}
-          </li>
+          
          
           
           
