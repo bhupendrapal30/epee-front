@@ -70,7 +70,7 @@ const PolicyListPage = () => {
         downloadPDF(filename,id);
        }else{
         
-       const API_URL ="http://localhost:3030/api/user/";
+        const API_URL =process.env.REACT_APP_API_URL+"/api/user/";;
        const catUrl = `${API_URL}downloadpolicy`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
        console.log(response)

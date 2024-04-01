@@ -9,7 +9,7 @@ import store from "../redux/store/store";
 
 //Axios default setting
 // axios.defaults.baseURL = "http://51.20.18.0:3030/api/";
-axios.defaults.baseURL = "http://localhost:3030/api/";
+axios.defaults.baseURL = "http://16.171.171.46:3030/api/";
 
 axios.defaults.headers.post["Content-Type"] =
   "application/json";

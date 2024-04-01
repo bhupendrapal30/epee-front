@@ -84,7 +84,7 @@ const PolicyApprovedListPage = () => {
         downloadPDF(filename,id);
        }else{
         
-       const API_URL ="http://51.20.18.0:3030/api/user/";
+       const API_URL =process.env.REACT_APP_API_URL+"/api/user/";
        const catUrl = `${API_URL}downloadpdf`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
        downloadPDF(response.data.data.url,id);
@@ -98,7 +98,7 @@ const PolicyApprovedListPage = () => {
        let url =window.location.href;
        let UserId = UserDetails.id;
        if(id > 0){
-       const API_URL ="http://localhost:3030/api/user/";
+        const API_URL =process.env.REACT_APP_API_URL+"/api/user/";
        const catUrl = `${API_URL}approvepolicy`;
        const response = await Axios.post(catUrl,{"data":{"approverid":UserId,"policyid":id,"approverstatus":1}});
        //let url = '/policy-approver-list?id='+id
