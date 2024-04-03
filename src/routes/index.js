@@ -178,6 +178,18 @@ const LoadComponent = ({ component: Component }) => {
   return <Component />;
 };
 
+const TrainingMgmt = React.lazy(() =>
+  import("../pages/TrainingMgmt/TrainingMgmt")
+);
+const Quiz = React.lazy(() => import("../pages/TrainingMgmt/Quiz"));
+const Questions = React.lazy(() => import("../pages/TrainingMgmt/Questions"));
+const QandAList = React.lazy(() => import("../pages/TrainingMgmt/QandAList"));
+const QuizList = React.lazy(() => import("../pages/TrainingMgmt/QuizList"));
+const Survey = React.lazy(() => import("../pages/TrainingMgmt/Survey"));
+const SurveyQuestion = React.lazy(() =>
+  import("../pages/TrainingMgmt/SurveyQuestion")
+);
+
 const AllRoutes = () => {
   const { LayoutType } = useSelector((state) => state.Setting);
   const { UserDetails } = useSelector((state) => state.User);
@@ -414,6 +426,34 @@ const AllRoutes = () => {
           <Route
             path="/account/setting"
             element={<LoadComponent component={ChangePasswordPage} />}
+          />
+          <Route
+            path="/training/trainingmgmt"
+            element={<LoadComponent component={TrainingMgmt} />}
+          />
+          <Route
+            path="/training/quiz"
+            element={<LoadComponent component={Quiz} />}
+          />
+          <Route
+            path="/training/questions"
+            element={<LoadComponent component={Questions} />}
+          />
+          <Route
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
+          />
+          <Route
+            path="/Quiz/Quizlist"
+            element={<LoadComponent component={QuizList} />}
+          />
+          <Route
+            path="/Survey"
+            element={<LoadComponent component={Survey} />}
+          />
+          <Route
+            path="/SurveyQuestion"
+            element={<LoadComponent component={SurveyQuestion} />}
           />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Route>
