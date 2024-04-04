@@ -472,7 +472,9 @@ const AppMenu = ({
                       <ul className="nav flex-column sub-menu">
                         <li className="nav-item"> <Link to ="/policies/policy-create-update-new" className="nav-link" >New Policy</Link></li>
                         <li className="nav-item"> <Link className="nav-link" to="/policies/policy-list">Policy Listing</Link></li>
-                        
+                         <li className="nav-item"> <Link className="nav-link" to="/policies/pending-policy">Pending Policies</Link></li> 
+                          <li className="nav-item"> <Link className="nav-link" to="/policies/approved-policy">Approved Policies</Link></li>
+                           <li className="nav-item"> <Link className="nav-link" to="/policies/rejected-policy">Rejected Policies</Link></li>
                       </ul>
                     </div>
                   </li>

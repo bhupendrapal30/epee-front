@@ -17,6 +17,7 @@ import AleartMessage from "../../helpers/AleartMessage";
 import ExportDataJSON from "../../utils/ExportFromJSON";
 import DateFormatter from "../../utils/DateFormatter";
 import HtmlParser from "../../utils/HtmlParser";
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -66,11 +67,12 @@ const PolicyListPage = () => {
   }
 
   const createPolicypdf = async (filename,id) => {
+    
        if(filename != null && filename.length> 0){
         downloadPDF(filename,id);
        }else{
-        
-        const API_URL =process.env.REACT_APP_API_URL+"/api/user/";;
+        alert(id)
+       const API_URL =process.env.REACT_APP_API_URL+"/api/user/";;
        const catUrl = `${API_URL}downloadpolicy`;
        const response = await Axios.post(catUrl,{"data":{"id":id}});
        console.log(response)
@@ -151,7 +153,7 @@ const PolicyListPage = () => {
               <Row className="mb-2">
                 <Col sm={5}>
                   <Link
-                    to="/policies/policy-create-update"
+                    to="/policies/policy-create-update-new"
                     className="btn btn-danger mb-2"
                   >
                     <i className="mdi mdi-plus-circle me-2"></i> Add Policy
@@ -217,13 +219,12 @@ const PolicyListPage = () => {
                             <td>
                               {(record?.description &&
                                 HtmlParser(
-                                  record?.description.slice(0, 100),
-                                )) ||
-                                "NA"}
+                                  record?.description.length > 500 ?record?.description.substring(0, 1000) :record?.description,
+                                )) || "NA"}
                             </td>
 
                             <td>
-                            {record?.description ?
+                            {record?.filename ?
                               <Link
                                 className="action-icon text-primary"
                                 onClick={() => createPolicypdf(record.filename,record.id)}
@@ -282,12 +283,7 @@ const PolicyListPage = () => {
                               >
                                 <i className="mdi mdi-square-edit-outline"></i>
                               </Link>
-                              <Link
-                                className="action-icon text-danger"
-                                onClick={() => DeletePolicy(record?.id)}
-                              >
-                                <i className="mdi mdi-delete"></i>
-                              </Link>
+                             
                             </td>
                           </tr>
                         );

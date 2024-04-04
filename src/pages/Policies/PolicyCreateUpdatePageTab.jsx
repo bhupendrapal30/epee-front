@@ -56,6 +56,8 @@ const [checkeupload, setcheckeupload] = useState(false);
   let [selectedControl, setselectedControl] = useState([]);
   let [selectedSubControl, setselectedSubControl] = useState(false);
   let [policyData, setpolicyData] = useState("");
+
+
   
   
 
@@ -104,21 +106,7 @@ const [checkeupload, setcheckeupload] = useState(false);
        if(PolicyDetails.frameworkid!==null){
          handleChange(PolicyDetails.frameworkid)
        }
-       if(PolicyDetails.policyType!=""){
-         handleChangeValueEdit(PolicyDetails.policyType)
-           if(PolicyDetails.policyType=='E')
-           {
-            setcheckededitor(true);
-            setcheckeupload(false)
-           }else{
-            setcheckededitor(false);
-            setcheckeupload(true)
-           }
-            
-       }else{
-        setcheckededitor(true);
-        setcheckeupload(false)
-       }
+       
        
 
  
@@ -134,15 +122,39 @@ const [checkeupload, setcheckeupload] = useState(false);
        
        let data1 =data.data;
        let approveData = data1.approver_mapping;
+       let approverArray =[];       
+        approveData.forEach(function(message){
+        approverArray.push({value: message.approverid, label: message.fname });
+       });
        let ownerData =data1.owner_mapping;
+
+       let ownerDataArra =[];       
+        ownerData.forEach(function(message){
+        ownerDataArra.push({value: message.ownerid, label: message.fname });
+       });
        let cData = {...data1.data[0],...data1.cluse_mapping[0],...data1.control_mapping[0]}
-           cData.approverid =approveData;
-           cData.ownerid =ownerData;
-       
+           cData.approverid =approverArray;
+           cData.ownerid =ownerDataArra;
+
+  
+          
        
        setpolicyData(cData);
-        console.log(cData);
-        console.log(data);
+      
+
+        if(cData.policyType=="U"){
+         handleChangeValueEdit(cData.policyType)
+           
+            setcheckededitor(false);
+            setcheckeupload(true)
+          
+            
+       }else{
+        handleChangeValueEdit(cData.policyType)
+        setcheckededitor(true);
+        setcheckeupload(false)
+       }
+       
         if(cData.frameworkid > 0){
          handleChange(cData.frameworkid)
         }
@@ -202,7 +214,7 @@ const [checkeupload, setcheckeupload] = useState(false);
   }
 
   const getControlData = async (id) => {
-        
+       if(id > 0 ){
        const API_URL =process.env.REACT_APP_API_URL+"/api/user/";
        const catUrl = `${API_URL}controlist`;
        const response = await Axios.post(catUrl,{"data":{"frameworkid":id}});
@@ -211,6 +223,7 @@ const [checkeupload, setcheckeupload] = useState(false);
        }else{
         setselectedControl([]);
        }
+     }
        
       
       
@@ -248,7 +261,7 @@ const getSubControlData = async (id) => {
 const handleChange = (val) => {
   
     getClauseData(val);
-    //getControlData(val);
+    getControlData(val);
     
 }
 
@@ -320,7 +333,7 @@ const handleChangeValue = (e,setFieldValue) => {
 
 
 
- 
+ //alert(checkededitor);
 
   /*
    * form validation schema
@@ -484,7 +497,7 @@ const handleChangeValue = (e,setFieldValue) => {
   };
 
  
- 
+ console.log(checkeupload)
   
   return (
     <>
@@ -781,7 +794,7 @@ const handleChangeValue = (e,setFieldValue) => {
                           containerClass={"test"}
                           type="react-multiple-select"
                           options={assignerDropdrown}
-                          defaultValue={policyData.approverid}
+                          defaultValue={policyData.ownerid}
 
                          
                         />
@@ -876,12 +889,26 @@ const handleChangeValue = (e,setFieldValue) => {
           {({ field, form: { touched, errors,setFieldValue, values } }) => (
             <>
            <div className="row" style={{ marginBottom: "15px" }}>
+           { showDes  ?
+              <>
             <div className='col col-lg-2'>
-             <input type="radio" value="E" name="policyType" defaultChecked={checkededitor} onChange={e=>handleChangeValue(e,setFieldValue)}/> Editor
+             <input type="radio" value="E" name="policyType" defaultChecked onChange={e=>handleChangeValue(e,setFieldValue)}/> Editor
             </div>
            <div className='col col-lg-2'>
-              <input type="radio" value="U" name="policyType" defaultChecked={checkeupload} onChange={e=>handleChangeValue(e,setFieldValue)} /> Upload Policy
+              <input type="radio" value="U" name="policyType"  onChange={e=>handleChangeValue(e,setFieldValue)} /> Upload Policy
            </div>
+           </>
+
+           : 
+            <>
+             <div className='col col-lg-2'>
+             <input type="radio" value="E" name="policyType" onChange={e=>handleChangeValue(e,setFieldValue)}/> Editor
+            </div>
+           <div className='col col-lg-2'>
+              <input type="radio" value="U" name="policyType" defaultChecked onChange={e=>handleChangeValue(e,setFieldValue)} /> Upload Policy
+           </div>
+           </> 
+           }
           </div>
            </>
           )}
