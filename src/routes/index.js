@@ -32,6 +32,48 @@ const DepartmentListPage = React.lazy(() =>
   import("../pages/Department/DepartmentListPage"),
 );
 
+const FrameworkCreateUpdatePage = React.lazy(() =>
+  import("../pages/Framework/FrameworkCreateUpdatePage"),
+);
+
+const FrameworkListPage = React.lazy(() =>
+  import("../pages/Framework/FrameworkListPage"),
+);
+
+const ClauseCreateUpdatePage = React.lazy(() =>
+  import("../pages/Clause/ClauseCreateUpdatePage"),
+);
+
+const ClauseListPage = React.lazy(() =>
+  import("../pages/Clause/ClauseListPage"),
+);
+
+
+const SubclauseCreateUpdatePage = React.lazy(() =>
+  import("../pages/Subclause/SubclauseCreateUpdatePage"),
+);
+
+const SubclauseListPage = React.lazy(() =>
+  import("../pages/Subclause/SubclauseListPage"),
+);
+
+const ControlCreateUpdatePage = React.lazy(() =>
+  import("../pages/Control/ControlCreateUpdatePage"),
+);
+
+const ControlListPage = React.lazy(() =>
+  import("../pages/Control/ControlListPage"),
+);
+
+
+const SubcontrolCreateUpdatePage = React.lazy(() =>
+  import("../pages/Subcontrol/SubcontrolCreateUpdatePage"),
+);
+
+const SubcontrolListPage = React.lazy(() =>
+  import("../pages/Subcontrol/SubcontrolListPage"),
+);
+
 const LeaveTypeCreateUpdatePage = React.lazy(() =>
   import("../pages/LeaveType/LeaveTypeCreateUpdatePage"),
 );
@@ -314,6 +356,58 @@ const AllRoutes = () => {
             path="/department/department-list"
             element={<LoadComponent component={DepartmentListPage} />}
           />
+          <Route
+            path="/framework/framework-create-update"
+            element={<LoadComponent component={FrameworkCreateUpdatePage} />}
+          />
+          <Route
+            path="/framework/framework-list"
+            element={<LoadComponent component={FrameworkListPage} />}
+          />
+
+          <Route
+            path="/clause/clause-create-update"
+            element={<LoadComponent component={ClauseCreateUpdatePage} />}
+          />
+          <Route
+            path="/clause/clause-list"
+            element={<LoadComponent component={ClauseListPage} />}
+          />
+
+
+          <Route
+            path="/subclause/subclause-create-update"
+            element={<LoadComponent component={SubclauseCreateUpdatePage} />}
+          />
+          <Route
+            path="/subclause/subclause-list"
+            element={<LoadComponent component={SubclauseListPage} />}
+          />
+
+
+
+          <Route
+            path="/control/control-create-update"
+            element={<LoadComponent component={ControlCreateUpdatePage} />}
+          />
+          <Route
+            path="/control/control-list"
+            element={<LoadComponent component={ControlListPage} />}
+          />
+
+
+
+          <Route
+            path="/subcontrol/subcontrol-create-update"
+            element={<LoadComponent component={SubcontrolCreateUpdatePage} />}
+          />
+          <Route
+            path="/subcontrol/subcontrol-list"
+            element={<LoadComponent component={SubcontrolListPage} />}
+          />
+
+
+          
           <Route
             path="/leave-type/leave-type-create-update"
             element={<LoadComponent component={LeaveTypeCreateUpdatePage} />}

@@ -14,6 +14,7 @@ import ReactCodeInput from "react-code-input";
 import FileUploader from "./FileUploader";
 import ResizeFile from "../../utils/ResizeFile";
 import HyperDatepicker from "../../components/Ui/Datepicker";
+import Axios from 'axios';
 
 import JoditEditor from 'jodit-react';
 
@@ -79,17 +80,37 @@ console.log(reader.readAsDataURL(file));
        
   }
 
-const handleChange = (name, val, setFieldValue) => {
+const handleChange2 = (name, val, setFieldValue) => {
   
   var value = val;
   setFieldValue(name, val)
-  localStorage.setItem(name,val)
-  
-  if(value > 0){
-    let obj ={"name":name,"value":value};
-    sendDataToParent(obj)
+  if(name=='frameworkid'){
+    alert(val)
+    getClauseData(val)
   }
+  
+  
 }
+
+
+const getClauseData = async (id) => {
+    
+     // setFieldValue('frameworkid', e.target.value);
+       localStorage.removeItem('fData');
+       const API_URL =process.env.REACT_APP_API_URL+"/api/user/";
+       const catUrl = `${API_URL}clauselist`;
+       const response = await Axios.post(catUrl,{"data":{"frameworkid":id}});
+       if(response.data.data.length > 0) {
+        console.log(response.data.data);
+        localStorage.setItem('fData',JSON.stringify(response.data.data));
+        
+       }else{
+        //setselectedClause([]);
+       }
+       
+      
+      
+  }
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -207,7 +228,7 @@ const handleChange = (name, val, setFieldValue) => {
                 className="react-select"
                 classNamePrefix="react-select"
                 options={options}
-                onChange={option => handleChange(name,option.value, setFieldValue)}
+                onChange={option => handleChange2(name,option.value, setFieldValue)}
                 defaultValue={defaultValueSelect}
               />
 

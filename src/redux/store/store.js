@@ -7,6 +7,11 @@ import SettingSlice from "../slices/SettingSlice";
 import AuthSlice from "../slices/AuthSlice";
 import UserSlice from "../slices/UserSlice";
 import DepartmentSlice from "../slices/DepartmentSlice";
+import FrameworkSlice from "../slices/FrameworkSlice";
+import ClauseSlice from "../slices/ClauseSlice";
+import SubclauseSlice from "../slices/SubclauseSlice";
+import ControlSlice from "../slices/ControlSlice";
+import SubcontrolSlice from "../slices/SubcontrolSlice";
 import LeaveTypeSlice from "../slices/LeaveTypeSlice";
 import EmployeeSlice from "../slices/EmployeeSlice";
 import LeaveSlice from "../slices/LeaveSlice";
@@ -25,6 +30,11 @@ const store = configureStore({
     Setting: SettingSlice,
     Auth: AuthSlice,
     User: UserSlice,
+	  Framework:FrameworkSlice,
+    Clause:ClauseSlice,
+    Subclause:SubclauseSlice,
+    Control:ControlSlice,
+    Subcontrol:SubcontrolSlice,
     Department: DepartmentSlice,
     LeaveType: LeaveTypeSlice,
     Employee: EmployeeSlice,

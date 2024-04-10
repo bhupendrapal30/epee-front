@@ -483,6 +483,30 @@ const AppMenu = ({
 
              })}
 
+              <li className="nav-item">
+                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
+                    <span className="menu-title">Framework</span>
+                    <i className="menu-arrow" />
+                    <i className="mdi mdi-account-key" />
+                  </a>
+                  <div className="collapse" id="ui-basic7">
+                    <ul className="nav flex-column sub-menu">
+                      <li className="nav-item"> <Link to ="/framework/framework-create-update" className="nav-link" >New Framework</Link></li>
+                      <li className="nav-item"> <Link  className="nav-link" to="/framework/framework-list">Framework Listing</Link></li>
+                      <li className="nav-item"> <Link to ="/clause/clause-create-update" className="nav-link" >New Clause</Link></li>
+                      <li className="nav-item"> <Link  className="nav-link" to="/clause/clause-list">Clause Listing</Link></li>
+                      <li className="nav-item"> <Link to ="/subclause/subclause-create-update" className="nav-link" >New Sub Clause</Link></li>
+                      <li className="nav-item"> <Link  className="nav-link" to="/subclause/subclause-list">Sub Clause Listing</Link></li>
+                      <li className="nav-item"> <Link to ="/control/control-create-update" className="nav-link" >New Control</Link></li>
+                      <li className="nav-item"> <Link  className="nav-link" to="/control/control-list">Control Listing</Link></li>
+                      <li className="nav-item"> <Link to ="/subcontrol/subcontrol-create-update" className="nav-link" >New Control</Link></li>
+                      <li className="nav-item"> <Link  className="nav-link" to="/subcontrol/subcontrol-list">Sub Control Listing</Link></li>
+
+                    </ul>
+
+                  </div>
+                </li>
+
              <li className="nav-item">
                   <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
                     <span className="menu-title">Departments</span>
