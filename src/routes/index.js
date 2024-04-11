@@ -212,14 +212,6 @@ const ResetPasswordPage = React.lazy(() =>
   import("../pages/Account/ResetPasswordPage"),
 );
 
-const LoadComponent = ({ component: Component }) => {
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
-
-  return <Component />;
-};
-
 const TrainingMgmt = React.lazy(() =>
   import("../pages/TrainingMgmt/TrainingMgmt")
 );
@@ -231,6 +223,16 @@ const Survey = React.lazy(() => import("../pages/TrainingMgmt/Survey"));
 const SurveyQuestion = React.lazy(() =>
   import("../pages/TrainingMgmt/SurveyQuestion")
 );
+
+const LoadComponent = ({ component: Component }) => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
+  return <Component />;
+};
+
+
 
 const AllRoutes = () => {
   const { LayoutType } = useSelector((state) => state.Setting);
