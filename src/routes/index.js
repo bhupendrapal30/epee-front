@@ -224,6 +224,24 @@ const SurveyQuestion = React.lazy(() =>
   import("../pages/TrainingMgmt/SurveyQuestion")
 );
 
+const Asset = React.lazy(() => import("../pages/AssestMgmt/Asset"));
+const AssetAssignment = React.lazy(() =>
+  import("../pages/AssestMgmt/AssetAssignment")
+);
+const AssetInventory = React.lazy(() =>
+  import("../pages/AssestMgmt/AssetInventory")
+);
+
+const VendorDetails = React.lazy(() =>
+  import("../pages/VendorManagement/VendorDetails")
+);
+const VendorRisk = React.lazy(() =>
+  import("../pages/VendorManagement/VendorRisk")
+);
+const VendorPerformanceRating = React.lazy(() =>
+  import("../pages/VendorManagement/VendorPerformanceRating")
+);
+
 const LoadComponent = ({ component: Component }) => {
   useEffect(() => {
     window.scroll(0, 0);
@@ -231,8 +249,6 @@ const LoadComponent = ({ component: Component }) => {
 
   return <Component />;
 };
-
-
 
 const AllRoutes = () => {
   const { LayoutType } = useSelector((state) => state.Setting);
@@ -260,7 +276,7 @@ const AllRoutes = () => {
   };
 
   let Layout = getLayout();
-  
+
   if (AccessToken && UserDetails?.usertype === "STAFF") {
     return (
       <Routes>
@@ -296,6 +312,55 @@ const AllRoutes = () => {
           <Route
             path="/account/setting"
             element={<LoadComponent component={ChangePasswordPage} />}
+          />
+          <Route
+            path="/training/trainingmgmt"
+            element={<LoadComponent component={TrainingMgmt} />}
+          />
+          <Route
+            path="/training/quiz"
+            element={<LoadComponent component={Quiz} />}
+          />
+          <Route
+            path="/training/questions"
+            element={<LoadComponent component={Questions} />}
+          />
+          <Route
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
+          />
+          <Route
+            path="/Quiz/Quizlist"
+            element={<LoadComponent component={QuizList} />}
+          />
+          <Route
+            path="/Survey"
+            element={<LoadComponent component={Survey} />}
+          />
+          <Route
+            path="/SurveyQuestion"
+            element={<LoadComponent component={SurveyQuestion} />}
+          />
+          <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetAssignment"
+            element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetInventory"
+            element={<LoadComponent component={AssetInventory} />}
+          />
+          <Route
+            path="/VendorDetails"
+            element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorRisk"
+            element={<LoadComponent component={VendorRisk} />}
+          />
+          <Route
+            path="/VendorPerformanceRating"
+            element={<LoadComponent component={VendorPerformanceRating} />}
           />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Route>
@@ -337,12 +402,60 @@ const AllRoutes = () => {
             path="/account/setting"
             element={<LoadComponent component={ChangePasswordPage} />}
           />
+          <Route
+            path="/training/trainingmgmt"
+            element={<LoadComponent component={TrainingMgmt} />}
+          />
+          <Route
+            path="/training/quiz"
+            element={<LoadComponent component={Quiz} />}
+          />
+          <Route
+            path="/training/questions"
+            element={<LoadComponent component={Questions} />}
+          />
+          <Route
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
+          />
+          <Route
+            path="/Quiz/Quizlist"
+            element={<LoadComponent component={QuizList} />}
+          />
+          <Route
+            path="/Survey"
+            element={<LoadComponent component={Survey} />}
+          />
+          <Route
+            path="/SurveyQuestion"
+            element={<LoadComponent component={SurveyQuestion} />}
+          />
+          <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetAssignment"
+            element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetInventory"
+            element={<LoadComponent component={AssetInventory} />}
+          />
+          <Route
+            path="/VendorDetails"
+            element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorRisk"
+            element={<LoadComponent component={VendorRisk} />}
+          />
+          <Route
+            path="/VendorPerformanceRating"
+            element={<LoadComponent component={VendorPerformanceRating} />}
+          />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Route>
       </Routes>
     );
   } else if (AccessToken) {
-   
     return (
       <Routes>
         <Route to="/" element={<Layout />}>
@@ -376,7 +489,6 @@ const AllRoutes = () => {
             element={<LoadComponent component={ClauseListPage} />}
           />
 
-
           <Route
             path="/subclause/subclause-create-update"
             element={<LoadComponent component={SubclauseCreateUpdatePage} />}
@@ -385,8 +497,6 @@ const AllRoutes = () => {
             path="/subclause/subclause-list"
             element={<LoadComponent component={SubclauseListPage} />}
           />
-
-
 
           <Route
             path="/control/control-create-update"
@@ -397,8 +507,6 @@ const AllRoutes = () => {
             element={<LoadComponent component={ControlListPage} />}
           />
 
-
-
           <Route
             path="/subcontrol/subcontrol-create-update"
             element={<LoadComponent component={SubcontrolCreateUpdatePage} />}
@@ -408,8 +516,6 @@ const AllRoutes = () => {
             element={<LoadComponent component={SubcontrolListPage} />}
           />
 
-
-          
           <Route
             path="/leave-type/leave-type-create-update"
             element={<LoadComponent component={LeaveTypeCreateUpdatePage} />}
@@ -426,7 +532,7 @@ const AllRoutes = () => {
             path="/employee/employee-list"
             element={<LoadComponent component={EmployeeListPage} />}
           />
-           <Route
+          <Route
             path="/users/users-create-update"
             element={<LoadComponent component={UsersCreateUpdatePage} />}
           />
@@ -434,7 +540,7 @@ const AllRoutes = () => {
             path="/users/users-list"
             element={<LoadComponent component={UsersListPage} />}
           />
-           <Route
+          <Route
             path="/roles/roles-create-update"
             element={<LoadComponent component={RolesCreateUpdatePage} />}
           />
@@ -472,22 +578,21 @@ const AllRoutes = () => {
             element={<LoadComponent component={PolicyRejectListPage} />}
           />
 
-          
           <Route
             path="/policies/policy-create-update"
             element={<LoadComponent component={PolicyCreateUpdatePage} />}
           />
 
-        <Route
+          <Route
             path="/policies/policy-create-update-new"
             element={<LoadComponent component={PolicyCreateUpdatePageNew} />}
           />
 
-<Route
+          <Route
             path="/policies/policy-create-update-tab"
             element={<LoadComponent component={PolicyCreateUpdatePageTab} />}
           />
-                    <Route
+          <Route
             path="/permission/permission-list"
             element={<LoadComponent component={PermissionListPage} />}
           />
@@ -551,6 +656,27 @@ const AllRoutes = () => {
             path="/SurveyQuestion"
             element={<LoadComponent component={SurveyQuestion} />}
           />
+          <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetAssignment"
+            element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetInventory"
+            element={<LoadComponent component={AssetInventory} />}
+          />
+          <Route
+            path="/VendorDetails"
+            element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorRisk"
+            element={<LoadComponent component={VendorRisk} />}
+          />
+          <Route
+            path="/VendorPerformanceRating"
+            element={<LoadComponent component={VendorPerformanceRating} />}
+          />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Route>
       </Routes>
@@ -580,6 +706,55 @@ const AllRoutes = () => {
           <Route
             path="/account/reset-password"
             element={<LoadComponent component={ResetPasswordPage} />}
+          />
+          <Route
+            path="/training/trainingmgmt"
+            element={<LoadComponent component={TrainingMgmt} />}
+          />
+          <Route
+            path="/training/quiz"
+            element={<LoadComponent component={Quiz} />}
+          />
+          <Route
+            path="/training/questions"
+            element={<LoadComponent component={Questions} />}
+          />
+          <Route
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
+          />
+          <Route
+            path="/Quiz/Quizlist"
+            element={<LoadComponent component={QuizList} />}
+          />
+          <Route
+            path="/Survey"
+            element={<LoadComponent component={Survey} />}
+          />
+          <Route
+            path="/SurveyQuestion"
+            element={<LoadComponent component={SurveyQuestion} />}
+          />
+          <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetAssignment"
+            element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetInventory"
+            element={<LoadComponent component={AssetInventory} />}
+          />
+          <Route
+            path="/VendorDetails"
+            element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorRisk"
+            element={<LoadComponent component={VendorRisk} />}
+          />
+          <Route
+            path="/VendorPerformanceRating"
+            element={<LoadComponent component={VendorPerformanceRating} />}
           />
         </Route>
       </Routes>
