@@ -223,7 +223,6 @@ const Survey = React.lazy(() => import("../pages/TrainingMgmt/Survey"));
 const SurveyQuestion = React.lazy(() =>
   import("../pages/TrainingMgmt/SurveyQuestion")
 );
-
 const Asset = React.lazy(() => import("../pages/AssestMgmt/Asset"));
 const AssetAssignment = React.lazy(() =>
   import("../pages/AssestMgmt/AssetAssignment")
@@ -241,6 +240,7 @@ const VendorRisk = React.lazy(() =>
 const VendorPerformanceRating = React.lazy(() =>
   import("../pages/VendorManagement/VendorPerformanceRating")
 );
+
 
 const LoadComponent = ({ component: Component }) => {
   useEffect(() => {
