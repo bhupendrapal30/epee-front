@@ -21,8 +21,10 @@ import RoleSlice from "../slices/RoleSlice";
 import PolicySlice from "../slices/PolicySlice";
 import PermissionSlice from "../slices/PermissionSlice";
 import ModuleSlice from "../slices/ModuleSlice";
-
-
+import QuestionsAndAnswers from "../slices/QuestionsAndAnswers";
+import QuizSlice from "../slices/Quiz";
+import SurveySlice from "../slices/Survey";
+import SurveyQuestionSlice from "../slices/SurveyQuestion";
 
 const store = configureStore({
   reducer: {
@@ -30,11 +32,11 @@ const store = configureStore({
     Setting: SettingSlice,
     Auth: AuthSlice,
     User: UserSlice,
-	  Framework:FrameworkSlice,
-    Clause:ClauseSlice,
-    Subclause:SubclauseSlice,
-    Control:ControlSlice,
-    Subcontrol:SubcontrolSlice,
+    Framework: FrameworkSlice,
+    Clause: ClauseSlice,
+    Subclause: SubclauseSlice,
+    Control: ControlSlice,
+    Subcontrol: SubcontrolSlice,
     Department: DepartmentSlice,
     LeaveType: LeaveTypeSlice,
     Employee: EmployeeSlice,
@@ -45,6 +47,10 @@ const store = configureStore({
     Policy: PolicySlice,
     Permission: PermissionSlice,
     Module: ModuleSlice,
+    QuestionAnswer: QuestionsAndAnswers,
+    Quiz: QuizSlice,
+    Survey: SurveySlice,
+    SurveyQuestion: SurveyQuestionSlice,
   },
 });
 
