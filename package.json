@@ -28,7 +28,7 @@
     "react-bootstrap": "^2.10.1",
     "react-bootstrap-typeahead": "^6.0.0",
     "react-code-input": "^3.10.1",
-    "react-datepicker": "^4.8.0",
+    "react-datepicker": "^4.25.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-editor-js": "^2.1.0",

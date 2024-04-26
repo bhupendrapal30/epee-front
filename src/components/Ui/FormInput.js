@@ -85,7 +85,7 @@ const handleChange2 = (name, val, setFieldValue) => {
   var value = val;
   setFieldValue(name, val)
   if(name=='frameworkid'){
-    alert(val)
+    //alert(val)
     getClauseData(val)
   }
   

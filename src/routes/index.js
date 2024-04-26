@@ -102,6 +102,20 @@ const RolesListPage = React.lazy(() =>
   import("../pages/Roles/RolesListPage"),
 );
 
+const RiskCreateUpdatePage = React.lazy(() =>
+  import("../pages/Risk/RiskCreateUpdatePage"),
+);
+
+const RiskListPage = React.lazy(() =>
+  import("../pages/Risk/RiskListPage"),
+);
+
+
+const RiskCreateUpdatePageTab = React.lazy(() =>
+  import("../pages/Risk/RiskCreateUpdatePageTab"),
+);
+
+
 const PolicyCreateUpdatePage = React.lazy(() =>
   import("../pages/Policies/PolicyCreateUpdatePage"),
 );
@@ -408,6 +422,8 @@ const AllRoutes = () => {
 
 
           
+
+
           <Route
             path="/leave-type/leave-type-create-update"
             element={<LoadComponent component={LeaveTypeCreateUpdatePage} />}
@@ -440,6 +456,23 @@ const AllRoutes = () => {
             path="/roles/roles-list"
             element={<LoadComponent component={RolesListPage} />}
           />
+
+          <Route
+            path="/risk/risk-create-update"
+            element={<LoadComponent component={RiskCreateUpdatePage} />}
+          />
+
+          <Route
+            path="/risk/risk-create-update-tab"
+            element={<LoadComponent component={RiskCreateUpdatePageTab} />}
+          />
+
+          <Route
+            path="/risk/risk-list"
+            element={<LoadComponent component={RiskListPage} />}
+          />
+
+          
 
           <Route
             path="/policies/policy-list"
