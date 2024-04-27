@@ -508,12 +508,12 @@ const AppMenu = ({
                 </li>
 
              <li className="nav-item">
-                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
+                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
                     <span className="menu-title">Departments</span>
                     <i className="menu-arrow" />
                     <i className="mdi mdi-account-key" />
                   </a>
-                  <div className="collapse" id="ui-basic7">
+                  <div className="collapse" id="ui-basic15">
                     <ul className="nav flex-column sub-menu">
                       <li className="nav-item"> <Link to ="/department/department-create-update" className="nav-link" >New Department</Link></li>
                       <li className="nav-item"> <Link  className="nav-link" to="/department/department-list">Department Listing</Link></li>
