@@ -234,7 +234,7 @@ function Survey() {
                               variant="success"
                               onClick={handleAddQuiz}
                             >
-                              {!ObjectID ? "Add Quiz" : "Update Quiz"}
+                              {!ObjectID ? "Add Survey" : "Update Survey"}
                             </Button>
                           </Col>
                         </Row>

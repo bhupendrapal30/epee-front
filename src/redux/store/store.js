@@ -25,6 +25,9 @@ import QuestionsAndAnswers from "../slices/QuestionsAndAnswers";
 import QuizSlice from "../slices/Quiz";
 import SurveySlice from "../slices/Survey";
 import SurveyQuestionSlice from "../slices/SurveyQuestion";
+import AssetSlice from "../slices/AssetSlice";
+import VendorSlice from "../slices/VendorSlice";
+import AuditAndSOASlice from "../slices/AuditAndSOA";
 
 const store = configureStore({
   reducer: {
@@ -51,6 +54,9 @@ const store = configureStore({
     Quiz: QuizSlice,
     Survey: SurveySlice,
     SurveyQuestion: SurveyQuestionSlice,
+    Asset: AssetSlice,
+    Vendor: VendorSlice,
+    AuditAndSOA: AuditAndSOASlice,
   },
 });
 

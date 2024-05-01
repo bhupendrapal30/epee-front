@@ -165,7 +165,7 @@ function VendorRisk() {
                         <Row>
                           <Col xl={12}>
                             <InputLabel id="demo-simple-select-label">
-                              Vendor Id
+                              Vendor Name
                             </InputLabel>
                             <Select
                               style={{ width: "100%" }}
@@ -175,12 +175,19 @@ function VendorRisk() {
                               // onChange={handleTotalNoOfQuestion}
                             >
                               <MenuItem disabled value="">
-                                <em>Please select Vendor Id</em>
+                                <em>Please select Vendor Name</em>
                               </MenuItem>
-                              <MenuItem value="1">1</MenuItem>
-                              <MenuItem value="2">2</MenuItem>
-                              <MenuItem value="3">3</MenuItem>
-                              <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="Vendor One">Vendor One</MenuItem>
+                              <MenuItem value="Vendor Two">Vendor Two</MenuItem>
+                              <MenuItem value="Vendor Three">
+                                Vendor Three
+                              </MenuItem>
+                              <MenuItem value="Vendor Four">
+                                Vendor Four
+                              </MenuItem>
+                              <MenuItem value="Vendor Five">
+                                Vendor Five
+                              </MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -203,6 +210,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -223,6 +231,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -245,6 +254,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -265,6 +275,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -287,6 +298,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -307,6 +319,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -329,6 +342,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -349,6 +363,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -371,6 +386,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -391,6 +407,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -413,6 +430,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -433,6 +451,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -455,6 +474,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -475,6 +495,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -497,6 +518,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -517,6 +539,7 @@ function VendorRisk() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>

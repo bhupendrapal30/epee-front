@@ -217,110 +217,41 @@ function TrainingMgmt() {
                             containerClass={"mb-3"}
                           />
                         )}
-
-                        {/* <Row>
-                          <Col xl={6}>
-                            <FormInput
-                              name="mobileNo"
-                              label={t("Phone")}
-                              placeholder={t("Enter Phone")}
-                              containerClass={"mb-3"}
-                              type="date"
-                            />
-                          </Col>
-                          <Col xl={6}>
-                            <FormInput
-                              name="email"
-                              label={t("Email")}
-                              placeholder={t("Enter Email")}
-                              containerClass={"mb-3"}
-                              type="email"
-                            />
-                          </Col>
-                        </Row> */}
-
                         <Row>
-                          {/* <Col xl={6}>
-                            <FormInput
-                              type="password"
-                              name="password"
-                              label={t("Password")}
-                              placeholder={t("Enter Password")}
-                              containerClass={"mb-3"}
-                            />
-                          </Col> */}
                           <Col xl={6}>
                             <FormInput
-                              name="QuizId"
-                              label={t("Quiz Id  ")}
-                              placeholder="Please select Quiz Id"
+                              name="Quiz Name"
+                              label={t("Quiz Name  ")}
+                              placeholder="Please select Quiz Name"
                               containerClass={"mb-3"}
                               type="react-single-select"
                               options={[
-                                { value: 0, label: 0 },
-                                { value: 1, label: 1 },
-                                { value: 2, label: 2 },
-                                { value: 3, label: 3 },
+                                { value: "Quiz One", label: "Quiz Three" },
+                                { value: "Quiz Two", label: "Quiz Two" },
+                                { value: "Quiz Three", label: "Quiz Three" },
+                                { value: "Quiz Four", label: "Quiz Four" },
                               ]}
-                              defaultValue={[
-                                { value: 0, label: 0 },
-                                { value: 1, label: 1 },
-                              ].find((i) => i.value)}
-                              // options={RoleDropDown}
-                              // defaultValue={RoleDropDown?.find(
-                              //   (i) => i.value == UserData?.usertype
-                              // )}
                             />
                           </Col>
                           <Col xl={6}>
                             <FormInput
                               name="FeedBackSurveyId"
-                              label={t("Feedback Survey Id")}
+                              label={t("Feedback Survey Name")}
                               placeholder={t("Select Feedback Survey Id")}
                               containerClass={"mb-3"}
                               type="react-single-select"
                               options={[
-                                { value: 0, label: 0 },
-                                { value: 1, label: 1 },
-                                { value: 2, label: 2 },
-                                { value: 3, label: 3 },
+                                { value: "Survey One", label: "Survey One" },
+                                { value: "Suvey Two", label: "Survey Two" },
+                                {
+                                  value: "Survey Three",
+                                  label: "Survey Three",
+                                },
+                                { value: "Survey Four", label: "Survey Four" },
                               ]}
-                              defaultValue={[
-                                { value: 0, label: 0 },
-                                { value: 1, label: 1 },
-                              ].find((i) => i.value)}
-                              // options={[
-                              //   { value: "1", label: "Enabled" },
-                              //   { value: "0", label: "Disbaled" },
-                              // ]}
-                              // defaultValue={[
-                              //   { value: "1", label: "Enabled" },
-                              //   { value: "0", label: "Disbaled" },
-                              // ].find((i) => i.value == UserData?.status)}
                             />
                           </Col>
                         </Row>
-
-                        {/* <Row>
-                          <Col xl={6}>
-                            <FormInput
-                              name="status"
-                              label={t("Status")}
-                              placeholder={t("Select Status")}
-                              containerClass={"mb-3"}
-                              type="react-single-select"
-                              options={[
-                                { value: "1", label: "Enabled" },
-                                { value: "0", label: "Disbaled" },
-                              ]}
-                              defaultValue={[
-                                { value: "1", label: "Enabled" },
-                                { value: "0", label: "Disbaled" },
-                              ].find((i) => i.value == UserData?.status)}
-                            />
-                          </Col>
-                        </Row> */}
-
                         <Row className="mt-2">
                           <Col>
                             <Button

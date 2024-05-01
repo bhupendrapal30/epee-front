@@ -177,7 +177,7 @@ function AssetAssignment() {
                         <Row>
                           <Col xl={6} className="mt-2">
                             <InputLabel id="demo-simple-select-label">
-                              Assest Id
+                              Assest Number
                             </InputLabel>
                             <Select
                               style={{ width: "100%" }}
@@ -187,7 +187,7 @@ function AssetAssignment() {
                               onChange={handleTotalNoOfQuestion}
                             >
                               <MenuItem disabled value="">
-                                <em>Please select Asset Id</em>
+                                <em>Please select Asset Number</em>
                               </MenuItem>
                               <MenuItem value="1">1</MenuItem>
                               <MenuItem value="2">2</MenuItem>
@@ -262,7 +262,9 @@ function AssetAssignment() {
                               variant="success"
                               onClick={handleAddQuiz}
                             >
-                              {!ObjectID ? "Add Asset" : "Update Asset"}
+                              {!ObjectID
+                                ? "Add Asset Assignment"
+                                : "Update Asset Assignment"}
                             </Button>
                           </Col>
                         </Row>

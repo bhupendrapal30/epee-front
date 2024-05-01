@@ -2,17 +2,18 @@
 import SessionHelper from "../helpers/SessionHelper";
 import ToastMessage from "../helpers/ToastMessage";
 import {
-  SetQuizLists,
-  EditQuiz,
-  DeleteQuizLists,
-  SetTotalQuiz,
-  SetQuizData,
-} from "../redux/slices/Quiz";
+  SetAssetTypeList,
+  SetAssetTypeListLength,
+  SetAssetAssignmentList,
+  SetAssetAssignmentListLength,
+  SetAssetInventoryList,
+  SetAssetInventoryListLength,
+} from "../redux/slices/AssetSlice";
 import store from "../redux/store/store";
 import RestClient from "./RestClient";
 
-class QuizRequest {
-  static async QuizCreate(postBody) {
+class AssetRequest {
+  static async AssetTypeCreate(postBody) {
     let PostBody1 = { data: postBody };
     const { data } = await RestClient.postRequest("user/addquiz", PostBody1);
     if (data) {
@@ -20,7 +21,7 @@ class QuizRequest {
       return true;
     }
   }
-  static async QuizLists(pageNumber, perPage, searchKey) {
+  static async AssetLists(pageNumber, perPage, searchKey) {
     const { data } = await RestClient.getRequest(`user/quizlist`);
 
     if (data) {
@@ -29,7 +30,7 @@ class QuizRequest {
       store.dispatch(SetTotalQuiz(total || 0));
     }
   }
-  static async QuizUpdate(id, postBody) {
+  static async AssetTypeUpdate(id, postBody) {
     postBody.quizid = id;
     let PostBody1 = { data: postBody };
     const { data } = await RestClient.postRequest(
@@ -54,4 +55,4 @@ class QuizRequest {
   }
 }
 
-export default QuizRequest;
+export default AssetRequest;

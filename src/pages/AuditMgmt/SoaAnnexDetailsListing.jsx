@@ -9,30 +9,36 @@ import { SiMicrosoftexcel } from "react-icons/si";
 // Internal  Lib Import
 import PageTitle from "../../components/Ui/PageTitle";
 import { useSelector } from "react-redux";
-import QuizRequest from "../../APIRequest/QuizRequest";
+import AuditAndSOARequest from "../../APIRequest/AudiAndSOARequest";
 import AleartMessage from "../../helpers/AleartMessage";
 import ExportDataJSON from "../../utils/ExportFromJSON";
 import DateFormatter from "../../utils/DateFormatter";
 import { useNavigate } from "react-router-dom";
 
-function SurveyQuestionList() {
+function SoaAnnexDetailsListing() {
   const [pageNumber, setPageNumber] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [searchKey, setSearchKey] = useState(0);
   const permissionType = ["dashboard", "files", "roles", "user", "permission"];
 
-  const { QuizList, QuizLength } = useSelector((state) => state.Quiz);
+  const { SOAAnnexList, SOAAnnexListLength } = useSelector(
+    (state) => state.AuditAndSOA
+  );
   let perMissArr = 0;
   const navigate = useNavigate();
 
   useEffect(() => {
-    QuizRequest.QuizLists(pageNumber, perPage, searchKey);
-    // QuizRequest.QuizLists(pageNumber, perPage, searchKey);
-  }, [pageNumber, perPage, searchKey]);
+    let params = new URLSearchParams(window.location.search);
+    let id = params.get("id");
+    console.log("SOAID ---> ", id);
+    AuditAndSOARequest.SOADetailsAnnexList(id).then((res) => {
+      console.log("RESPONSE OF SOA DETAILS ANNEX WISE LIST", res);
+    });
+  }, []);
 
   const PerPageOnChange = (e) => {
     if (e.target.value === "All") {
-      setPerPage(QuizLength);
+      setPerPage(SOAAnnexListLength);
     } else {
       setPerPage(e.target.value);
     }
@@ -73,7 +79,7 @@ function SurveyQuestionList() {
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
               </span>{" "}
-              Survey Question Listing
+              SOA Annex Details Listing
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -82,12 +88,12 @@ function SurveyQuestionList() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "Quiz",
-                        path: "/training/questionslist",
+                        label: "SOA",
+                        path: "/SOA",
                       },
                       {
-                        label: "Question List",
-                        path: "/training/questionslist",
+                        label: "SOA Annex Details Listing",
+                        path: "/SOA",
                         active: true,
                       },
                     ]}
@@ -100,17 +106,13 @@ function SurveyQuestionList() {
             <Col xs={12}>
               <Card>
                 <Card.Body>
-                  <Row className="mb-2">
+                  {/* <Row className="mb-2">
                     <Col sm={5}>
-                      <Link
-                        to="/training/questions"
-                        className="btn btn-danger mb-2"
-                      >
-                        <i className="mdi mdi-plus-circle me-2"></i> Add Survey
-                        Question
+                      <Link to="/SOA" className="btn btn-danger mb-2">
+                        <i className="mdi mdi-plus-circle me-2"></i> Add SOA
                       </Link>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row>
                     <Col>
                       <div className="mb-2">
@@ -134,18 +136,17 @@ function SurveyQuestionList() {
                           style={{ backgroundColor: "#eef2f7" }}
                         >
                           <tr>
-                            <th>Quiz Name</th>
-                            <th>Description</th>
-                            <th>Total Questions</th>
-                            <th>Passing Marks</th>
-                            <th>No of Retake Allowed</th>
-                            <th>Retake allowed or not</th>
-                            <th>Action</th>
+                            <th>SOA Version</th>
+                            <th>Standard</th>
+                            <th>Control Name</th>
+                            <th>Sub Control Name</th>
+                            <th>Applicability</th>
+                            <th>Update</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {QuizList &&
-                            QuizList?.map((record, index) => {
+                          {SOAAnnexList &&
+                            SOAAnnexList?.map((record, index) => {
                               return (
                                 <tr key={index}>
                                   <td>
@@ -174,28 +175,18 @@ function SurveyQuestionList() {
                                       ? record.PassingMarks
                                       : ""}
                                   </td>
+
                                   <td>
-                                    {record?.NoofRetakeAllowed !== undefined
-                                      ? record.NoofRetakeAllowed
-                                      : ""}
-                                  </td>
-                                  <td>
-                                    {record?.Retakeallowedornot !== undefined
-                                      ? record.Retakeallowedornot
+                                    {record?.PassingMarks !== undefined
+                                      ? record.PassingMarks
                                       : ""}
                                   </td>
                                   <td>
                                     <Link
-                                      to={`/training/quiz?id=${record?.id}`}
+                                      to={`/AnnexWiseSoaDetailUpdate?id=${record?.id}`}
                                       className="action-icon text-warning"
                                     >
                                       <i className="mdi mdi-square-edit-outline"></i>
-                                    </Link>
-                                    <Link
-                                      className="action-icon text-danger"
-                                      //onClick={() => DeleteUser(record?.id)}
-                                    >
-                                      <i className="mdi mdi-delete"></i>
                                     </Link>
                                   </td>
                                 </tr>
@@ -223,7 +214,8 @@ function SurveyQuestionList() {
                         <span className="me-3">
                           Page
                           <strong>
-                            {pageNumber} of {Math.ceil(QuizLength / perPage)}
+                            {pageNumber} of{" "}
+                            {Math.ceil(SOAAnnexListLength / perPage)}
                           </strong>
                         </span>
                         <span className="d-inline-block align-items-center text-sm-start text-center my-sm-0 my-2">
@@ -248,7 +240,7 @@ function SurveyQuestionList() {
                           breakLabel="..."
                           breakClassName="page-item"
                           breakLinkClassName="page-link"
-                          pageCount={QuizLength / perPage}
+                          pageCount={SOAAnnexListLength / perPage}
                           marginPagesDisplayed={2}
                           pageRangeDisplayed={5}
                           containerClassName="pagination pagination-rounded d-inline-flex ms-auto align-item-center mb-0"
@@ -270,4 +262,4 @@ function SurveyQuestionList() {
   );
 }
 
-export default SurveyQuestionList;
+export default SoaAnnexDetailsListing;

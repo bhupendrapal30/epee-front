@@ -173,7 +173,7 @@ function AssetInventory() {
                     <Col>
                       <VerticalForm>
                         <Row>
-                          <Col xl={6} className="mt-2">
+                          {/* <Col xl={6} className="mt-2">
                             <InputLabel id="demo-simple-select-label">
                               Assest Id
                             </InputLabel>
@@ -203,8 +203,8 @@ function AssetInventory() {
                               <MenuItem value="14">14</MenuItem>
                               <MenuItem value="15">15</MenuItem>
                             </Select>
-                          </Col>
-                          <Col xl={6} className="mt-2">
+                          </Col> */}
+                          <Col xl={12} className="mt-2">
                             <InputLabel id="demo-simple-select-label">
                               Asset Name
                             </InputLabel>
@@ -221,7 +221,7 @@ function AssetInventory() {
                         <Row>
                           <Col xl={6} className="mt-2">
                             <InputLabel id="demo-simple-select-label">
-                              Assest Type Id
+                              Assest Type
                             </InputLabel>
                             <Select
                               style={{ width: "100%" }}
@@ -231,23 +231,14 @@ function AssetInventory() {
                               onChange={handleTotalNoOfQuestion}
                             >
                               <MenuItem disabled value="">
-                                <em>Please select Asset Id</em>
+                                <em>Please select Asset Type</em>
                               </MenuItem>
-                              <MenuItem value="1">1</MenuItem>
-                              <MenuItem value="2">2</MenuItem>
-                              <MenuItem value="3">3</MenuItem>
-                              <MenuItem value="4">4</MenuItem>
-                              <MenuItem value="5">5</MenuItem>
-                              <MenuItem value="6">6</MenuItem>
-                              <MenuItem value="7">7</MenuItem>
-                              <MenuItem value="8">8</MenuItem>
-                              <MenuItem value="9">9</MenuItem>
-                              <MenuItem value="10">10</MenuItem>
-                              <MenuItem value="11">11</MenuItem>
-                              <MenuItem value="12">12</MenuItem>
-                              <MenuItem value="13">13</MenuItem>
-                              <MenuItem value="14">14</MenuItem>
-                              <MenuItem value="15">15</MenuItem>
+                              <MenuItem value="Asset One">Asset One</MenuItem>
+                              <MenuItem value="Asset Two">Asset Two</MenuItem>
+                              <MenuItem value="Asset Three">
+                                Asset Three
+                              </MenuItem>
+                              <MenuItem value="Asset Four">Asset Four</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6} className="mt-2">
@@ -257,7 +248,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Asset Number"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -272,7 +263,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Serial Number"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -285,7 +276,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Owner Email"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -300,7 +291,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Dept Id"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -325,7 +316,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Location"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -333,7 +324,7 @@ function AssetInventory() {
                           </Col>
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
-                              Desposition Date
+                              Disposition Date
                             </InputLabel>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                               <DemoContainer components={["DateTimePicker"]}>
@@ -350,7 +341,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Disposition Method"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -363,7 +354,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Confidentiality Requirements"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -378,7 +369,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Intergrity Requirements"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -391,7 +382,7 @@ function AssetInventory() {
                             <TextField
                               style={{ width: "100%" }}
                               name="qname"
-                              placeholder={"Enter Quiz Name"}
+                              placeholder={"Enter Availability Requirements"}
                               containerClass={"mb-3"}
                               onChange={handleQuizNameChange}
                               value={quizName}
@@ -401,7 +392,7 @@ function AssetInventory() {
                         <Row className="mt-2">
                           <Col>
                             <InputLabel id="demo-simple-select-label">
-                              Warranty/Amc End Date
+                              Warranty/AMC End Date
                             </InputLabel>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                               <DemoContainer components={["DateTimePicker"]}>

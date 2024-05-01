@@ -720,11 +720,17 @@ const AppMenu = ({
                   <Link to="/training/quiz" className="nav-link">
                     Add Quiz
                   </Link>
+                  <Link to="/Quiz/Quizlist" className="nav-link">
+                    Quiz Listing
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {" "}
                   <Link to="/training/questions" className="nav-link">
                     Add Questions
+                  </Link>
+                  <Link to="/training/questionslist" className="nav-link">
+                    Questions Listing
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -732,11 +738,17 @@ const AppMenu = ({
                   <Link to="/training/trainingmgmt" className="nav-link">
                     Trainings
                   </Link>
+                  <Link to="/training/traininglist" className="nav-link">
+                    Training Listing
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {" "}
                   <Link to="/Survey" className="nav-link">
                     Survey
+                  </Link>
+                  <Link to="/Surveylist" className="nav-link">
+                    Survey Listing
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -744,13 +756,12 @@ const AppMenu = ({
                   <Link to="/SurveyQuestion" className="nav-link">
                     Survey Question
                   </Link>
+                  <Link to="/SurveyQuestionList" className="nav-link">
+                    Survey Question Listing
+                  </Link>
                 </li>
               </ul>
             </div>
-            {/* <Link to="/training/trainingmgmt" class="nav-link">
-              <span class="menu-title">Trainings Mgmt</span>
-              <i class="mdi mdi-home menu-icon"></i>
-            </Link> */}
           </li>
           <li class="nav-item">
             <a
@@ -769,7 +780,10 @@ const AppMenu = ({
                 <li className="nav-item">
                   {" "}
                   <Link to="/Asset" className="nav-link">
-                    Add Asset
+                    Add Asset Type
+                  </Link>
+                  <Link to="/AssetList" className="nav-link">
+                    Asset Type Listing
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -777,11 +791,17 @@ const AppMenu = ({
                   <Link to="/AssetAssignment" className="nav-link">
                     Asset Assignment
                   </Link>
+                  <Link to="/AssetAssignmentList" className="nav-link">
+                    Asset Assignment Listing
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {" "}
                   <Link to="/AssetInventory" className="nav-link">
                     Asset Inventory
+                  </Link>
+                  <Link to="/AssetInventoryList" className="nav-link">
+                    Asset Inventory Listing
                   </Link>
                 </li>
               </ul>
@@ -810,17 +830,26 @@ const AppMenu = ({
                   <Link to="/VendorDetails" className="nav-link">
                     Vendor Details
                   </Link>
+                  <Link to="/VendorDetailsList" className="nav-link">
+                    Vendor Details Listing
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {" "}
                   <Link to="/VendorRisk" className="nav-link">
                     Vendor Risk
                   </Link>
+                  <Link to="/VendorRiskList" className="nav-link">
+                    Vendor Risk Listing
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {" "}
                   <Link to="/VendorPerformanceRating" className="nav-link">
                     Vendor Performance Rating
+                  </Link>
+                  <Link to="/VendorPerformanceRatingList" className="nav-link">
+                    Vendor Performance Rating Listing
                   </Link>
                 </li>
               </ul>
@@ -829,6 +858,51 @@ const AppMenu = ({
               <span class="menu-title">Trainings Mgmt</span>
               <i class="mdi mdi-home menu-icon"></i>
             </Link> */}
+          </li>
+
+          <li class="nav-item">
+            <a
+              className="nav-link"
+              data-bs-toggle="collapse"
+              href="#ui-basic9"
+              aria-expanded="false"
+              aria-controls="ui-basic9"
+            >
+              <span className="menu-title">AuditMgmt</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-plus" />
+            </a>
+            <div className="collapse" id="ui-basic9">
+              <ul className="nav flex-column sub-menu">
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/Audit" className="nav-link">
+                    Add Audit
+                  </Link>
+                  <Link to="/AuditList" className="nav-link">
+                    Audit Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/SOA" className="nav-link">
+                    SOA
+                  </Link>
+                  <Link to="/SOAList" className="nav-link">
+                    SOA Listing
+                  </Link>
+                </li>
+                {/* <li className="nav-item">
+                  {" "}
+                  <Link to="/VendorPerformanceRating" className="nav-link">
+                    Vendor Performance Rating
+                  </Link>
+                  <Link to="/VendorPerformanceRatingList" className="nav-link">
+                    Vendor Performance Rating Listing
+                  </Link>
+                </li> */}
+              </ul>
+            </div>
           </li>
         </ul>
       </nav>

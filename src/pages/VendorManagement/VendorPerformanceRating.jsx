@@ -165,7 +165,7 @@ function VendorPerformanceRating() {
                         <Row>
                           <Col xl={6} className="mt-2">
                             <InputLabel id="demo-simple-select-label">
-                              Vendor Id
+                              Vendor Name
                             </InputLabel>
                             <Select
                               style={{ width: "100%" }}
@@ -175,12 +175,16 @@ function VendorPerformanceRating() {
                               // onChange={handleTotalNoOfQuestion}
                             >
                               <MenuItem disabled value="">
-                                <em>Please select Vendor Id</em>
+                                <em>Please select Vendor Name</em>
                               </MenuItem>
-                              <MenuItem value="1">1</MenuItem>
-                              <MenuItem value="2">2</MenuItem>
-                              <MenuItem value="3">3</MenuItem>
-                              <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="Vendor One">Vendor One</MenuItem>
+                              <MenuItem value="Vendor Two">Vendor Two</MenuItem>
+                              <MenuItem value="Vendor Three">
+                                Vendor Three
+                              </MenuItem>
+                              <MenuItem value="Vendor Four">
+                                Vendor Four
+                              </MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -224,6 +228,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -246,6 +251,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -266,6 +272,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -290,6 +297,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -313,6 +321,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -335,6 +344,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -355,6 +365,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>
@@ -377,6 +388,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                           <Col xl={6}>
@@ -397,6 +409,7 @@ function VendorPerformanceRating() {
                               <MenuItem value="2">2</MenuItem>
                               <MenuItem value="3">3</MenuItem>
                               <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
                         </Row>

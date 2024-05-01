@@ -15,7 +15,7 @@ import ExportDataJSON from "../../utils/ExportFromJSON";
 import DateFormatter from "../../utils/DateFormatter";
 import { useNavigate } from "react-router-dom";
 
-function SurveyQuestionList() {
+function VendorDetailsList() {
   const [pageNumber, setPageNumber] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [searchKey, setSearchKey] = useState(0);
@@ -73,7 +73,7 @@ function SurveyQuestionList() {
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
               </span>{" "}
-              Survey Question Listing
+              Vendor Details Listing
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -106,8 +106,8 @@ function SurveyQuestionList() {
                         to="/training/questions"
                         className="btn btn-danger mb-2"
                       >
-                        <i className="mdi mdi-plus-circle me-2"></i> Add Survey
-                        Question
+                        <i className="mdi mdi-plus-circle me-2"></i> Add Vendor
+                        Details
                       </Link>
                     </Col>
                   </Row>
@@ -270,4 +270,4 @@ function SurveyQuestionList() {
   );
 }
 
-export default SurveyQuestionList;
+export default VendorDetailsList;

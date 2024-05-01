@@ -210,7 +210,9 @@ function Asset() {
                               variant="success"
                               onClick={handleAddQuiz}
                             >
-                              {!ObjectID ? "Add Asset" : "Update Asset"}
+                              {!ObjectID
+                                ? "Add Asset Type"
+                                : "Update Asset Type"}
                             </Button>
                           </Col>
                         </Row>
