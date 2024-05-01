@@ -173,7 +173,11 @@ function AssetInventory() {
                     <Col>
                       <VerticalForm>
                         <Row>
+
                           {/* <Col xl={6} className="mt-2">
+
+                          <Col xl={6} className="mt-2">
+
                             <InputLabel id="demo-simple-select-label">
                               Assest Id
                             </InputLabel>

@@ -12,6 +12,7 @@ import ClauseSlice from "../slices/ClauseSlice";
 import SubclauseSlice from "../slices/SubclauseSlice";
 import ControlSlice from "../slices/ControlSlice";
 import SubcontrolSlice from "../slices/SubcontrolSlice";
+import RiskSlice from "../slices/RiskSlice";
 import LeaveTypeSlice from "../slices/LeaveTypeSlice";
 import EmployeeSlice from "../slices/EmployeeSlice";
 import LeaveSlice from "../slices/LeaveSlice";
@@ -35,11 +36,12 @@ const store = configureStore({
     Setting: SettingSlice,
     Auth: AuthSlice,
     User: UserSlice,
-    Framework: FrameworkSlice,
-    Clause: ClauseSlice,
-    Subclause: SubclauseSlice,
-    Control: ControlSlice,
-    Subcontrol: SubcontrolSlice,
+    Framework:FrameworkSlice,
+    Clause:ClauseSlice,
+    Subclause:SubclauseSlice,
+    Control:ControlSlice,
+    Subcontrol:SubcontrolSlice,
+    Risk:RiskSlice,
     Department: DepartmentSlice,
     LeaveType: LeaveTypeSlice,
     Employee: EmployeeSlice,

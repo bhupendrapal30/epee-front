@@ -293,6 +293,19 @@ function VendorDetails() {
                           </Col>
                         </Row>
                         {/* <Row className="mt-3">
+
+                              Risk Asses Me
+                            </InputLabel>
+                            <TextField
+                              style={{ width: "100%" }}
+                              name="qname"
+                              placeholder={"Enter riskassesme"}
+                              containerClass={"mb-3"}
+                            />
+                          </Col>
+                        </Row>
+                        <Row className="mt-3">
+
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
                               Status
@@ -312,6 +325,7 @@ function VendorDetails() {
                             </Select>
                           </Col>
                         </Row> */}
+                        </Row>
                         <Row className="mt-3">
                           <Col>
                             <Button
