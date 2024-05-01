@@ -96,6 +96,20 @@ const RolesCreateUpdatePage = React.lazy(() =>
 );
 const RolesListPage = React.lazy(() => import("../pages/Roles/RolesListPage"));
 
+const RiskCreateUpdatePage = React.lazy(() =>
+  import("../pages/Risk/RiskCreateUpdatePage"),
+);
+
+const RiskListPage = React.lazy(() =>
+  import("../pages/Risk/RiskListPage"),
+);
+
+
+const RiskCreateUpdatePageTab = React.lazy(() =>
+  import("../pages/Risk/RiskCreateUpdatePageTab"),
+);
+
+
 const PolicyCreateUpdatePage = React.lazy(() =>
   import("../pages/Policies/PolicyCreateUpdatePage")
 );
@@ -374,6 +388,7 @@ const AllRoutes = () => {
             element={<LoadComponent component={Quiz} />}
           />
           <Route
+
             path="/Quiz/Quizlist"
             element={<LoadComponent component={QuizList} />}
           />
@@ -382,6 +397,7 @@ const AllRoutes = () => {
             element={<LoadComponent component={Questions} />}
           />
           <Route
+
             path="/training/questionslist"
             element={<LoadComponent component={QuestionsList} />}
           />
@@ -711,7 +727,6 @@ const AllRoutes = () => {
             path="/subcontrol/subcontrol-list"
             element={<LoadComponent component={SubcontrolListPage} />}
           />
-
           <Route
             path="/leave-type/leave-type-create-update"
             element={<LoadComponent component={LeaveTypeCreateUpdatePage} />}
@@ -745,6 +760,20 @@ const AllRoutes = () => {
             element={<LoadComponent component={RolesListPage} />}
           />
 
+          <Route
+            path="/risk/risk-create-update"
+            element={<LoadComponent component={RiskCreateUpdatePage} />}
+          />
+
+          <Route
+            path="/risk/risk-create-update-tab"
+            element={<LoadComponent component={RiskCreateUpdatePageTab} />}
+          />
+
+          <Route
+            path="/risk/risk-list"
+            element={<LoadComponent component={RiskListPage} />}
+          />
           <Route
             path="/policies/policy-list"
             element={<LoadComponent component={PolicyListPage} />}

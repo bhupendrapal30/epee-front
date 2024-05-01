@@ -60,6 +60,18 @@ class RestClient {
         return ErrorReturn(error);
       });
   }
+
+  static async getRequest1(url,postBody) {
+    store.dispatch(SetLoading());
+    return await axios
+      .get(url,postBody,axiosHeaders())
+      .then((response) => {
+        return ResponseReturn(response);
+      })
+      .catch((error) => {
+        return ErrorReturn(error);
+      });
+  }
   static async postRequest(url, postBody) {
     console.log(postBody);
     store.dispatch(SetLoading());
