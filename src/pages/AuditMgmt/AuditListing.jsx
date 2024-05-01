@@ -15,7 +15,7 @@ import ExportDataJSON from "../../utils/ExportFromJSON";
 import DateFormatter from "../../utils/DateFormatter";
 import { useNavigate } from "react-router-dom";
 
-function SurveyQuestionList() {
+function AuditListing() {
   const [pageNumber, setPageNumber] = useState(1);
   const [perPage, setPerPage] = useState(5);
   const [searchKey, setSearchKey] = useState(0);
@@ -73,7 +73,7 @@ function SurveyQuestionList() {
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
               </span>{" "}
-              Survey Question Listing
+              Audit Listing
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -82,12 +82,12 @@ function SurveyQuestionList() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "Quiz",
-                        path: "/training/questionslist",
+                        label: "Audit Mgmt",
+                        path: "/Audit",
                       },
                       {
-                        label: "Question List",
-                        path: "/training/questionslist",
+                        label: "Audit Listing",
+                        path: "/Audit",
                         active: true,
                       },
                     ]}
@@ -102,12 +102,8 @@ function SurveyQuestionList() {
                 <Card.Body>
                   <Row className="mb-2">
                     <Col sm={5}>
-                      <Link
-                        to="/training/questions"
-                        className="btn btn-danger mb-2"
-                      >
-                        <i className="mdi mdi-plus-circle me-2"></i> Add Survey
-                        Question
+                      <Link to="/Audit" className="btn btn-danger mb-2">
+                        <i className="mdi mdi-plus-circle me-2"></i> Add Audit
                       </Link>
                     </Col>
                   </Row>
@@ -134,12 +130,11 @@ function SurveyQuestionList() {
                           style={{ backgroundColor: "#eef2f7" }}
                         >
                           <tr>
-                            <th>Quiz Name</th>
-                            <th>Description</th>
-                            <th>Total Questions</th>
-                            <th>Passing Marks</th>
-                            <th>No of Retake Allowed</th>
-                            <th>Retake allowed or not</th>
+                            <th>Audit Name</th>
+                            <th>Standard</th>
+                            <th>Audit Stage</th>
+                            <th>Clause Wise Details</th>
+                            <th>Annex Details</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -170,23 +165,24 @@ function SurveyQuestionList() {
                                       : ""}
                                   </td>
                                   <td>
-                                    {record?.PassingMarks !== undefined
-                                      ? record.PassingMarks
-                                      : ""}
-                                  </td>
-                                  <td>
-                                    {record?.NoofRetakeAllowed !== undefined
-                                      ? record.NoofRetakeAllowed
-                                      : ""}
-                                  </td>
-                                  <td>
-                                    {record?.Retakeallowedornot !== undefined
-                                      ? record.Retakeallowedornot
-                                      : ""}
+                                    <Link
+                                      to={`/ClauseWiseDetailsList?id=${record?.id}`}
+                                      className="action-icon text-warning"
+                                    >
+                                      <i className="mdi mdi-square-edit-outline"></i>
+                                    </Link>
                                   </td>
                                   <td>
                                     <Link
-                                      to={`/training/quiz?id=${record?.id}`}
+                                      to={`/AnnexWiseDetailsList?id=${record?.id}`}
+                                      className="action-icon text-warning"
+                                    >
+                                      <i className="mdi mdi-square-edit-outline"></i>
+                                    </Link>
+                                  </td>
+                                  <td>
+                                    <Link
+                                      to={`/Audit?id=${record?.id}`}
                                       className="action-icon text-warning"
                                     >
                                       <i className="mdi mdi-square-edit-outline"></i>
@@ -270,4 +266,4 @@ function SurveyQuestionList() {
   );
 }
 
-export default SurveyQuestionList;
+export default AuditListing;

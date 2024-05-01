@@ -211,34 +211,34 @@ const AppMenu = ({
 
   return (
     <>
-        <nav className="sidebar sidebar-offcanvas" ref={menuRef}  id="sidebar">
-        <ul className="nav" style={{height:"950px",overflowY:"scroll"}}>
+      <nav className="sidebar sidebar-offcanvas" ref={menuRef} id="sidebar">
+        <ul className="nav" style={{ height: "950px", overflowY: "scroll" }}>
           <li className="nav-item nav-profile">
             <a href="#" className="nav-link">
               <div className="nav-profile-image">
                 <img src="../assets/images/faces/face1.jpg" alt="profile" />
                 <span className="login-status online" />
-               
               </div>
               <div className="nav-profile-text d-flex flex-column">
-                <span className="font-weight-bold mb-2">{UserDetails.fname+" "+UserDetails.lname }</span>
-                
+                <span className="font-weight-bold mb-2">
+                  {UserDetails.fname + " " + UserDetails.lname}
+                </span>
               </div>
               <i className="mdi mdi-bookmark-check text-success nav-profile-badge" />
             </a>
           </li>
-            <li class="nav-item">
-              <Link to="/dashboard" className="nav-link" >
-                <span className="menu-title">Dashboard</span>
-                <i className="mdi mdi-home menu-icon"></i>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/dashboard" className="nav-link" >
-                <span className="menu-title">SOA</span>
-                <i className="mdi mdi-home menu-icon"></i>
-              </Link>
-            </li>
+          <li class="nav-item">
+            <Link to="/dashboard" className="nav-link">
+              <span className="menu-title">Dashboard</span>
+              <i className="mdi mdi-home menu-icon"></i>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/dashboard" className="nav-link">
+              <span className="menu-title">SOA</span>
+              <i className="mdi mdi-home menu-icon"></i>
+            </Link>
+          </li>
           {/* <li className="nav-item">
             <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
               <span className="menu-title">Artifacts</span>
@@ -387,140 +387,323 @@ const AppMenu = ({
               </Link>
             </li> */}
 
-            
-         {UserDetails.per?.map((record, index) => { 
-          if(record.modulesname == 'user') {
-           return (
-            
-            
-          <li className="nav-item">
-            <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
-              <span className="menu-title">Users</span>
-              <i className="menu-arrow" />
-              <i className="mdi mdi-account-plus" />
-            </a>
-            <div className="collapse" id="ui-basic4">
-              <ul className="nav flex-column sub-menu">
-               {record.addedit==1 ? (
-                <li className="nav-item"> <Link to ="/users/users-create-update" className="nav-link" >New User</Link></li>):''}
-                <li className="nav-item"> <Link to ="/users/users-list" className="nav-link" >Users Listing</Link></li>
-              </ul>
-            </div>
-          </li>
-          
-
-           
-            );
-          }
-
-          if(record.modulesname == 'roles') {
-               return (
-                
-                
+          {UserDetails.per?.map((record, index) => {
+            if (record.modulesname == "user") {
+              return (
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#ui-basic4"
+                    aria-expanded="false"
+                    aria-controls="ui-basic"
+                  >
+                    <span className="menu-title">Users</span>
+                    <i className="menu-arrow" />
+                    <i className="mdi mdi-account-plus" />
+                  </a>
+                  <div className="collapse" id="ui-basic4">
+                    <ul className="nav flex-column sub-menu">
+                      {record.addedit == 1 ? (
+                        <li className="nav-item">
+                          {" "}
+                          <Link
+                            to="/users/users-create-update"
+                            className="nav-link"
+                          >
+                            New User
+                          </Link>
+                        </li>
+                      ) : (
+                        ""
+                      )}
                       <li className="nav-item">
-                <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
-                  <span className="menu-title">Roles</span>
-                  <i className="menu-arrow" />
-                  <i className="mdi mdi-access-point-network" />
-                </a>
-                <div className="collapse" id="ui-basic1">
-                  <ul className="nav flex-column sub-menu">
-                   {record.addedit==1 ? (
-                    <li className="nav-item"> <Link to ="/roles/roles-create-update" className="nav-link" >New Role</Link></li>):''}
-                    <li className="nav-item"> <Link to ="/roles/roles-list" className="nav-link" >Roles Listing</Link></li>
-                  </ul>
-                </div>
-              </li>
-                );
-              }
-              if(record.modulesname == 'permission') {
-               return (
-                
-                
-                 <li className="nav-item">
-                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+                        {" "}
+                        <Link to="/users/users-list" className="nav-link">
+                          Users Listing
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              );
+            }
+
+            if (record.modulesname == "roles") {
+              return (
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#ui-basic1"
+                    aria-expanded="false"
+                    aria-controls="ui-basic"
+                  >
+                    <span className="menu-title">Roles</span>
+                    <i className="menu-arrow" />
+                    <i className="mdi mdi-access-point-network" />
+                  </a>
+                  <div className="collapse" id="ui-basic1">
+                    <ul className="nav flex-column sub-menu">
+                      {record.addedit == 1 ? (
+                        <li className="nav-item">
+                          {" "}
+                          <Link
+                            to="/roles/roles-create-update"
+                            className="nav-link"
+                          >
+                            New Role
+                          </Link>
+                        </li>
+                      ) : (
+                        ""
+                      )}
+                      <li className="nav-item">
+                        {" "}
+                        <Link to="/roles/roles-list" className="nav-link">
+                          Roles Listing
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              );
+            }
+            if (record.modulesname == "permission") {
+              return (
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#ui-basic2"
+                    aria-expanded="false"
+                    aria-controls="ui-basic"
+                  >
                     <span className="menu-title">Permission</span>
                     <i className="menu-arrow" />
                     <i className="mdi mdi-account-key" />
                   </a>
                   <div className="collapse" id="ui-basic2">
                     <ul className="nav flex-column sub-menu">
-                     {record.addedit==1 ? ( <li className="nav-item"> <Link to ="/permission/permission-create-update" className="nav-link" >New Permission</Link></li>):''}
-                      <li className="nav-item"> <Link  className="nav-link" to="/permission/permission-list">Permission Listing</Link></li>
+                      {record.addedit == 1 ? (
+                        <li className="nav-item">
+                          {" "}
+                          <Link
+                            to="/permission/permission-create-update"
+                            className="nav-link"
+                          >
+                            New Permission
+                          </Link>
+                        </li>
+                      ) : (
+                        ""
+                      )}
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          className="nav-link"
+                          to="/permission/permission-list"
+                        >
+                          Permission Listing
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
-                );
-              }
-
-              
-                
-                
-                 
-              
-              if(record.modulesname == 'files') {
-               return (
-                
-                
-                  <li className="nav-item">
-                    <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
-                      <span className="menu-title">Policies</span>
-                      <i className="menu-arrow" />
-                      <i className="mdi mdi-crosshairs-gps menu-icon" />
-                    </a>
-                    <div className="collapse" id="ui-basic3">
-                      <ul className="nav flex-column sub-menu">
-                        <li className="nav-item"> <Link to ="/policies/policy-create-update-new" className="nav-link" >New Policy</Link></li>
-                        <li className="nav-item"> <Link className="nav-link" to="/policies/policy-list">Policy Listing</Link></li>
-                         <li className="nav-item"> <Link className="nav-link" to="/policies/pending-policy">Pending Policies</Link></li> 
-                          <li className="nav-item"> <Link className="nav-link" to="/policies/approved-policy">Approved Policies</Link></li>
-                           <li className="nav-item"> <Link className="nav-link" to="/policies/rejected-policy">Rejected Policies</Link></li>
-                      </ul>
-                    </div>
-                  </li>
-                );
-              }
-
-             })}
-
-              <li className="nav-item">
-                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
-                    <span className="menu-title">Framework</span>
-                    <i className="menu-arrow" />
-                    <i className="mdi mdi-account-key" />
-                  </a>
-                  <div className="collapse" id="ui-basic7">
-                    <ul className="nav flex-column sub-menu">
-                      <li className="nav-item"> <Link to ="/framework/framework-create-update" className="nav-link" >New Framework</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/framework/framework-list">Framework Listing</Link></li>
-                      <li className="nav-item"> <Link to ="/clause/clause-create-update" className="nav-link" >New Clause</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/clause/clause-list">Clause Listing</Link></li>
-                      <li className="nav-item"> <Link to ="/subclause/subclause-create-update" className="nav-link" >New Sub Clause</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/subclause/subclause-list">Sub Clause Listing</Link></li>
-                      <li className="nav-item"> <Link to ="/control/control-create-update" className="nav-link" >New Control</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/control/control-list">Control Listing</Link></li>
-                      <li className="nav-item"> <Link to ="/subcontrol/subcontrol-create-update" className="nav-link" >New Control</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/subcontrol/subcontrol-list">Sub Control Listing</Link></li>
-
-                    </ul>
-
-                  </div>
-                </li>
-
+              );
+            }
+            if (record.modulesname == "files") {
+              return (
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    data-bs-toggle="collapse"
+                    href="#ui-basic3"
+                    aria-expanded="false"
+                    aria-controls="ui-basic"
+                  >
+                    <span className="menu-title">Policies</span>
              <li className="nav-item">
                   <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
                     <span className="menu-title">Departments</span>
+
                     <i className="menu-arrow" />
-                    <i className="mdi mdi-account-key" />
+                    <i className="mdi mdi-crosshairs-gps menu-icon" />
                   </a>
+                  <div className="collapse" id="ui-basic3">
                   <div className="collapse" id="ui-basic15">
                     <ul className="nav flex-column sub-menu">
-                      <li className="nav-item"> <Link to ="/department/department-create-update" className="nav-link" >New Department</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/department/department-list">Department Listing</Link></li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          to="/policies/policy-create-update-new"
+                          className="nav-link"
+                        >
+                          New Policy
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link className="nav-link" to="/policies/policy-list">
+                          Policy Listing
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          className="nav-link"
+                          to="/policies/pending-policy"
+                        >
+                          Pending Policies
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          className="nav-link"
+                          to="/policies/approved-policy"
+                        >
+                          Approved Policies
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          className="nav-link"
+                          to="/policies/rejected-policy"
+                        >
+                          Rejected Policies
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </li>
+              );
+            }
+          })}
 
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              data-bs-toggle="collapse"
+              href="#ui-basic7"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
+              <span className="menu-title">Framework</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-key" />
+            </a>
+            <div className="collapse" id="ui-basic7">
+              <ul className="nav flex-column sub-menu">
+                <li className="nav-item">
+                  {" "}
+                  <Link
+                    to="/framework/framework-create-update"
+                    className="nav-link"
+                  >
+                    New Framework
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link className="nav-link" to="/framework/framework-list">
+                    Framework Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/clause/clause-create-update" className="nav-link">
+                    New Clause
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link className="nav-link" to="/clause/clause-list">
+                    Clause Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link
+                    to="/subclause/subclause-create-update"
+                    className="nav-link"
+                  >
+                    New Sub Clause
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link className="nav-link" to="/subclause/subclause-list">
+                    Sub Clause Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link
+                    to="/control/control-create-update"
+                    className="nav-link"
+                  >
+                    New Control
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link className="nav-link" to="/control/control-list">
+                    Control Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link
+                    to="/subcontrol/subcontrol-create-update"
+                    className="nav-link"
+                  >
+                    New Control
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link className="nav-link" to="/subcontrol/subcontrol-list">
+                    Sub Control Listing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              data-bs-toggle="collapse"
+              href="#ui-basic7"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
+              <span className="menu-title">Departments</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-key" />
+            </a>
+            <div className="collapse" id="ui-basic7">
+              <ul className="nav flex-column sub-menu">
+                <li className="nav-item">
+                  {" "}
+                  <Link
+                    to="/department/department-create-update"
+                    className="nav-link"
+                  >
+                    New Department
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link className="nav-link" to="/department/department-list">
+                    Department Listing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
              <li className="nav-item">
                   <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic">
                     <span className="menu-title">Risks</span>
@@ -534,27 +717,27 @@ const AppMenu = ({
                     </ul>
                   </div>
             </li>
-                
-                
-
-             <li class="nav-item">
+          <li class="nav-item">
             <a
               className="nav-link"
               data-bs-toggle="collapse"
-              href="#ui-basic2"
+              href="#ui-basic5"
               aria-expanded="false"
-              aria-controls="ui-basic2"
+              aria-controls="ui-basic5"
             >
               <span className="menu-title">TrainingMgmt</span>
               <i className="menu-arrow" />
               <i className="mdi mdi-account-plus" />
             </a>
-            <div className="collapse" id="ui-basic2">
+            <div className="collapse" id="ui-basic5">
               <ul className="nav flex-column sub-menu">
                 <li className="nav-item">
                   {" "}
                   <Link to="/training/quiz" className="nav-link">
                     Add Quiz
+                  </Link>
+                  <Link to="/Quiz/Quizlist" className="nav-link">
+                    Quiz Listing
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -562,11 +745,17 @@ const AppMenu = ({
                   <Link to="/training/questions" className="nav-link">
                     Add Questions
                   </Link>
+                  <Link to="/training/questionslist" className="nav-link">
+                    Questions Listing
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {" "}
                   <Link to="/training/trainingmgmt" className="nav-link">
                     Trainings
+                  </Link>
+                  <Link to="/training/traininglist" className="nav-link">
+                    Training Listing
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -574,11 +763,61 @@ const AppMenu = ({
                   <Link to="/Survey" className="nav-link">
                     Survey
                   </Link>
+                  <Link to="/Surveylist" className="nav-link">
+                    Survey Listing
+                  </Link>
                 </li>
                 <li className="nav-item">
                   {" "}
                   <Link to="/SurveyQuestion" className="nav-link">
                     Survey Question
+                  </Link>
+                  <Link to="/SurveyQuestionList" className="nav-link">
+                    Survey Question Listing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a
+              className="nav-link"
+              data-bs-toggle="collapse"
+              href="#ui-basic8"
+              aria-expanded="false"
+              aria-controls="ui-basic8"
+            >
+              <span className="menu-title">AssetMgmt</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-plus" />
+            </a>
+            <div className="collapse" id="ui-basic8">
+              <ul className="nav flex-column sub-menu">
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/Asset" className="nav-link">
+                    Add Asset Type
+                  </Link>
+                  <Link to="/AssetList" className="nav-link">
+                    Asset Type Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/AssetAssignment" className="nav-link">
+                    Asset Assignment
+                  </Link>
+                  <Link to="/AssetAssignmentList" className="nav-link">
+                    Asset Assignment Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/AssetInventory" className="nav-link">
+                    Asset Inventory
+                  </Link>
+                  <Link to="/AssetInventoryList" className="nav-link">
+                    Asset Inventory Listing
                   </Link>
                 </li>
               </ul>
@@ -588,16 +827,101 @@ const AppMenu = ({
               <i class="mdi mdi-home menu-icon"></i>
             </Link> */}
           </li>
-         
-          
-          
+          <li class="nav-item">
+            <a
+              className="nav-link"
+              data-bs-toggle="collapse"
+              href="#ui-basic6"
+              aria-expanded="false"
+              aria-controls="ui-basic6"
+            >
+              <span className="menu-title">VendorMgmt</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-plus" />
+            </a>
+            <div className="collapse" id="ui-basic6">
+              <ul className="nav flex-column sub-menu">
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/VendorDetails" className="nav-link">
+                    Vendor Details
+                  </Link>
+                  <Link to="/VendorDetailsList" className="nav-link">
+                    Vendor Details Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/VendorRisk" className="nav-link">
+                    Vendor Risk
+                  </Link>
+                  <Link to="/VendorRiskList" className="nav-link">
+                    Vendor Risk Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/VendorPerformanceRating" className="nav-link">
+                    Vendor Performance Rating
+                  </Link>
+                  <Link to="/VendorPerformanceRatingList" className="nav-link">
+                    Vendor Performance Rating Listing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            {/* <Link to="/training/trainingmgmt" class="nav-link">
+              <span class="menu-title">Trainings Mgmt</span>
+              <i class="mdi mdi-home menu-icon"></i>
+            </Link> */}
+          </li>
 
-
+          <li class="nav-item">
+            <a
+              className="nav-link"
+              data-bs-toggle="collapse"
+              href="#ui-basic9"
+              aria-expanded="false"
+              aria-controls="ui-basic9"
+            >
+              <span className="menu-title">AuditMgmt</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-plus" />
+            </a>
+            <div className="collapse" id="ui-basic9">
+              <ul className="nav flex-column sub-menu">
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/Audit" className="nav-link">
+                    Add Audit
+                  </Link>
+                  <Link to="/AuditList" className="nav-link">
+                    Audit Listing
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/SOA" className="nav-link">
+                    SOA
+                  </Link>
+                  <Link to="/SOAList" className="nav-link">
+                    SOA Listing
+                  </Link>
+                </li>
+                {/* <li className="nav-item">
+                  {" "}
+                  <Link to="/VendorPerformanceRating" className="nav-link">
+                    Vendor Performance Rating
+                  </Link>
+                  <Link to="/VendorPerformanceRatingList" className="nav-link">
+                    Vendor Performance Rating Listing
+                  </Link>
+                </li> */}
+              </ul>
+            </div>
+          </li>
         </ul>
       </nav>
-
-
-     
     </>
   );
 };

@@ -17,90 +17,84 @@ const Login = React.lazy(() => import("../pages/Account/Login"));
 
 //Page
 const AdminDashboard = React.lazy(() =>
-  import("../pages/Dashboard/AdminDashboard"),
+  import("../pages/Dashboard/AdminDashboard")
 );
 const HodDashboard = React.lazy(() =>
-  import("../pages/Dashboard/HodDashboard"),
+  import("../pages/Dashboard/HodDashboard")
 );
 
 const Logout = React.lazy(() => import("../pages/Account/Logout"));
 
 const DepartmentCreateUpdatePage = React.lazy(() =>
-  import("../pages/Department/DepartmentCreateUpdatePage"),
+  import("../pages/Department/DepartmentCreateUpdatePage")
 );
 const DepartmentListPage = React.lazy(() =>
-  import("../pages/Department/DepartmentListPage"),
+  import("../pages/Department/DepartmentListPage")
 );
 
 const FrameworkCreateUpdatePage = React.lazy(() =>
-  import("../pages/Framework/FrameworkCreateUpdatePage"),
+  import("../pages/Framework/FrameworkCreateUpdatePage")
 );
 
 const FrameworkListPage = React.lazy(() =>
-  import("../pages/Framework/FrameworkListPage"),
+  import("../pages/Framework/FrameworkListPage")
 );
 
 const ClauseCreateUpdatePage = React.lazy(() =>
-  import("../pages/Clause/ClauseCreateUpdatePage"),
+  import("../pages/Clause/ClauseCreateUpdatePage")
 );
 
 const ClauseListPage = React.lazy(() =>
-  import("../pages/Clause/ClauseListPage"),
+  import("../pages/Clause/ClauseListPage")
 );
 
-
 const SubclauseCreateUpdatePage = React.lazy(() =>
-  import("../pages/Subclause/SubclauseCreateUpdatePage"),
+  import("../pages/Subclause/SubclauseCreateUpdatePage")
 );
 
 const SubclauseListPage = React.lazy(() =>
-  import("../pages/Subclause/SubclauseListPage"),
+  import("../pages/Subclause/SubclauseListPage")
 );
 
 const ControlCreateUpdatePage = React.lazy(() =>
-  import("../pages/Control/ControlCreateUpdatePage"),
+  import("../pages/Control/ControlCreateUpdatePage")
 );
 
 const ControlListPage = React.lazy(() =>
-  import("../pages/Control/ControlListPage"),
+  import("../pages/Control/ControlListPage")
 );
 
-
 const SubcontrolCreateUpdatePage = React.lazy(() =>
-  import("../pages/Subcontrol/SubcontrolCreateUpdatePage"),
+  import("../pages/Subcontrol/SubcontrolCreateUpdatePage")
 );
 
 const SubcontrolListPage = React.lazy(() =>
-  import("../pages/Subcontrol/SubcontrolListPage"),
+  import("../pages/Subcontrol/SubcontrolListPage")
 );
 
 const LeaveTypeCreateUpdatePage = React.lazy(() =>
-  import("../pages/LeaveType/LeaveTypeCreateUpdatePage"),
+  import("../pages/LeaveType/LeaveTypeCreateUpdatePage")
 );
 const LeaveTypeListPage = React.lazy(() =>
-  import("../pages/LeaveType/LeaveTypeListPage"),
+  import("../pages/LeaveType/LeaveTypeListPage")
 );
 
 const EmployeeCreateUpdatePage = React.lazy(() =>
-  import("../pages/Employee/EmployeeCreateUpdatePage"),
+  import("../pages/Employee/EmployeeCreateUpdatePage")
 );
 const EmployeeListPage = React.lazy(() =>
-  import("../pages/Employee/EmployeeListPage"),
+  import("../pages/Employee/EmployeeListPage")
 );
 
 const UsersCreateUpdatePage = React.lazy(() =>
-  import("../pages/Users/UsersCreateUpdatePage"),
+  import("../pages/Users/UsersCreateUpdatePage")
 );
-const UsersListPage = React.lazy(() =>
-  import("../pages/Users/UsersListPage"),
-);
+const UsersListPage = React.lazy(() => import("../pages/Users/UsersListPage"));
 
 const RolesCreateUpdatePage = React.lazy(() =>
-  import("../pages/Roles/RolesCreateUpdatePage"),
+  import("../pages/Roles/RolesCreateUpdatePage")
 );
-const RolesListPage = React.lazy(() =>
-  import("../pages/Roles/RolesListPage"),
-);
+const RolesListPage = React.lazy(() => import("../pages/Roles/RolesListPage"));
 
 const RiskCreateUpdatePage = React.lazy(() =>
   import("../pages/Risk/RiskCreateUpdatePage"),
@@ -117,144 +111,198 @@ const RiskCreateUpdatePageTab = React.lazy(() =>
 
 
 const PolicyCreateUpdatePage = React.lazy(() =>
-  import("../pages/Policies/PolicyCreateUpdatePage"),
+  import("../pages/Policies/PolicyCreateUpdatePage")
 );
 
 const PolicyCreateUpdatePageNew = React.lazy(() =>
-  import("../pages/Policies/PolicyCreateUpdatePageNew"),
+  import("../pages/Policies/PolicyCreateUpdatePageNew")
 );
 
 const PolicyCreateUpdatePageTab = React.lazy(() =>
-  import("../pages/Policies/PolicyCreateUpdatePageTab"),
+  import("../pages/Policies/PolicyCreateUpdatePageTab")
 );
 
-
-
 const PolicyListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyListPage"),
+  import("../pages/Policies/PolicyListPage")
 );
 
 const PolicyVersionListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyVersionListPage"),
+  import("../pages/Policies/PolicyVersionListPage")
 );
 
 const PolicyApproverListPage = React.lazy(() =>
-  import("../pages/Policies/ApproverList"),
+  import("../pages/Policies/ApproverList")
 );
 
 const PolicyApprovedListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyApprovedListPage"),
+  import("../pages/Policies/PolicyApprovedListPage")
 );
 
 const PolicyPendingListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyPendingListPage"),
+  import("../pages/Policies/PolicyPendingListPage")
 );
 
 const PolicyRejectListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyRejectListPage"),
+  import("../pages/Policies/PolicyRejectListPage")
 );
 const PermissionCreateUpdatePage = React.lazy(() =>
-  import("../pages/Permission/PermissionCreateUpdatePage"),
+  import("../pages/Permission/PermissionCreateUpdatePage")
 );
 const PermissionListPage = React.lazy(() =>
-  import("../pages/Permission/PermissionListPage"),
+  import("../pages/Permission/PermissionListPage")
 );
 
 const LeaveAdminUpdatePage = React.lazy(() =>
-  import("../pages/Leave/LeaveAdminUpdatePage"),
+  import("../pages/Leave/LeaveAdminUpdatePage")
 );
 const LeaveAdminListPage = React.lazy(() =>
-  import("../pages/Leave/LeaveAdminListPage"),
+  import("../pages/Leave/LeaveAdminListPage")
 );
 const LeaveListAdminPending = React.lazy(() =>
-  import("../pages/Leave/LeaveListAdminPending"),
+  import("../pages/Leave/LeaveListAdminPending")
 );
 
 const LeaveListAdminApproved = React.lazy(() =>
-  import("../pages/Leave/LeaveListAdminApproved"),
+  import("../pages/Leave/LeaveListAdminApproved")
 );
 
 const LeaveListAdminRejected = React.lazy(() =>
-  import("../pages/Leave/LeaveListAdminRejected"),
+  import("../pages/Leave/LeaveListAdminRejected")
 );
 
 const LeaveListHodPending = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodPending"),
+  import("../pages/Leave/LeaveListHodPending")
 );
 
 const LeaveListHodApproved = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodApproved"),
+  import("../pages/Leave/LeaveListHodApproved")
 );
 
 const LeaveListHodRejected = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodRejected"),
+  import("../pages/Leave/LeaveListHodRejected")
 );
 
 const LeaveListHodPage = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodPage"),
+  import("../pages/Leave/LeaveListHodPage")
 );
 const LeaveHodCreateUpdatePage = React.lazy(() =>
-  import("../pages/Leave/LeaveHodCreateUpdatePage"),
+  import("../pages/Leave/LeaveHodCreateUpdatePage")
 );
 
 const LeaveCreateUpdatePage = React.lazy(() =>
-  import("../pages/Leave/LeaveCreateUpdatePage"),
+  import("../pages/Leave/LeaveCreateUpdatePage")
 );
 
 const LeaveListEmployeePage = React.lazy(() =>
-  import("../pages/Leave/LeaveListEmployeePage"),
+  import("../pages/Leave/LeaveListEmployeePage")
 );
 
 const EmployeeDashboard = React.lazy(() =>
-  import("../pages/Dashboard/EmployeeDashboard"),
+  import("../pages/Dashboard/EmployeeDashboard")
 );
 
 const ProfilePage = React.lazy(() => import("../pages/Profile/ProfilePage"));
 const ChangePasswordPage = React.lazy(() =>
-  import("../pages/Profile/ChangePasswordPage"),
+  import("../pages/Profile/ChangePasswordPage")
 );
 
 const ForgetPassword = React.lazy(() =>
-  import("../pages/Account/ForgetPassword"),
+  import("../pages/Account/ForgetPassword")
 );
 
 const VerifyOtpPage = React.lazy(() =>
-  import("../pages/Account/VerifyOtpPage"),
+  import("../pages/Account/VerifyOtpPage")
 );
 
 const ResetPasswordPage = React.lazy(() =>
-  import("../pages/Account/ResetPasswordPage"),
+  import("../pages/Account/ResetPasswordPage")
 );
 
+//Training Management
 const TrainingMgmt = React.lazy(() =>
   import("../pages/TrainingMgmt/TrainingMgmt")
 );
+const TrainingMgmtList = React.lazy(() =>
+  import("../pages/TrainingMgmt/TrainingMgmtList")
+);
 const Quiz = React.lazy(() => import("../pages/TrainingMgmt/Quiz"));
 const Questions = React.lazy(() => import("../pages/TrainingMgmt/Questions"));
+const QuestionsList = React.lazy(() =>
+  import("../pages/TrainingMgmt/Questionlist")
+);
 const QandAList = React.lazy(() => import("../pages/TrainingMgmt/QandAList"));
 const QuizList = React.lazy(() => import("../pages/TrainingMgmt/QuizList"));
 const Survey = React.lazy(() => import("../pages/TrainingMgmt/Survey"));
+const SurveyList = React.lazy(() => import("../pages/TrainingMgmt/SurveyList"));
 const SurveyQuestion = React.lazy(() =>
   import("../pages/TrainingMgmt/SurveyQuestion")
 );
+const SurveyQuestionList = React.lazy(() =>
+  import("../pages/TrainingMgmt/SurveyQuestionList")
+);
+
+//Asset Management
 const Asset = React.lazy(() => import("../pages/AssestMgmt/Asset"));
+const AssetList = React.lazy(() => import("../pages/AssestMgmt/AssetList"));
 const AssetAssignment = React.lazy(() =>
   import("../pages/AssestMgmt/AssetAssignment")
+);
+const AssetAssignmentList = React.lazy(() =>
+  import("../pages/AssestMgmt/AssetAssignmentList")
 );
 const AssetInventory = React.lazy(() =>
   import("../pages/AssestMgmt/AssetInventory")
 );
+const AssetInventoryList = React.lazy(() =>
+  import("../pages/AssestMgmt/AssetInventoryList")
+);
 
+//Vendor Management
 const VendorDetails = React.lazy(() =>
   import("../pages/VendorManagement/VendorDetails")
+);
+const VendorDetailsList = React.lazy(() =>
+  import("../pages/VendorManagement/VendorDetailsList")
 );
 const VendorRisk = React.lazy(() =>
   import("../pages/VendorManagement/VendorRisk")
 );
+const VendorRiskList = React.lazy(() =>
+  import("../pages/VendorManagement/VendorRiskList")
+);
 const VendorPerformanceRating = React.lazy(() =>
   import("../pages/VendorManagement/VendorPerformanceRating")
 );
+const VendorPerformanceRatingList = React.lazy(() =>
+  import("../pages/VendorManagement/VendorPerformanceRatingList")
+);
 
+//Audit Management
+const Audit = React.lazy(() => import("../pages/AuditMgmt/Audit"));
+const AuditListing = React.lazy(() =>
+  import("../pages/AuditMgmt/AuditListing")
+);
+const ClauseWiseDetailsListing = React.lazy(() =>
+  import("../pages/AuditMgmt/ClauseWiseDetailList")
+);
+const ClauseWiseAuditDetailUpdate = React.lazy(() =>
+  import("../pages/AuditMgmt/ClauseWiseAuditDetailUpdate")
+);
+const AnnexWiseDetailsListing = React.lazy(() =>
+  import("../pages/AuditMgmt/AnnexWiseDetailsList")
+);
+const AnnexWiseAuditDetailUpdate = React.lazy(() =>
+  import("../pages/AuditMgmt/AnnexWiseAuditDetailUpdate")
+);
+//SOA
+const SOA = React.lazy(() => import("../pages/AuditMgmt/SOA"));
+const SOAListing = React.lazy(() => import("../pages/AuditMgmt/SOAList"));
+const SOAAnnexDetailsList = React.lazy(() =>
+  import("../pages/AuditMgmt/SoaAnnexDetailsListing")
+);
+const AnnexWiseSoaDetailUpdate = React.lazy(() =>
+  import("../pages/AuditMgmt/AnnexWiseSoaDetailUpdate")
+);
 
 const LoadComponent = ({ component: Component }) => {
   useEffect(() => {
@@ -332,49 +380,125 @@ const AllRoutes = () => {
             element={<LoadComponent component={TrainingMgmt} />}
           />
           <Route
+            path="/training/traininglist"
+            element={<LoadComponent component={TrainingMgmtList} />}
+          />
+          <Route
             path="/training/quiz"
             element={<LoadComponent component={Quiz} />}
+          />
+          <Route
+
+            path="/Quiz/Quizlist"
+            element={<LoadComponent component={QuizList} />}
           />
           <Route
             path="/training/questions"
             element={<LoadComponent component={Questions} />}
           />
           <Route
-            path="/QandA/QandA-list"
-            element={<LoadComponent component={QandAList} />}
+
+            path="/training/questionslist"
+            element={<LoadComponent component={QuestionsList} />}
           />
           <Route
-            path="/Quiz/Quizlist"
-            element={<LoadComponent component={QuizList} />}
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
           />
           <Route
             path="/Survey"
             element={<LoadComponent component={Survey} />}
           />
           <Route
+            path="/Surveylist"
+            element={<LoadComponent component={SurveyList} />}
+          />
+          <Route
             path="/SurveyQuestion"
             element={<LoadComponent component={SurveyQuestion} />}
           />
+          <Route
+            path="/SurveyQuestionList"
+            element={<LoadComponent component={SurveyQuestionList} />}
+          />
           <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetList"
+            element={<LoadComponent component={AssetList} />}
+          />
           <Route
             path="/AssetAssignment"
             element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetAssignmentList"
+            element={<LoadComponent component={AssetAssignmentList} />}
           />
           <Route
             path="/AssetInventory"
             element={<LoadComponent component={AssetInventory} />}
           />
           <Route
+            path="/AssetInventoryList"
+            element={<LoadComponent component={AssetInventoryList} />}
+          />
+          <Route
             path="/VendorDetails"
             element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorDetailsList"
+            element={<LoadComponent component={VendorDetailsList} />}
           />
           <Route
             path="/VendorRisk"
             element={<LoadComponent component={VendorRisk} />}
           />
           <Route
+            path="/VendorRiskList"
+            element={<LoadComponent component={VendorRiskList} />}
+          />
+          <Route
             path="/VendorPerformanceRating"
             element={<LoadComponent component={VendorPerformanceRating} />}
+          />
+          <Route
+            path="/VendorPerformanceRatingList"
+            element={<LoadComponent component={VendorPerformanceRatingList} />}
+          />
+          <Route path="/Audit" element={<LoadComponent component={Audit} />} />
+          <Route
+            path="/AuditList"
+            element={<LoadComponent component={AuditListing} />}
+          />
+          <Route
+            path="/ClauseWiseDetailsList"
+            element={<LoadComponent component={ClauseWiseDetailsListing} />}
+          />
+          <Route
+            path="/AnnexWiseDetailsList"
+            element={<LoadComponent component={AnnexWiseDetailsListing} />}
+          />
+          <Route
+            path="/ClauseWiseAuditDetailUpdate"
+            element={<LoadComponent component={ClauseWiseAuditDetailUpdate} />}
+          />
+          <Route
+            path="/AnnexWiseAuditDetailUpdate"
+            element={<LoadComponent component={AnnexWiseAuditDetailUpdate} />}
+          />
+          <Route path="/SOA" element={<LoadComponent component={SOA} />} />
+          <Route
+            path="/SOAList"
+            element={<LoadComponent component={SOAListing} />}
+          />
+          <Route
+            path="/SOAAnnexDetailsListing"
+            element={<LoadComponent component={SOAAnnexDetailsList} />}
+          />
+          <Route
+            path="/AnnexWiseSoaDetailUpdate"
+            element={<LoadComponent component={AnnexWiseSoaDetailUpdate} />}
           />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Route>
@@ -421,49 +545,123 @@ const AllRoutes = () => {
             element={<LoadComponent component={TrainingMgmt} />}
           />
           <Route
+            path="/training/traininglist"
+            element={<LoadComponent component={TrainingMgmtList} />}
+          />
+          <Route
             path="/training/quiz"
             element={<LoadComponent component={Quiz} />}
-          />
-          <Route
-            path="/training/questions"
-            element={<LoadComponent component={Questions} />}
-          />
-          <Route
-            path="/QandA/QandA-list"
-            element={<LoadComponent component={QandAList} />}
           />
           <Route
             path="/Quiz/Quizlist"
             element={<LoadComponent component={QuizList} />}
           />
           <Route
+            path="/training/questions"
+            element={<LoadComponent component={Questions} />}
+          />
+          <Route
+            path="/training/questionslist"
+            element={<LoadComponent component={QuestionsList} />}
+          />
+          <Route
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
+          />
+          <Route
             path="/Survey"
             element={<LoadComponent component={Survey} />}
+          />
+          <Route
+            path="/Surveylist"
+            element={<LoadComponent component={SurveyList} />}
           />
           <Route
             path="/SurveyQuestion"
             element={<LoadComponent component={SurveyQuestion} />}
           />
+          <Route
+            path="/SurveyQuestionList"
+            element={<LoadComponent component={SurveyQuestionList} />}
+          />
           <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetList"
+            element={<LoadComponent component={AssetList} />}
+          />
           <Route
             path="/AssetAssignment"
             element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetAssignmentList"
+            element={<LoadComponent component={AssetAssignmentList} />}
           />
           <Route
             path="/AssetInventory"
             element={<LoadComponent component={AssetInventory} />}
           />
           <Route
+            path="/AssetInventoryList"
+            element={<LoadComponent component={AssetInventoryList} />}
+          />
+          <Route
             path="/VendorDetails"
             element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorDetailsList"
+            element={<LoadComponent component={VendorDetailsList} />}
           />
           <Route
             path="/VendorRisk"
             element={<LoadComponent component={VendorRisk} />}
           />
           <Route
+            path="/VendorRiskList"
+            element={<LoadComponent component={VendorRiskList} />}
+          />
+          <Route
             path="/VendorPerformanceRating"
             element={<LoadComponent component={VendorPerformanceRating} />}
+          />
+          <Route
+            path="/VendorPerformanceRatingList"
+            element={<LoadComponent component={VendorPerformanceRatingList} />}
+          />
+          <Route path="/Audit" element={<LoadComponent component={Audit} />} />
+          <Route
+            path="/AuditList"
+            element={<LoadComponent component={AuditListing} />}
+          />
+          <Route
+            path="/ClauseWiseDetailsList"
+            element={<LoadComponent component={ClauseWiseDetailsListing} />}
+          />
+          <Route
+            path="/AnnexWiseDetailsList"
+            element={<LoadComponent component={AnnexWiseDetailsListing} />}
+          />
+          <Route
+            path="/ClauseWiseAuditDetailUpdate"
+            element={<LoadComponent component={ClauseWiseAuditDetailUpdate} />}
+          />
+          <Route
+            path="/AnnexWiseAuditDetailUpdate"
+            element={<LoadComponent component={AnnexWiseAuditDetailUpdate} />}
+          />
+          <Route path="/SOA" element={<LoadComponent component={SOA} />} />
+          <Route
+            path="/SOAList"
+            element={<LoadComponent component={SOAListing} />}
+          />
+          <Route
+            path="/SOAAnnexDetailsListing"
+            element={<LoadComponent component={SOAAnnexDetailsList} />}
+          />
+          <Route
+            path="/AnnexWiseSoaDetailUpdate"
+            element={<LoadComponent component={AnnexWiseSoaDetailUpdate} />}
           />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Route>
@@ -529,8 +727,6 @@ const AllRoutes = () => {
             path="/subcontrol/subcontrol-list"
             element={<LoadComponent component={SubcontrolListPage} />}
           />
-
-
           <Route
             path="/leave-type/leave-type-create-update"
             element={<LoadComponent component={LeaveTypeCreateUpdatePage} />}
@@ -578,9 +774,6 @@ const AllRoutes = () => {
             path="/risk/risk-list"
             element={<LoadComponent component={RiskListPage} />}
           />
-
-          
-
           <Route
             path="/policies/policy-list"
             element={<LoadComponent component={PolicyListPage} />}
@@ -665,49 +858,123 @@ const AllRoutes = () => {
             element={<LoadComponent component={TrainingMgmt} />}
           />
           <Route
+            path="/training/traininglist"
+            element={<LoadComponent component={TrainingMgmtList} />}
+          />
+          <Route
             path="/training/quiz"
             element={<LoadComponent component={Quiz} />}
-          />
-          <Route
-            path="/training/questions"
-            element={<LoadComponent component={Questions} />}
-          />
-          <Route
-            path="/QandA/QandA-list"
-            element={<LoadComponent component={QandAList} />}
           />
           <Route
             path="/Quiz/Quizlist"
             element={<LoadComponent component={QuizList} />}
           />
           <Route
+            path="/training/questions"
+            element={<LoadComponent component={Questions} />}
+          />
+          <Route
+            path="/training/questionslist"
+            element={<LoadComponent component={QuestionsList} />}
+          />
+          <Route
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
+          />
+          <Route
             path="/Survey"
             element={<LoadComponent component={Survey} />}
+          />
+          <Route
+            path="/Surveylist"
+            element={<LoadComponent component={SurveyList} />}
           />
           <Route
             path="/SurveyQuestion"
             element={<LoadComponent component={SurveyQuestion} />}
           />
+          <Route
+            path="/SurveyQuestionList"
+            element={<LoadComponent component={SurveyQuestionList} />}
+          />
           <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetList"
+            element={<LoadComponent component={AssetList} />}
+          />
           <Route
             path="/AssetAssignment"
             element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetAssignmentList"
+            element={<LoadComponent component={AssetAssignmentList} />}
           />
           <Route
             path="/AssetInventory"
             element={<LoadComponent component={AssetInventory} />}
           />
           <Route
+            path="/AssetInventoryList"
+            element={<LoadComponent component={AssetInventoryList} />}
+          />
+          <Route
             path="/VendorDetails"
             element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorDetailsList"
+            element={<LoadComponent component={VendorDetailsList} />}
           />
           <Route
             path="/VendorRisk"
             element={<LoadComponent component={VendorRisk} />}
           />
           <Route
+            path="/VendorRiskList"
+            element={<LoadComponent component={VendorRiskList} />}
+          />
+          <Route
             path="/VendorPerformanceRating"
             element={<LoadComponent component={VendorPerformanceRating} />}
+          />
+          <Route
+            path="/VendorPerformanceRatingList"
+            element={<LoadComponent component={VendorPerformanceRatingList} />}
+          />
+          <Route path="/Audit" element={<LoadComponent component={Audit} />} />
+          <Route
+            path="/AuditList"
+            element={<LoadComponent component={AuditListing} />}
+          />
+          <Route
+            path="/ClauseWiseDetailsList"
+            element={<LoadComponent component={ClauseWiseDetailsListing} />}
+          />
+          <Route
+            path="/AnnexWiseDetailsList"
+            element={<LoadComponent component={AnnexWiseDetailsListing} />}
+          />
+          <Route
+            path="/ClauseWiseAuditDetailUpdate"
+            element={<LoadComponent component={ClauseWiseAuditDetailUpdate} />}
+          />
+          <Route
+            path="/AnnexWiseAuditDetailUpdate"
+            element={<LoadComponent component={AnnexWiseAuditDetailUpdate} />}
+          />
+          <Route path="/SOA" element={<LoadComponent component={SOA} />} />
+          <Route
+            path="/SOAList"
+            element={<LoadComponent component={SOAListing} />}
+          />
+          <Route
+            path="/SOAAnnexDetailsListing"
+            element={<LoadComponent component={SOAAnnexDetailsList} />}
+          />
+          <Route
+            path="/AnnexWiseSoaDetailUpdate"
+            element={<LoadComponent component={AnnexWiseSoaDetailUpdate} />}
           />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Route>
@@ -744,49 +1011,123 @@ const AllRoutes = () => {
             element={<LoadComponent component={TrainingMgmt} />}
           />
           <Route
+            path="/training/traininglist"
+            element={<LoadComponent component={TrainingMgmtList} />}
+          />
+          <Route
             path="/training/quiz"
             element={<LoadComponent component={Quiz} />}
-          />
-          <Route
-            path="/training/questions"
-            element={<LoadComponent component={Questions} />}
-          />
-          <Route
-            path="/QandA/QandA-list"
-            element={<LoadComponent component={QandAList} />}
           />
           <Route
             path="/Quiz/Quizlist"
             element={<LoadComponent component={QuizList} />}
           />
           <Route
+            path="/training/questions"
+            element={<LoadComponent component={Questions} />}
+          />
+          <Route
+            path="/training/questionslist"
+            element={<LoadComponent component={QuestionsList} />}
+          />
+          <Route
+            path="/QandA/QandA-list"
+            element={<LoadComponent component={QandAList} />}
+          />
+          <Route
             path="/Survey"
             element={<LoadComponent component={Survey} />}
+          />
+          <Route
+            path="/Surveylist"
+            element={<LoadComponent component={SurveyList} />}
           />
           <Route
             path="/SurveyQuestion"
             element={<LoadComponent component={SurveyQuestion} />}
           />
+          <Route
+            path="/SurveyQuestionList"
+            element={<LoadComponent component={SurveyQuestionList} />}
+          />
           <Route path="/Asset" element={<LoadComponent component={Asset} />} />
+          <Route
+            path="/AssetList"
+            element={<LoadComponent component={AssetList} />}
+          />
           <Route
             path="/AssetAssignment"
             element={<LoadComponent component={AssetAssignment} />}
+          />
+          <Route
+            path="/AssetAssignmentList"
+            element={<LoadComponent component={AssetAssignmentList} />}
           />
           <Route
             path="/AssetInventory"
             element={<LoadComponent component={AssetInventory} />}
           />
           <Route
+            path="/AssetInventoryList"
+            element={<LoadComponent component={AssetInventoryList} />}
+          />
+          <Route
             path="/VendorDetails"
             element={<LoadComponent component={VendorDetails} />}
+          />
+          <Route
+            path="/VendorDetailsList"
+            element={<LoadComponent component={VendorDetailsList} />}
           />
           <Route
             path="/VendorRisk"
             element={<LoadComponent component={VendorRisk} />}
           />
           <Route
+            path="/VendorRiskList"
+            element={<LoadComponent component={VendorRiskList} />}
+          />
+          <Route
             path="/VendorPerformanceRating"
             element={<LoadComponent component={VendorPerformanceRating} />}
+          />
+          <Route
+            path="/VendorPerformanceRatingList"
+            element={<LoadComponent component={VendorPerformanceRatingList} />}
+          />
+          <Route path="/Audit" element={<LoadComponent component={Audit} />} />
+          <Route
+            path="/AuditList"
+            element={<LoadComponent component={AuditListing} />}
+          />
+          <Route
+            path="/ClauseWiseDetailsList"
+            element={<LoadComponent component={ClauseWiseDetailsListing} />}
+          />
+          <Route
+            path="/AnnexWiseDetailsList"
+            element={<LoadComponent component={AnnexWiseDetailsListing} />}
+          />
+          <Route
+            path="/ClauseWiseAuditDetailUpdate"
+            element={<LoadComponent component={ClauseWiseAuditDetailUpdate} />}
+          />
+          <Route
+            path="/AnnexWiseAuditDetailUpdate"
+            element={<LoadComponent component={AnnexWiseAuditDetailUpdate} />}
+          />
+          <Route path="/SOA" element={<LoadComponent component={SOA} />} />
+          <Route
+            path="/SOAList"
+            element={<LoadComponent component={SOAListing} />}
+          />
+          <Route
+            path="/SOAAnnexDetailsListing"
+            element={<LoadComponent component={SOAAnnexDetailsList} />}
+          />
+          <Route
+            path="/AnnexWiseSoaDetailUpdate"
+            element={<LoadComponent component={AnnexWiseSoaDetailUpdate} />}
           />
         </Route>
       </Routes>

@@ -22,7 +22,7 @@ import UserRequest from "../../APIRequest/UserRequest";
 import { defaultAvatarImg } from "../../helpers/Default";
 import ModuleRequest from "../../APIRequest/ModuleRequest";
 
-function VendorDetails() {
+function Audit() {
   let [ObjectID, SetObjectID] = useState(0);
   const { t } = useTranslation();
   const { UserData } = useSelector((state) => state.User);
@@ -127,7 +127,7 @@ function VendorDetails() {
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
               </span>{" "}
-              Add Vendor Details
+              {!ObjectID ? "Add Audit" : "Update Audit"}
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -136,14 +136,12 @@ function VendorDetails() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "vendor mgmt",
-                        path: "/vendorDetails",
+                        label: "audit mgmt",
+                        path: "/Audit",
                       },
                       {
-                        label: !ObjectID
-                          ? "Create Vendor Details"
-                          : "Update Vendor Details",
-                        path: "/vendorDetails",
+                        label: !ObjectID ? "Create Audit" : "Update Audit",
+                        path: "/Audit",
                         active: true,
                       },
                     ]}
@@ -164,33 +162,92 @@ function VendorDetails() {
                         defaultValues={UserData}
                       >
                         <Row>
-                          <Col xl={6}>
+                          <Col xl={12}>
                             <InputLabel id="demo-simple-select-label">
-                              Vendor Name
+                              Audit Name
                             </InputLabel>
                             <TextField
                               style={{ width: "100%" }}
-                              name="qname"
-                              placeholder={"Enter Vendor Name"}
-                              containerClass={"mb-3"}
+                              id="outlined-basic"
+                              variant="outlined"
+                              name="auditname"
+                              placeholder="Enter Audit Name"
+                              // value={answerOne}
+                              // onChange={handleAnswerOneValue}
                             />
                           </Col>
-                          <Col xl={6}>
-                            <InputLabel id="demo-simple-select-label">
-                              Primary Contact Name
+                        </Row>
+                        <Row className="mt-3">
+                          <Col xl={12}>
+                            {/* <InputLabel id="demo-simple-select-label">
+                              Standard
                             </InputLabel>
                             <TextField
                               style={{ width: "100%" }}
-                              name="qname"
-                              placeholder={"Enter Primary Contact Name"}
-                              containerClass={"mb-3"}
-                            />
+                              id="outlined-basic"
+                              variant="outlined"
+                              name="auditname"
+                              placeholder="Enter Audit Name"
+                              // value={answerOne}
+                              // onChange={handleAnswerOneValue}
+                            /> */}
+                            <InputLabel id="demo-simple-select-label">
+                              Standard
+                            </InputLabel>
+                            <Select
+                              style={{ width: "100%" }}
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              // value={totalNoOfQuestion}
+                              // onChange={handleTotalNoOfQuestion}
+                            >
+                              <MenuItem disabled value="">
+                                <em>Please select Standard</em>
+                              </MenuItem>
+                              <MenuItem value="1">1</MenuItem>
+                              <MenuItem value="2">2</MenuItem>
+                              <MenuItem value="3">3</MenuItem>
+                              <MenuItem value="4">4</MenuItem>
+                              <MenuItem value="5">5</MenuItem>
+                            </Select>
+                          </Col>
+                        </Row>
+                        <Row className="mt-3">
+                          <Col xl={12}>
+                            {/* <InputLabel id="demo-simple-select-label">
+                              Standard
+                            </InputLabel>
+                            <TextField
+                              style={{ width: "100%" }}
+                              id="outlined-basic"
+                              variant="outlined"
+                              name="auditname"
+                              placeholder="Enter Audit Name"
+                              // value={answerOne}
+                              // onChange={handleAnswerOneValue}
+                            /> */}
+                            <InputLabel id="demo-simple-select-label">
+                              SOA Applicable
+                            </InputLabel>
+                            <Select
+                              style={{ width: "100%" }}
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              // value={totalNoOfQuestion}
+                              // onChange={handleTotalNoOfQuestion}
+                            >
+                              <MenuItem disabled value="">
+                                <em>Please select</em>
+                              </MenuItem>
+                              <MenuItem value="YES">YES</MenuItem>
+                              <MenuItem value="NO">NO</MenuItem>
+                            </Select>
                           </Col>
                         </Row>
                         <Row className="mt-3">
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
-                              Onboarding Date
+                              Audit Start Date
                             </InputLabel>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                               <DemoContainer components={["DateTimePicker"]}>
@@ -200,7 +257,7 @@ function VendorDetails() {
                           </Col>
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
-                              Expiry Date
+                              Audit End Date
                             </InputLabel>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                               <DemoContainer components={["DateTimePicker"]}>
@@ -210,121 +267,74 @@ function VendorDetails() {
                           </Col>
                         </Row>
                         <Row className="mt-3">
-                          {uploadFile ? (
-                            <FormInput
-                              name="filename"
-                              label={t("Contract")}
-                              type="file"
-                              placeholder={t("Upload File")}
-                              containerClass={"mb-3"}
-                            />
-                          ) : (
-                            <FormInput
-                              name="Training URL"
-                              label={t("Training URL")}
-                              placeholder={t("Enter Training Url ")}
-                              containerClass={"mb-3"}
-                            />
-                          )}
-                        </Row>
-                        <Row>
-                          <Col xl={6}>
+                          <Col xl={12}>
                             <InputLabel id="demo-simple-select-label">
-                              Relationship Manager Email
+                              Audit Stage
                             </InputLabel>
-                            <TextField
+                            <Select
                               style={{ width: "100%" }}
-                              name="qname"
-                              placeholder={"Enter Relationship Manager Email"}
-                              containerClass={"mb-3"}
-                            />
-                          </Col>
-                          <Col xl={6}>
-                            <InputLabel id="demo-simple-select-label">
-                              Assessor Email
-                            </InputLabel>
-                            <TextField
-                              style={{ width: "100%" }}
-                              name="qname"
-                              placeholder={"Enter Assessor Email"}
-                              containerClass={"mb-3"}
-                            />
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              // value={totalNoOfQuestion}
+                              // onChange={handleTotalNoOfQuestion}
+                            >
+                              <MenuItem disabled value="">
+                                <em>Please select audit stage</em>
+                              </MenuItem>
+                              <MenuItem value="New">New</MenuItem>
+                              <MenuItem value="Draft">Draft</MenuItem>
+                              <MenuItem value="Pending">Pending</MenuItem>
+                              <MenuItem value="Completed">Completed</MenuItem>
+                              <MenuItem value="Overdue">Overdue</MenuItem>
+                            </Select>
                           </Col>
                         </Row>
-
                         <Row className="mt-3">
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
-                              Type Of Vendor
+                              Scope Period Start Date
                             </InputLabel>
-                            <Select
-                              style={{ width: "100%" }}
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              // value={totalNoOfQuestion}
-                              // onChange={handleTotalNoOfQuestion}
-                            >
-                              <MenuItem disabled value="">
-                                <em>Please select Type Vendor</em>
-                              </MenuItem>
-                              <MenuItem value="Security">security</MenuItem>
-                              <MenuItem value="Product">product</MenuItem>
-                              <MenuItem value="Service">service</MenuItem>
-                              <MenuItem value="Other">other</MenuItem>
-                            </Select>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                              <DemoContainer components={["DateTimePicker"]}>
+                                <DateTimePicker />
+                              </DemoContainer>
+                            </LocalizationProvider>
                           </Col>
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
-                              Status
+                              Scope Period End Date
                             </InputLabel>
-                            <Select
-                              style={{ width: "100%" }}
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              // value={totalNoOfQuestion}
-                              // onChange={handleTotalNoOfQuestion}
-                            >
-                              <MenuItem disabled value="">
-                                <em>Please select Status</em>
-                              </MenuItem>
-                              <MenuItem value="True">True</MenuItem>
-                              <MenuItem value="False">False</MenuItem>
-                            </Select>
-                          </Col>
-                        </Row>
-                        {/* <Row className="mt-3">
-
-                              Risk Asses Me
-                            </InputLabel>
-                            <TextField
-                              style={{ width: "100%" }}
-                              name="qname"
-                              placeholder={"Enter riskassesme"}
-                              containerClass={"mb-3"}
-                            />
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                              <DemoContainer components={["DateTimePicker"]}>
+                                <DateTimePicker />
+                              </DemoContainer>
+                            </LocalizationProvider>
                           </Col>
                         </Row>
                         <Row className="mt-3">
-
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
-                              Status
+                              Audit Completion Date
                             </InputLabel>
-                            <Select
-                              style={{ width: "100%" }}
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              // value={totalNoOfQuestion}
-                              // onChange={handleTotalNoOfQuestion}
-                            >
-                              <MenuItem disabled value="">
-                                <em>Please select Status</em>
-                              </MenuItem>
-                              <MenuItem value="True">True</MenuItem>
-                              <MenuItem value="False">False</MenuItem>
-                            </Select>
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                              <DemoContainer components={["DateTimePicker"]}>
+                                <DateTimePicker />
+                              </DemoContainer>
+                            </LocalizationProvider>
                           </Col>
-                        </Row> */}
+                          <Col xl={6}>
+                            <InputLabel id="demo-simple-select-label">
+                              Auditor Email
+                            </InputLabel>
+                            <TextField
+                              id="outlined-basic"
+                              variant="outlined"
+                              name="auditoremail"
+                              placeholder="Enter Auditor Email"
+                              // value={answerOne}
+                              // onChange={handleAnswerOneValue}
+                            />
+                          </Col>
                         </Row>
                         <Row className="mt-3">
                           <Col>
@@ -333,7 +343,7 @@ function VendorDetails() {
                               className="btn btn-gradient-primary me-2"
                               variant="success"
                             >
-                              {!ObjectID ? "Add Vendor" : "Update Vendor"}
+                              {!ObjectID ? "Add Audit" : "Update Audit"}
                             </Button>
                           </Col>
                         </Row>
@@ -350,4 +360,4 @@ function VendorDetails() {
   );
 }
 
-export default VendorDetails;
+export default Audit;

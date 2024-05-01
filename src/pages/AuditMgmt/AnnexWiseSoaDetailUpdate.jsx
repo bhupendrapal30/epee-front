@@ -28,7 +28,7 @@ import {
   DeleteQuizLists,
 } from "../../redux/slices/Quiz";
 
-function SurveyQuestion() {
+function AnnexWiseSoaDetailUpdate() {
   const navigate = useNavigate();
   let dispatch = useDispatch();
   let [ObjectID, SetObjectID] = useState(0);
@@ -124,7 +124,6 @@ function SurveyQuestion() {
     console.log("Delete Id ---> ", id);
     dispatch(DeleteQuizLists(id));
   };
-
   return (
     <>
       {" "}
@@ -138,7 +137,7 @@ function SurveyQuestion() {
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
               </span>
-              {ObjectID ? "Update Survey Question" : "Add Survey Question"}
+              Update SOA Annex Details
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -147,12 +146,12 @@ function SurveyQuestion() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "SurveyQuestion",
-                        path: "/SurveyQuestion",
+                        label: "SOA",
+                        path: "/SOA",
                       },
                       {
-                        label: `${ObjectID ? "Update" : "Add"} Survey Question`,
-                        path: "/SurveyQuestion",
+                        label: `Update SOA Annex Details`,
+                        path: "/SOA",
                         active: true,
                       },
                     ]}
@@ -169,35 +168,80 @@ function SurveyQuestion() {
                     <Col>
                       <VerticalForm>
                         <Row>
-                          <Col xl={6} className="mt-2">
+                          <Col className="mt-2">
                             <InputLabel id="demo-simple-select-label">
-                              Survey Name
+                              SOA Version
+                            </InputLabel>
+                            <TextField
+                              disabled="true"
+                              style={{ width: "100%" }}
+                              name="qname"
+                              placeholder={"Soa Version"}
+                            />
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className="mt-2">
+                            <InputLabel id="demo-simple-select-label">
+                              Standard Name
+                            </InputLabel>
+                            <TextField
+                              disabled="true"
+                              style={{ width: "100%" }}
+                              name="qname"
+                              placeholder={"Standard Name"}
+                            />
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className="mt-2">
+                            <InputLabel id="demo-simple-select-label">
+                              Control Name
+                            </InputLabel>
+                            <TextField
+                              disabled="true"
+                              style={{ width: "100%" }}
+                              name="qname"
+                              placeholder={"Control Name"}
+                            />
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className="mt-2">
+                            <InputLabel id="demo-simple-select-label">
+                              Sub Control Name
+                            </InputLabel>
+                            <TextField
+                              disabled="true"
+                              style={{ width: "100%" }}
+                              name="qname"
+                              placeholder={"Sub Control Name"}
+                            />
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col xl={12} className="mt-2">
+                            <InputLabel id="demo-simple-select-label">
+                              Applicability
                             </InputLabel>
                             <Select
                               style={{ width: "100%" }}
                               labelId="demo-simple-select-label"
                               id="demo-simple-select"
+                              placeholder="Select Result"
                               value={totalNoOfQuestion}
                               onChange={handleTotalNoOfQuestion}
                             >
                               <MenuItem disabled value="">
-                                <em>Please select Survey Name</em>
+                                <em>Please select Applicability</em>
                               </MenuItem>
-                              <MenuItem value="Survey One">Survey One</MenuItem>
-                              <MenuItem value="Survey Two">Survey Two</MenuItem>
-                              <MenuItem value="Survey Three">
-                                Survey Three
-                              </MenuItem>
-                              <MenuItem value="Survey Four">
-                                Survey Four
-                              </MenuItem>
-                              <MenuItem value="Survey Five">
-                                Survey Five
-                              </MenuItem>
+                              <MenuItem value="YES">YES</MenuItem>
+                              <MenuItem value="NO">NO</MenuItem>
                             </Select>
                           </Col>
                         </Row>
-                        <Row className="my-3">
+
+                        <Row className="mt-2">
                           <Col>
                             <Box
                               component="form"
@@ -209,29 +253,9 @@ function SurveyQuestion() {
                               noValidate
                               autoComplete="off"
                             >
-                              <label className="mb-2">Question No</label>
+                              <label className="mb-2">Reason If Any</label>
                               <TextField
-                                containerClass="mb-3"
-                                id="outlined-multiline-static"
-                                //onChange={handleQuestionValue}
-                              />
-                            </Box>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <Col>
-                            <Box
-                              component="form"
-                              sx={{
-                                "& .MuiTextField-root": {
-                                  width: "100%",
-                                },
-                              }}
-                              noValidate
-                              autoComplete="off"
-                            >
-                              <label className="mb-2">Question</label>
-                              <TextField
+                                placeholder="Enter Reason"
                                 containerClass="mb-3"
                                 id="outlined-multiline-static"
                                 multiline
@@ -241,6 +265,7 @@ function SurveyQuestion() {
                             </Box>
                           </Col>
                         </Row>
+
                         <Row className="mt-2">
                           <Col className="mt-2">
                             <Button
@@ -248,9 +273,7 @@ function SurveyQuestion() {
                               variant="success"
                               onClick={handleAddQuiz}
                             >
-                              {!ObjectID
-                                ? "Add Suvey Question"
-                                : "Update Survey Question"}
+                              Update Annex Details
                             </Button>
                           </Col>
                         </Row>
@@ -267,4 +290,4 @@ function SurveyQuestion() {
   );
 }
 
-export default SurveyQuestion;
+export default AnnexWiseSoaDetailUpdate;

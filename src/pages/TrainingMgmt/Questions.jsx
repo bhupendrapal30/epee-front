@@ -215,7 +215,7 @@ function Questions() {
                         <Row className="mb-3">
                           <Col xl={6}>
                             <InputLabel id="demo-simple-select-label">
-                              Quiz Id
+                              Quiz Name
                             </InputLabel>
                             <Select
                               style={{ width: "100%" }}
@@ -226,23 +226,15 @@ function Questions() {
                               onChange={handleQuizId}
                             >
                               <MenuItem disabled value="">
-                                <em>Please select Quiz Id</em>
+                                <em>Please select Quiz Name</em>
                               </MenuItem>
-                              <MenuItem value={1}>1</MenuItem>
-                              <MenuItem value={2}>2</MenuItem>
-                              <MenuItem value={3}>3</MenuItem>
-                              <MenuItem value={4}>4</MenuItem>
-                              <MenuItem value={5}>5</MenuItem>
-                              <MenuItem value={6}>6</MenuItem>
-                              <MenuItem value={7}>7</MenuItem>
-                              <MenuItem value={8}>8</MenuItem>
-                              <MenuItem value={9}>9</MenuItem>
-                              <MenuItem value={10}>10</MenuItem>
-                              <MenuItem value={11}>11</MenuItem>
-                              <MenuItem value={12}>12</MenuItem>
-                              <MenuItem value={13}>13</MenuItem>
-                              <MenuItem value={14}>14</MenuItem>
-                              <MenuItem value={15}>15</MenuItem>
+                              <MenuItem value={"Quiz One"}>Quiz One</MenuItem>
+                              <MenuItem value={"Quiz Two"}>Quiz Two</MenuItem>
+                              <MenuItem value={"Quiz Three"}>
+                                Quiz Three
+                              </MenuItem>
+                              <MenuItem value={"Quiz Four"}>Quiz Four</MenuItem>
+                              <MenuItem value={"Quiz Five"}>Quiz Five</MenuItem>
                             </Select>
                           </Col>
                         </Row>

@@ -262,6 +262,31 @@ function Quiz() {
                         <Row>
                           <Col xl={6} className="mt-2">
                             <InputLabel id="demo-simple-select-label">
+                              Retake Allowed Or Not
+                            </InputLabel>
+                            <Select
+                              style={{ width: "100%" }}
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              value={retakeAllowed}
+                              onChange={handleRetakeAllowed}
+                            >
+                              <MenuItem disabled value="">
+                                <em>Please Select Retake Allowed Or Not</em>
+                              </MenuItem>
+                              <MenuItem value="Yes">YES</MenuItem>
+                              <MenuItem value="No">NO</MenuItem>
+                            </Select>
+                          </Col>
+                          <Col
+                            xl={6}
+                            className="mt-2"
+                            style={{
+                              display:
+                                retakeAllowed == "Yes" ? "block" : "none",
+                            }}
+                          >
+                            <InputLabel id="demo-simple-select-label">
                               No Of Retaked Allowed
                             </InputLabel>
                             <Select
@@ -281,24 +306,6 @@ function Quiz() {
                               <MenuItem value="5">5</MenuItem>
                             </Select>
                           </Col>
-                          <Col xl={6} className="mt-2">
-                            <InputLabel id="demo-simple-select-label">
-                              Retake Allowed Or Not
-                            </InputLabel>
-                            <Select
-                              style={{ width: "100%" }}
-                              labelId="demo-simple-select-label"
-                              id="demo-simple-select"
-                              value={retakeAllowed}
-                              onChange={handleRetakeAllowed}
-                            >
-                              <MenuItem disabled value="">
-                                <em>Please Select Retake Allowed Or Not</em>
-                              </MenuItem>
-                              <MenuItem value="Yes">YES</MenuItem>
-                              <MenuItem value="No">NO</MenuItem>
-                            </Select>
-                          </Col>
                         </Row>
 
                         <Row className="mt-2">
@@ -313,201 +320,6 @@ function Quiz() {
                           </Col>
                         </Row>
                       </VerticalForm>
-                      {/* <Row className="mt-4">
-                        {QuizList.map((item) => {
-                          if (item.quizName !== "") {
-                            return (
-                              <ul className="mt-2">
-                                <div className="mb-2 border border-2 border-gray-500 w-1/2 p-4">
-                                  <div className="mb-2">Quiz Name</div>
-                                  <div
-                                    key={item.id}
-                                    className="mb-2 border border-2 border-gray-500 w-1/2 p-2"
-                                  >
-                                    {item.quizName}
-                                  </div>
-                                  <div className="mt-2">Description</div>
-                                  <div
-                                    key={item.id}
-                                    className="mt-2 border border-2 border-gray-500 w-1/2 p-2"
-                                  >
-                                    {item.description}
-                                  </div>
-
-                                  <div
-                                    className="mt-4"
-                                    style={{
-                                      display: "flex",
-                                      justifyContent: "space-between",
-                                      flexWrap: "wrap",
-                                    }}
-                                  >
-                                    <li className="border border-2 border-gray-500 w-1/2 p-2">
-                                      {item.totalNoOfQuestion}
-                                    </li>
-                                    <li className="border border-2 border-gray-500 w-1/2 p-2">
-                                      {item.passingMarks}
-                                    </li>
-                                    <li className="border border-2 border-gray-500 w-1/2 p-2">
-                                      {item.totalNoOfRetake}
-                                    </li>
-                                    <li className="border border-2 border-gray-500 w-1/2 p-2">
-                                      {item.retakeAllowed}
-                                    </li>
-                                  </div>
-                                  <div>
-                                    <Button
-                                      type="submit"
-                                      className="btn btn-gradient-primary mt-4"
-                                      variant="success"
-                                      onClick={handleOpenModal}
-                                    >
-                                      Edit
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className="btn btn-gradient-primary mt-4 mx-2"
-                                      variant="success"
-                                      onClick={() => {
-                                        handleDeleteQuiz(item.id);
-                                      }}
-                                    >
-                                      Delete
-                                    </Button>
-                                    <div>
-                                      <Modal
-                                        centered
-                                        okText="Save"
-                                        onOk={() => {
-                                          handleEditQuestion(item.id);
-                                        }}
-                                        onCancel={handleCloseModal}
-                                        title="Edit Questions And Answers"
-                                        open={openModal}
-                                        onClose={handleCloseModal}
-                                        style={{
-                                          width: "100vw",
-                                          border: "1px solid black",
-                                          borderRadius: "5px",
-                                        }}
-                                      >
-                                        <>
-                                          <div
-                                            style={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                            }}
-                                            className="m-1"
-                                          >
-                                            <label>Question</label>
-                                            <TextArea
-                                              rows={4}
-                                              value={editQuestionValue}
-                                              style={{ width: "100%" }}
-                                              className="m-1"
-                                              onChange={handleEditQuestionValue}
-                                            />
-                                          </div>
-                                          <div
-                                            style={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                            }}
-                                            className="m-1"
-                                          >
-                                            <label className="m-1">
-                                              Answer One
-                                            </label>
-                                            <Input
-                                              value={editAnswerOne}
-                                              className="m-1"
-                                              onChange={
-                                                handleEditAnswerOneValue
-                                              }
-                                            />
-                                          </div>
-                                          <div
-                                            style={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                            }}
-                                            className="m-1"
-                                          >
-                                            <label className="m-1">
-                                              Answer Two
-                                            </label>
-                                            <Input
-                                              value={editAnswerTwo}
-                                              className="m-1"
-                                              onChange={
-                                                handleEditAnswerTwoValue
-                                              }
-                                            />
-                                          </div>
-                                          <div
-                                            style={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                            }}
-                                            className="m-1"
-                                          >
-                                            <label className="m-1">
-                                              Answer Three
-                                            </label>
-                                            <Input
-                                              value={editAnswerThree}
-                                              className="m-1"
-                                              onChange={
-                                                handleEditAnswerThreeValue
-                                              }
-                                            />
-                                          </div>
-                                          <div
-                                            style={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                            }}
-                                            className="m-1"
-                                          >
-                                            <label className="m-1">
-                                              Answer Four
-                                            </label>
-                                            <Input
-                                              value={editAnswerFourth}
-                                              className="m-1"
-                                              onChange={
-                                                handleEditAnswerFourthValue
-                                              }
-                                            />
-                                          </div>
-                                          <div
-                                            style={{
-                                              display: "flex",
-                                              flexDirection: "column",
-                                            }}
-                                            className="m-1"
-                                          >
-                                            <label className="m-1">
-                                              Correct Answer
-                                            </label>
-                                            <Input
-                                              value={editCorrectAnswer}
-                                              className="m-1"
-                                              onChange={
-                                                handleEditCorrectAnswerValue
-                                              }
-                                            />
-                                          </div>
-                                        </>
-                                      </Modal>
-                                    </div>
-                                  </div>
-                                </div>
-                              </ul>
-                            );
-                          }
-                        })}
-                      </Row> */}
                     </Col>
                   </Row>
                 </Card.Body>
