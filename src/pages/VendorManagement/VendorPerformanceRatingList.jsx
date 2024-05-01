@@ -82,12 +82,12 @@ function VendorPerformanceRatingList() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "Quiz",
-                        path: "/training/questionslist",
+                        label: "Vendor Mgmt",
+                        path: "/VendorDetails",
                       },
                       {
-                        label: "Question List",
-                        path: "/training/questionslist",
+                        label: "Vendor Performance Rating List",
+                        path: "/VendorDetails",
                         active: true,
                       },
                     ]}
@@ -103,7 +103,7 @@ function VendorPerformanceRatingList() {
                   <Row className="mb-2">
                     <Col sm={5}>
                       <Link
-                        to="/training/questions"
+                        to="/VendorPerformanceRating"
                         className="btn btn-danger mb-2"
                       >
                         <i className="mdi mdi-plus-circle me-2"></i> Add Vendor
@@ -186,7 +186,7 @@ function VendorPerformanceRatingList() {
                                   </td>
                                   <td>
                                     <Link
-                                      to={`/training/quiz?id=${record?.id}`}
+                                      to={`/VendorPerformanceRating?id=${record?.id}`}
                                       className="action-icon text-warning"
                                     >
                                       <i className="mdi mdi-square-edit-outline"></i>

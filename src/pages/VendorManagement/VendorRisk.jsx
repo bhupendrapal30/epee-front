@@ -126,7 +126,7 @@ function VendorRisk() {
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
               </span>{" "}
-              Add Vendor Risk
+              {!ObjectID ? "Add Vendor Risk" : "Update Vendor Risk"}
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">

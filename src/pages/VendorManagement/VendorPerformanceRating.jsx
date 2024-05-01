@@ -126,7 +126,9 @@ function VendorPerformanceRating() {
               <span className="page-title-icon bg-gradient-primary text-white me-2">
                 <i className="mdi mdi-account-plus" />
               </span>{" "}
-              Add Vendor Performance Rating
+              {!ObjectID
+                ? "Add Vendor Performance Rating"
+                : "Update Vendor Performance Rating"}
             </h3>
             <nav aria-label="breadcrumb">
               <ul className="breadcrumb">
@@ -457,6 +459,7 @@ function VendorPerformanceRating() {
                               type="submit"
                               className="btn btn-gradient-primary me-2"
                               variant="success"
+                              //onClick={handleVendorPerformanceRatingSubmit}
                             >
                               {!ObjectID
                                 ? "Add Vendor Performance Rating"
