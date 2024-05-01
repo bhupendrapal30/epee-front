@@ -17,201 +17,192 @@ const Login = React.lazy(() => import("../pages/Account/Login"));
 
 //Page
 const AdminDashboard = React.lazy(() =>
-  import("../pages/Dashboard/AdminDashboard"),
+  import("../pages/Dashboard/AdminDashboard")
 );
 const HodDashboard = React.lazy(() =>
-  import("../pages/Dashboard/HodDashboard"),
+  import("../pages/Dashboard/HodDashboard")
 );
 
 const Logout = React.lazy(() => import("../pages/Account/Logout"));
 
 const DepartmentCreateUpdatePage = React.lazy(() =>
-  import("../pages/Department/DepartmentCreateUpdatePage"),
+  import("../pages/Department/DepartmentCreateUpdatePage")
 );
 const DepartmentListPage = React.lazy(() =>
-  import("../pages/Department/DepartmentListPage"),
+  import("../pages/Department/DepartmentListPage")
 );
 
 const FrameworkCreateUpdatePage = React.lazy(() =>
-  import("../pages/Framework/FrameworkCreateUpdatePage"),
+  import("../pages/Framework/FrameworkCreateUpdatePage")
 );
 
 const FrameworkListPage = React.lazy(() =>
-  import("../pages/Framework/FrameworkListPage"),
+  import("../pages/Framework/FrameworkListPage")
 );
 
 const ClauseCreateUpdatePage = React.lazy(() =>
-  import("../pages/Clause/ClauseCreateUpdatePage"),
+  import("../pages/Clause/ClauseCreateUpdatePage")
 );
 
 const ClauseListPage = React.lazy(() =>
-  import("../pages/Clause/ClauseListPage"),
+  import("../pages/Clause/ClauseListPage")
 );
 
-
 const SubclauseCreateUpdatePage = React.lazy(() =>
-  import("../pages/Subclause/SubclauseCreateUpdatePage"),
+  import("../pages/Subclause/SubclauseCreateUpdatePage")
 );
 
 const SubclauseListPage = React.lazy(() =>
-  import("../pages/Subclause/SubclauseListPage"),
+  import("../pages/Subclause/SubclauseListPage")
 );
 
 const ControlCreateUpdatePage = React.lazy(() =>
-  import("../pages/Control/ControlCreateUpdatePage"),
+  import("../pages/Control/ControlCreateUpdatePage")
 );
 
 const ControlListPage = React.lazy(() =>
-  import("../pages/Control/ControlListPage"),
+  import("../pages/Control/ControlListPage")
 );
 
-
 const SubcontrolCreateUpdatePage = React.lazy(() =>
-  import("../pages/Subcontrol/SubcontrolCreateUpdatePage"),
+  import("../pages/Subcontrol/SubcontrolCreateUpdatePage")
 );
 
 const SubcontrolListPage = React.lazy(() =>
-  import("../pages/Subcontrol/SubcontrolListPage"),
+  import("../pages/Subcontrol/SubcontrolListPage")
 );
 
 const LeaveTypeCreateUpdatePage = React.lazy(() =>
-  import("../pages/LeaveType/LeaveTypeCreateUpdatePage"),
+  import("../pages/LeaveType/LeaveTypeCreateUpdatePage")
 );
 const LeaveTypeListPage = React.lazy(() =>
-  import("../pages/LeaveType/LeaveTypeListPage"),
+  import("../pages/LeaveType/LeaveTypeListPage")
 );
 
 const EmployeeCreateUpdatePage = React.lazy(() =>
-  import("../pages/Employee/EmployeeCreateUpdatePage"),
+  import("../pages/Employee/EmployeeCreateUpdatePage")
 );
 const EmployeeListPage = React.lazy(() =>
-  import("../pages/Employee/EmployeeListPage"),
+  import("../pages/Employee/EmployeeListPage")
 );
 
 const UsersCreateUpdatePage = React.lazy(() =>
-  import("../pages/Users/UsersCreateUpdatePage"),
+  import("../pages/Users/UsersCreateUpdatePage")
 );
-const UsersListPage = React.lazy(() =>
-  import("../pages/Users/UsersListPage"),
-);
+const UsersListPage = React.lazy(() => import("../pages/Users/UsersListPage"));
 
 const RolesCreateUpdatePage = React.lazy(() =>
-  import("../pages/Roles/RolesCreateUpdatePage"),
+  import("../pages/Roles/RolesCreateUpdatePage")
 );
-const RolesListPage = React.lazy(() =>
-  import("../pages/Roles/RolesListPage"),
-);
+const RolesListPage = React.lazy(() => import("../pages/Roles/RolesListPage"));
 
 const PolicyCreateUpdatePage = React.lazy(() =>
-  import("../pages/Policies/PolicyCreateUpdatePage"),
+  import("../pages/Policies/PolicyCreateUpdatePage")
 );
 
 const PolicyCreateUpdatePageNew = React.lazy(() =>
-  import("../pages/Policies/PolicyCreateUpdatePageNew"),
+  import("../pages/Policies/PolicyCreateUpdatePageNew")
 );
 
 const PolicyCreateUpdatePageTab = React.lazy(() =>
-  import("../pages/Policies/PolicyCreateUpdatePageTab"),
+  import("../pages/Policies/PolicyCreateUpdatePageTab")
 );
 
-
-
 const PolicyListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyListPage"),
+  import("../pages/Policies/PolicyListPage")
 );
 
 const PolicyVersionListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyVersionListPage"),
+  import("../pages/Policies/PolicyVersionListPage")
 );
 
 const PolicyApproverListPage = React.lazy(() =>
-  import("../pages/Policies/ApproverList"),
+  import("../pages/Policies/ApproverList")
 );
 
 const PolicyApprovedListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyApprovedListPage"),
+  import("../pages/Policies/PolicyApprovedListPage")
 );
 
 const PolicyPendingListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyPendingListPage"),
+  import("../pages/Policies/PolicyPendingListPage")
 );
 
 const PolicyRejectListPage = React.lazy(() =>
-  import("../pages/Policies/PolicyRejectListPage"),
+  import("../pages/Policies/PolicyRejectListPage")
 );
 const PermissionCreateUpdatePage = React.lazy(() =>
-  import("../pages/Permission/PermissionCreateUpdatePage"),
+  import("../pages/Permission/PermissionCreateUpdatePage")
 );
 const PermissionListPage = React.lazy(() =>
-  import("../pages/Permission/PermissionListPage"),
+  import("../pages/Permission/PermissionListPage")
 );
 
 const LeaveAdminUpdatePage = React.lazy(() =>
-  import("../pages/Leave/LeaveAdminUpdatePage"),
+  import("../pages/Leave/LeaveAdminUpdatePage")
 );
 const LeaveAdminListPage = React.lazy(() =>
-  import("../pages/Leave/LeaveAdminListPage"),
+  import("../pages/Leave/LeaveAdminListPage")
 );
 const LeaveListAdminPending = React.lazy(() =>
-  import("../pages/Leave/LeaveListAdminPending"),
+  import("../pages/Leave/LeaveListAdminPending")
 );
 
 const LeaveListAdminApproved = React.lazy(() =>
-  import("../pages/Leave/LeaveListAdminApproved"),
+  import("../pages/Leave/LeaveListAdminApproved")
 );
 
 const LeaveListAdminRejected = React.lazy(() =>
-  import("../pages/Leave/LeaveListAdminRejected"),
+  import("../pages/Leave/LeaveListAdminRejected")
 );
 
 const LeaveListHodPending = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodPending"),
+  import("../pages/Leave/LeaveListHodPending")
 );
 
 const LeaveListHodApproved = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodApproved"),
+  import("../pages/Leave/LeaveListHodApproved")
 );
 
 const LeaveListHodRejected = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodRejected"),
+  import("../pages/Leave/LeaveListHodRejected")
 );
 
 const LeaveListHodPage = React.lazy(() =>
-  import("../pages/Leave/LeaveListHodPage"),
+  import("../pages/Leave/LeaveListHodPage")
 );
 const LeaveHodCreateUpdatePage = React.lazy(() =>
-  import("../pages/Leave/LeaveHodCreateUpdatePage"),
+  import("../pages/Leave/LeaveHodCreateUpdatePage")
 );
 
 const LeaveCreateUpdatePage = React.lazy(() =>
-  import("../pages/Leave/LeaveCreateUpdatePage"),
+  import("../pages/Leave/LeaveCreateUpdatePage")
 );
 
 const LeaveListEmployeePage = React.lazy(() =>
-  import("../pages/Leave/LeaveListEmployeePage"),
+  import("../pages/Leave/LeaveListEmployeePage")
 );
 
 const EmployeeDashboard = React.lazy(() =>
-  import("../pages/Dashboard/EmployeeDashboard"),
+  import("../pages/Dashboard/EmployeeDashboard")
 );
 
 const ProfilePage = React.lazy(() => import("../pages/Profile/ProfilePage"));
 const ChangePasswordPage = React.lazy(() =>
-  import("../pages/Profile/ChangePasswordPage"),
+  import("../pages/Profile/ChangePasswordPage")
 );
 
 const ForgetPassword = React.lazy(() =>
-  import("../pages/Account/ForgetPassword"),
+  import("../pages/Account/ForgetPassword")
 );
 
 const VerifyOtpPage = React.lazy(() =>
-  import("../pages/Account/VerifyOtpPage"),
+  import("../pages/Account/VerifyOtpPage")
 );
 
 const ResetPasswordPage = React.lazy(() =>
-  import("../pages/Account/ResetPasswordPage"),
+  import("../pages/Account/ResetPasswordPage")
 );
-
 
 //Training Management
 const TrainingMgmt = React.lazy(() =>
@@ -222,7 +213,9 @@ const TrainingMgmtList = React.lazy(() =>
 );
 const Quiz = React.lazy(() => import("../pages/TrainingMgmt/Quiz"));
 const Questions = React.lazy(() => import("../pages/TrainingMgmt/Questions"));
-const QuestionsList = React.lazy(() => import("../pages/TrainingMgmt/Questionlist"));
+const QuestionsList = React.lazy(() =>
+  import("../pages/TrainingMgmt/Questionlist")
+);
 const QandAList = React.lazy(() => import("../pages/TrainingMgmt/QandAList"));
 const QuizList = React.lazy(() => import("../pages/TrainingMgmt/QuizList"));
 const Survey = React.lazy(() => import("../pages/TrainingMgmt/Survey"));
@@ -240,12 +233,15 @@ const AssetList = React.lazy(() => import("../pages/AssestMgmt/AssetList"));
 const AssetAssignment = React.lazy(() =>
   import("../pages/AssestMgmt/AssetAssignment")
 );
-const AssetAssignmentList = React.lazy(() => import("../pages/AssestMgmt/AssetAssignmentList"));
+const AssetAssignmentList = React.lazy(() =>
+  import("../pages/AssestMgmt/AssetAssignmentList")
+);
 const AssetInventory = React.lazy(() =>
   import("../pages/AssestMgmt/AssetInventory")
 );
-const AssetInventoryList = React.lazy(() => import("../pages/AssestMgmt/AssetInventoryList"));
-
+const AssetInventoryList = React.lazy(() =>
+  import("../pages/AssestMgmt/AssetInventoryList")
+);
 
 //Vendor Management
 const VendorDetails = React.lazy(() =>
@@ -268,10 +264,10 @@ const VendorPerformanceRatingList = React.lazy(() =>
 );
 
 //Audit Management
-const Audit = React.lazy(() =>
-  import("../pages/AuditMgmt/Audit")
+const Audit = React.lazy(() => import("../pages/AuditMgmt/Audit"));
+const AuditListing = React.lazy(() =>
+  import("../pages/AuditMgmt/AuditListing")
 );
-const AuditListing = React.lazy(() => import("../pages/AuditMgmt/AuditListing"));
 const ClauseWiseDetailsListing = React.lazy(() =>
   import("../pages/AuditMgmt/ClauseWiseDetailList")
 );
@@ -285,9 +281,7 @@ const AnnexWiseAuditDetailUpdate = React.lazy(() =>
   import("../pages/AuditMgmt/AnnexWiseAuditDetailUpdate")
 );
 //SOA
-const SOA = React.lazy(() =>
-  import("../pages/AuditMgmt/SOA")
-);
+const SOA = React.lazy(() => import("../pages/AuditMgmt/SOA"));
 const SOAListing = React.lazy(() => import("../pages/AuditMgmt/SOAList"));
 const SOAAnnexDetailsList = React.lazy(() =>
   import("../pages/AuditMgmt/SoaAnnexDetailsListing")
