@@ -82,12 +82,12 @@ function VendorRiskList() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "Quiz",
-                        path: "/training/questionslist",
+                        label: "Vendor Mgmt",
+                        path: "/VendorDetails",
                       },
                       {
-                        label: "Question List",
-                        path: "/training/questionslist",
+                        label: "Vendor Risk List",
+                        path: "/VendorRiskList",
                         active: true,
                       },
                     ]}
@@ -102,10 +102,7 @@ function VendorRiskList() {
                 <Card.Body>
                   <Row className="mb-2">
                     <Col sm={5}>
-                      <Link
-                        to="/training/questions"
-                        className="btn btn-danger mb-2"
-                      >
+                      <Link to="/VendorRisk" className="btn btn-danger mb-2">
                         <i className="mdi mdi-plus-circle me-2"></i> Add Vendor
                         Risk
                       </Link>
@@ -186,7 +183,7 @@ function VendorRiskList() {
                                   </td>
                                   <td>
                                     <Link
-                                      to={`/training/quiz?id=${record?.id}`}
+                                      to={`/VendorRisk?id=${record?.id}`}
                                       className="action-icon text-warning"
                                     >
                                       <i className="mdi mdi-square-edit-outline"></i>

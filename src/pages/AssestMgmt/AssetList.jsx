@@ -82,12 +82,12 @@ function AssetList() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "Quiz",
-                        path: "/training/questionslist",
+                        label: "Asset Mgmt",
+                        path: "/Asset",
                       },
                       {
-                        label: "Question List",
-                        path: "/training/questionslist",
+                        label: "Asset List",
+                        path: "/AssetList",
                         active: true,
                       },
                     ]}
@@ -186,7 +186,7 @@ function AssetList() {
                                   </td>
                                   <td>
                                     <Link
-                                      to={`/training/quiz?id=${record?.id}`}
+                                      to={`/Asset?id=${record?.id}`}
                                       className="action-icon text-warning"
                                     >
                                       <i className="mdi mdi-square-edit-outline"></i>

@@ -325,7 +325,7 @@ function VendorDetails() {
                             </Select>
                           </Col>
                         </Row> */}
-                        </Row>
+                        {/* </Row> */}
                         <Row className="mt-3">
                           <Col>
                             <Button

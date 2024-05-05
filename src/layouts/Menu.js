@@ -480,8 +480,9 @@ const AppMenu = ({
                     aria-controls="ui-basic"
                   >
                     <span className="menu-title">Permission</span>
+
                     <i className="menu-arrow" />
-                    <i className="mdi mdi-account-key" />
+                    <i className="mdi mdi-access-point-network" />
                   </a>
                   <div className="collapse" id="ui-basic2">
                     <ul className="nav flex-column sub-menu">
@@ -512,6 +513,7 @@ const AppMenu = ({
                 </li>
               );
             }
+
             if (record.modulesname == "files") {
               return (
                 <li className="nav-item">
@@ -526,7 +528,6 @@ const AppMenu = ({
              <li className="nav-item">
                   <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
                     <span className="menu-title">Departments</span>
-
                     <i className="menu-arrow" />
                     <i className="mdi mdi-crosshairs-gps menu-icon" />
                   </a>
@@ -705,15 +706,57 @@ const AppMenu = ({
             </div>
           </li>
              <li className="nav-item">
-                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic">
-                    <span className="menu-title">Risks</span>
+                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic15" aria-expanded="false" aria-controls="ui-basic">
+                    <span className="menu-title">Departments</span>
+
                     <i className="menu-arrow" />
-                    <i className="mdi mdi-account-key" />
+                    <i className="mdi mdi-crosshairs-gps menu-icon" />
                   </a>
-                  <div className="collapse" id="ui-basic14">
+                  <div className="collapse" id="ui-basic3"></div>
+                  <div className="collapse" id="ui-basic15">
                     <ul className="nav flex-column sub-menu">
-                      <li className="nav-item"> <Link to ="/risk/risk-create-update" className="nav-link" >New Risk</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/risk/risk-list">Risk Listing</Link></li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          to="/policies/policy-create-update-new"
+                          className="nav-link"
+                        >
+                          New Policy
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link className="nav-link" to="/policies/policy-list">
+                          Policy Listing
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          className="nav-link"
+                          to="/policies/pending-policy"
+                        >
+                          Pending Policies
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          className="nav-link"
+                          to="/policies/approved-policy"
+                        >
+                          Approved Policies
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        {" "}
+                        <Link
+                          className="nav-link"
+                          to="/policies/rejected-policy"
+                        >
+                          Rejected Policies
+                        </Link>
+                      </li>
                     </ul>
                   </div>
             </li>

@@ -82,12 +82,12 @@ function AssetInventoryList() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "Quiz",
-                        path: "/training/questionslist",
+                        label: "Asset Mgmt",
+                        path: "/AssetInventory",
                       },
                       {
-                        label: "Question List",
-                        path: "/training/questionslist",
+                        label: "Asset Inventory List",
+                        path: "/AssetInventoryList",
                         active: true,
                       },
                     ]}
@@ -186,7 +186,7 @@ function AssetInventoryList() {
                                   </td>
                                   <td>
                                     <Link
-                                      to={`/training/quiz?id=${record?.id}`}
+                                      to={`/AssetInventory?id=${record?.id}`}
                                       className="action-icon text-warning"
                                     >
                                       <i className="mdi mdi-square-edit-outline"></i>

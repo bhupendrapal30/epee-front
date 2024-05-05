@@ -82,12 +82,12 @@ function AssetAssignmentList() {
                   <PageTitle
                     breadCrumbItems={[
                       {
-                        label: "Quiz",
-                        path: "/training/questionslist",
+                        label: "Asset Mgmt",
+                        path: "/AssetAssignment",
                       },
                       {
-                        label: "Question List",
-                        path: "/training/questionslist",
+                        label: "Asset Assignment List",
+                        path: "/AssetAssignmentList",
                         active: true,
                       },
                     ]}
@@ -103,7 +103,7 @@ function AssetAssignmentList() {
                   <Row className="mb-2">
                     <Col sm={5}>
                       <Link
-                        to="/training/questions"
+                        to="/AssetAssignment"
                         className="btn btn-danger mb-2"
                       >
                         <i className="mdi mdi-plus-circle me-2"></i> Add Asset
@@ -186,7 +186,7 @@ function AssetAssignmentList() {
                                   </td>
                                   <td>
                                     <Link
-                                      to={`/training/quiz?id=${record?.id}`}
+                                      to={`/AssetAssignment?id=${record?.id}`}
                                       className="action-icon text-warning"
                                     >
                                       <i className="mdi mdi-square-edit-outline"></i>
