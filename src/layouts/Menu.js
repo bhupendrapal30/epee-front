@@ -387,7 +387,7 @@ const AppMenu = ({
               </Link>
             </li> */}
 
-          {UserDetails.per?.map((record, index) => {
+          {/* {UserDetails.per?.map((record, index) => 
             if (record.modulesname == "user") {
               return (
                 <li className="nav-item">
@@ -512,8 +512,8 @@ const AppMenu = ({
                 </li>
               );
             }
-            if (record.modulesname == "files") {
-              return (
+           // if (record.modulesname == "files") 
+              
                 <li className="nav-item">
                   <a
                     className="nav-link"
@@ -530,7 +530,7 @@ const AppMenu = ({
                     <i className="menu-arrow" />
                     <i className="mdi mdi-crosshairs-gps menu-icon" />
                   </a>
-                  <div className="collapse" id="ui-basic3">
+                  <div className="collapse" id="ui-basic3"></div>
                   <div className="collapse" id="ui-basic15">
                     <ul className="nav flex-column sub-menu">
                       <li className="nav-item">
@@ -577,10 +577,7 @@ const AppMenu = ({
                       </li>
                     </ul>
                   </div>
-                </li>
-              );
-            }
-          })}
+                    </li> */}
 
           <li className="nav-item">
             <a
@@ -704,19 +701,35 @@ const AppMenu = ({
               </ul>
             </div>
           </li>
-             <li className="nav-item">
-                  <a className="nav-link" data-bs-toggle="collapse" href="#ui-basic14" aria-expanded="false" aria-controls="ui-basic">
-                    <span className="menu-title">Risks</span>
-                    <i className="menu-arrow" />
-                    <i className="mdi mdi-account-key" />
-                  </a>
-                  <div className="collapse" id="ui-basic14">
-                    <ul className="nav flex-column sub-menu">
-                      <li className="nav-item"> <Link to ="/risk/risk-create-update" className="nav-link" >New Risk</Link></li>
-                      <li className="nav-item"> <Link  className="nav-link" to="/risk/risk-list">Risk Listing</Link></li>
-                    </ul>
-                  </div>
-            </li>
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              data-bs-toggle="collapse"
+              href="#ui-basic14"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
+              <span className="menu-title">Risks</span>
+              <i className="menu-arrow" />
+              <i className="mdi mdi-account-key" />
+            </a>
+            <div className="collapse" id="ui-basic14">
+              <ul className="nav flex-column sub-menu">
+                <li className="nav-item">
+                  {" "}
+                  <Link to="/risk/risk-create-update" className="nav-link">
+                    New Risk
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  {" "}
+                  <Link className="nav-link" to="/risk/risk-list">
+                    Risk Listing
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
           <li class="nav-item">
             <a
               className="nav-link"
