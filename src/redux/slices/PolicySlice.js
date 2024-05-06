@@ -30,9 +30,8 @@ const PolicySlice = createSlice({
       ownerid:[],
       approverid:[],
       frameworkid:"",
-      controlid:"",
-      subcontrolid:"",
-      clause_id:"",
+      clauseid:[],
+      controlid:[],
       subclauseid:"",
       createdby: "",
       

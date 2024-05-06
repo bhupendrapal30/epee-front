@@ -132,9 +132,28 @@ const [checkeupload, setcheckeupload] = useState(false);
         ownerData.forEach(function(message){
         ownerDataArra.push({value: message.ownerid, label: message.fname });
        });
+
+       let clauseData =data1.cluse_mapping;
+
+       let clauseDataArra =[];       
+        clauseData.forEach(function(message){
+        clauseDataArra.push({value: message.clauseid, label: message.ClauseName });
+       });
+
+
+        let controlData =data1.control_mapping;
+
+       let controlDataArra =[];       
+        controlData.forEach(function(message){
+        controlDataArra.push({value: message.controlid, label: message.controlname });
+       });
+
+
        let cData = {...data1.data[0],...data1.cluse_mapping[0],...data1.control_mapping[0]}
            cData.approverid =approverArray;
            cData.ownerid =ownerDataArra;
+           cData.clauseid =clauseDataArra;
+           cData.controlid =controlDataArra;
 
   
           
@@ -158,12 +177,7 @@ const [checkeupload, setcheckeupload] = useState(false);
         if(cData.frameworkid > 0){
          handleChange(cData.frameworkid)
         }
-        if(cData.clause_id > 0){
-         getSubClauseData(cData.clause_id)
-        }
-        if(cData.controlid >0){
-         getSubControlData(cData.controlid)
-        }
+        
        
 
         
@@ -269,7 +283,7 @@ const handleChange = (val) => {
 const handleChangeClause =(e, setFieldValue)=>{
    var value = e.target.value;
    setFieldValue('clause_id', value)
-   getSubClauseData(value);
+  // getSubClauseData(value);
     
 }
 
@@ -287,7 +301,7 @@ const handleChangeControl =(val)=>{
 const handleChangeControl1 =(e, setFieldValue)=>{
    var value = e.target.value;
     setFieldValue('controlid', value)
-    getSubControlData(value);
+    //getSubControlData(value);
 }
  
 const handleChangeSubControl =(e, setFieldValue)=>{
@@ -342,10 +356,8 @@ const handleChangeValue = (e,setFieldValue) => {
               
             primaryassignee:yup.string().required("Please select the assignee"),
             
-            clause_id:yup.string().required("Please select the clause"),
-            subclauseid:yup.string().required("Please select the subclause"),
-            controlid:yup.string().required("Please select the control"),
-            subcontrolid:yup.string().required("Please select the sub control"),
+            
+    
 
             approverid: yup.array()
                 .of(yup.string())
@@ -388,6 +400,9 @@ const handleChangeValue = (e,setFieldValue) => {
         policyType:values.policyType,
         file_version:values.file_version,
         description:values.description,
+        optional_description:values.optional_description,
+
+
         status: values.status,
         updatedby:1,
        }).then((result) => {
@@ -426,34 +441,7 @@ const handleChangeValue = (e,setFieldValue) => {
       //   }
       // });
     } else {
-       console.log(values);
-      
-        if(values.clause_id){
-          var clauseid  = values.clause_id
-          var subclauseid  = values.subclauseid
-          var cluse1 = {};
-          cluse1['clauseid'] = parseInt(clauseid);
-          cluse1['subclauseid'] = parseInt(subclauseid);
-          var cluse =[cluse1];
-
-        }
-          
-    
-        if(values.controlid){
-          var controlid  = values.controlid;
-          var subcontrolid  = values.subcontrolid
-          var control1 = {};
-          control1['controlid'] = parseInt(controlid);
-          control1['subcontrolid'] = parseInt(subcontrolid);
-          
-          var control =[control1];
-          
-        }
-
-        
-           
-      
-        
+        console.log(values)
       PolicyRequest.PolicyUpdate(ObjectID, {
         policyname: values.policyname,
         primaryassignee: values.primaryassignee,
@@ -463,10 +451,10 @@ const handleChangeValue = (e,setFieldValue) => {
         approverid:values.approverid,
         departmentsid: values.departmentsid,
         frameworkid: values.frameworkid,
-        cluse: cluse,
-        control: control,
-        subclauseid: values.subclauseid,
-        subcontrolid: values.subcontrolid,
+        clauseid: values.clauseid,
+        controlid: values.controlid,
+        subclauseid: 1,
+        subcontrolid: 1,
         status: values.status,
         updatedby:1,
        }).then((result) => {
@@ -619,7 +607,18 @@ const handleChangeValue = (e,setFieldValue) => {
       <Row className="mb-2">
                   <Form.Group as={Col} controlId="formGridState">
                     <label>CLAUSES</label>
-                     <Field>
+
+                     <FormInput     
+                          name="clauseid"
+                          placeholder={t("Please select the clause ")}
+                          containerClass={"test"}
+                          type="react-multiple-select"
+                          options={selectedClause}
+                          defaultValue={policyData.clauseid}
+
+                         
+                        />
+                     {/*<Field>
           {({ field, form: { touched, errors,setFieldValue, values } }) => (
             <>
 
@@ -637,58 +636,30 @@ const handleChangeValue = (e,setFieldValue) => {
               <ErrorMessage name="clause_id" />
             </>
           )}
-        </Field>
+        </Field>*/}
                   
                     
         </Form.Group>
-        <Form.Group as={Col} controlId="formGridState222">
-                  <label>SUB CLAUSES</label>
-
-                   <Field>
-          {({ field, form: { touched, errors,setFieldValue, values } }) => (
-            <>
-
-            <Field as="select" className="form-select"  name="subclauseid" onChange={ev => handleChangeSubClause(ev, setFieldValue)} >
-                        <option disabled value="">(Select a subclause )</option>
-                        {selectedSubClause && selectedSubClause.map(frame => {
-                            return (
-                                    <option value={frame.value}>{frame.label} </option>
-                              )
-                            
-                        }) }
-                    </Field>
-              
-
-              <ErrorMessage name="subclauseid" />
-            </>
-          )}
-        </Field>
-                  
-                    {/*<FormInput
-                          name="subclauseid"
-                          sendDataToParent={handleDataFromChild}
-                          placeholder={t("Please select the sub clause ")}
-                          containerClass={"test"}
-                          type="react-single-select3"
-                          options={selectedSubClause}
-                          defaultValue={selectedSubClause?.find(
-                            (i) => i.value == PolicyDetails?.clauseid,
-                          )}
-                          
-                  />*/}
-                    
-        </Form.Group>
-        </Row>
-        <Row className="mb-2">
         <Form.Group as={Col} controlId="formGridState">
 
                     <label>CONTROLS</label>
 
-                   <Field>
+                    <FormInput     
+                          name="controlid"
+                          placeholder={t("Please select the controls ")}
+                          containerClass={"test"}
+                          type="react-multiple-select"
+                          options={selectedControl}
+                          defaultValue={policyData.controlid}
+
+                         
+                        />
+
+                   {/*<Field>
           {({ field, form: { touched, errors,setFieldValue, values } }) => (
             <>
 
-            <Field as="select" className="form-select"  name="controlid" onChange={ev => handleChangeControl1(ev, setFieldValue)} >
+            <Field as="select" className="form-select" type="react-multiple-select"  name="controlid" onChange={ev => handleChangeControl1(ev, setFieldValue)} >
                         <option disabled value="">(Select a Control )</option>
                         {selectedControl && selectedControl.map(frame => {
                             return (
@@ -702,7 +673,7 @@ const handleChangeValue = (e,setFieldValue) => {
               <ErrorMessage name="controlid" />
             </>
           )}
-        </Field>
+        </Field>*/}
                     {/* <FormInput
                           name="controlid"
                           sendDataToParent={handleChangeSubControl}
@@ -720,29 +691,10 @@ const handleChangeValue = (e,setFieldValue) => {
                   />*/}
          
         </Form.Group>
-        <Form.Group as={Col} controlId="formGridState">
-           <label>SUB CONTROLS</label>
-           <Field>
-            {({ field, form: { touched, errors,setFieldValue, values } }) => (
-              <>
-
-              <Field as="select" className="form-select"  name="subcontrolid" onChange={ev => handleChangeSubControl(ev, setFieldValue)} >
-                          <option disabled value="">(Select a Sub Control )</option>
-                          {selectedSubControl && selectedSubControl.map(frame => {
-                              return (
-                                      <option value={frame.value}>{frame.label} </option>
-                                )
-                              
-              }) }
-            </Field>
-              
-
-              <ErrorMessage name="subcontrolid" />
-            </>
-          )}
-        </Field>
-        </Form.Group>
+                  
+                
         </Row>
+        
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridCity1">
@@ -861,10 +813,10 @@ const handleChangeValue = (e,setFieldValue) => {
         <Row>
         <FormInput
                           name="policyrequirements"
-                          label={t("Policy Requirements (Optional)")}
-                          placeholder={t("Enter requirements ")}
+                          label={t("Remarks")}
+                          placeholder={t("Enter Remarks ")}
                           containerClass={"mb-3"}
-                          type="simple-rich-edior"
+                          type="textarea"
                         />
         </Row>
 
@@ -916,14 +868,25 @@ const handleChangeValue = (e,setFieldValue) => {
         
 
        { showDes  ?
-
+       <>
        <FormInput
                           name="description"
                           label={t("Policy Requirements")}
                           placeholder={t("Enter requirements ")}
                           containerClass={"mb-3"}
                           type="simple-rich-edior"
-                        /> :
+                        /> 
+
+
+                    <FormInput
+                          name="optional_description"
+                          label={t("Policy Requirements (optional)")}
+                          placeholder={t("Enter requirements ")}
+                          containerClass={"mb-3"}
+                          type="simple-rich-edior"
+                        /> 
+             </>
+                        :
 
               <FormInput
                           name="filename"
@@ -932,7 +895,11 @@ const handleChangeValue = (e,setFieldValue) => {
                           placeholder={t("Upload policy file")}
                           containerClass={"mb-3"}
                           
-                      /> } 
+                      /> 
+
+
+
+                    } 
 
 
                   <FormInput
